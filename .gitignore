@@ -130,3 +130,8 @@ dist
 .pnp.*
 
 # Nds files
+*.nds
+
+# Apicula output
+src/assets/glb
+src/assets/nitro
