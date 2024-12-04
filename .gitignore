@@ -135,3 +135,6 @@ dist
 # Apicula output
 src/assets/glb
 src/assets/nitro
+
+# Other
+.DS_Store
