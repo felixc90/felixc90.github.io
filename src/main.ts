@@ -9,7 +9,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 // Position the camera (e.g., 30 degrees downward tilt)
-const distance = 300; // Distance from the target
+const distance = 400; // Distance from the target
 const tiltAngle = THREE.MathUtils.degToRad(60); // Convert degrees to radians
 camera.position.set(
   0,
@@ -19,10 +19,19 @@ camera.position.set(
 
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+
+const map = new THREE.TextureLoader().load( '/pl_boy01c.17.png' );
+const material = new THREE.SpriteMaterial( { map: map } );
+
+const sprite = new THREE.Sprite( material );
+camera.lookAt(sprite.position);
+sprite.position.set(0,100,100);
+sprite.scale.set(30,30,30)
+
 const loader = new GLTFLoader();
-
 loader.load( '/Plat_full_00_02.glb', function ( gltf ) {
-
+	console.log(gltf)
+	scene.add( sprite );
 	scene.add( gltf.scene );
 
 }, undefined, function ( error ) {
