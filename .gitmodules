@@ -1,0 +1,3 @@
+[submodule "libs/apicula"]
+	path = libs/apicula
+	url = git@github.com:scurest/apicula.git
