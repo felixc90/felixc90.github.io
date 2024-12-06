@@ -1,7 +1,9 @@
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei';
+import { Player } from './Player';
 
 function Scene() {
+
   return (
     <>
       {/* Add a perspective camera */}
@@ -14,7 +16,7 @@ function Scene() {
 
       {/* Add ambient light */}
       <ambientLight intensity={0.5} />
-
+			<Player />
       {/* Add a large plane */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <planeGeometry args={[200, 200]} /> {/* Large plane dimensions */}
