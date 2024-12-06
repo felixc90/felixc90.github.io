@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera } from '@react-three/drei';
+import { KeyboardControls, PerspectiveCamera } from '@react-three/drei';
 import { Player } from './Player';
 
 function Scene() {
@@ -30,9 +30,17 @@ function Scene() {
 function App() {
   return (
 		<div style={{ width: "100vw", height: "100vh", margin: "auto" }}>
-			<Canvas>
-				<Scene />
-			</Canvas>
+			<KeyboardControls
+      map={[
+        { name: "forward", keys: ["ArrowUp", "w", "W"] },
+        { name: "back", keys: ["ArrowDown", "s", "S"] },
+        { name: "left", keys: ["ArrowLeft", "a", "A"] },
+        { name: "right", keys: ["ArrowRight", "d", "D"] },
+      ]}>
+				<Canvas>
+					<Scene />
+				</Canvas>
+			</KeyboardControls>
 		</div>
   );
 }
