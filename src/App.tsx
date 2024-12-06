@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Canvas } from '@react-three/fiber';
+import { PerspectiveCamera } from '@react-three/drei';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Scene() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* Add a perspective camera */}
+      <PerspectiveCamera
+        makeDefault
+        position={[0, 50, 100]} // Camera position in the sky
+        fov={100} // Field of view
+        rotation={[- Math.PI / 3, 0, 0]} // Tilt 45 degrees downward and slight rotation
+      />
+
+      {/* Add ambient light */}
+      <ambientLight intensity={0.5} />
+
+      {/* Add a large plane */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+        <planeGeometry args={[200, 200]} /> {/* Large plane dimensions */}
+        <meshStandardMaterial color="lightblue" /> {/* Plane color */}
+      </mesh>
+			<gridHelper args={[200,40]}/>
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+		<div style={{ width: "100vw", height: "100vh", margin: "auto" }}>
+			<Canvas>
+				<Scene />
+			</Canvas>
+		</div>
+  );
+}
+
+export default App;
