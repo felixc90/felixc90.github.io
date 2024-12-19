@@ -3,7 +3,7 @@ import { IconUpload, IconPhoto, IconX } from '@tabler/icons-react';
 import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { useState } from 'react';
 
-const TilePicker = () => {
+const ModelsTab = () => {
 	const [tiles, setTiles] = useState<File[]>([]);
 
 
@@ -14,9 +14,8 @@ const TilePicker = () => {
 		console.log(files)
 	}
 
-
 	return (
-		<div style={{backgroundColor: 'blue', width:'30%', height: '90vh', borderRadius:'1rem', margin: '1rem'}}>
+		<>
 			<Dropzone
 				onDrop={handleDrop}
 				onReject={(files) => console.log('rejected files', files)}
@@ -57,9 +56,8 @@ const TilePicker = () => {
 					return (<img width='32' height='32' src={file} />)
 				})}
 			</Flex>
-
-		</div>
+		</>
 	)
 }
 
-export default TilePicker
+export default ModelsTab;

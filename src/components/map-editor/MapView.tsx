@@ -1,32 +1,31 @@
-import { Canvas, useLoader } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { OrthographicCamera } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import Grid from '../../utils/gridHelper';
+import Model from './Model.tsx'
+
 
 function Scene() {
-	
-	const gltf = useLoader(GLTFLoader, `/assets/Plane.glb`);
-
   return (
     <>
       <OrthographicCamera
         makeDefault
-        position={[0, 50, 0]}
+        position={[0,10,0]}
         rotation={[- Math.PI / 2, 0, 0]} 
+  			zoom={25}
       />
       <ambientLight intensity={1} />
-			<primitive
-				object={gltf.scene}
-				position={[0, 1, 0]}
-				children-0-castShadow
-			/>
+			<Model position={[0,0,0]} input={`/assets/Plane.glb`}  />
+			<Model position={[1, 0, 10]} input={`/assets/Cafe.glb`}  />
+			<gridHelper args={[32, 32]}/>
     </>
   );
 }
 
 const MapView = () => {
-	
+	const mapStyle = { width: "70%", height: "100vh", margin: "auto" }; 
 	return (
-		<div style={{ width: "100vw", height: "100vh", margin: "auto" }}>
+		<div style={mapStyle}>
 			<Canvas>
 				<Scene />
 			</Canvas>
