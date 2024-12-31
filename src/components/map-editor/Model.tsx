@@ -6,18 +6,25 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface ModelProps {
   input: string;
-  position?: Vector3;
-  rotation?: Vector3;
+  position?: Vector3 | [number, number, number];
+  rotation?: Vector3 | [number, number, number];
+	width: string | number;
+	height: string | number;
+	setInitialDimensions: (width: number, height: number) => void;
 }
 
 const Model = ({
   input,
+	width,
+	height,
   position = [0, 0, 0],
   rotation = [0, 0, 0],
+	setInitialDimensions
 }: ModelProps) => {
+
+
   const gltf = useLoader(GLTFLoader, input);
   const [loaded, setLoaded] = useState(false);
-	const [gridSize, setGridSize] = useState([0, 0]);
 
   const boxRef = useRef<THREE.Box3 | null>(null);
   const posRef = useRef<[number, number] | null>(null);
@@ -31,31 +38,25 @@ const Model = ({
 			const xDist = box.max.x - box.min.x;
 			const zDist = box.max.z - box.min.z;
       const center = box.getCenter(new THREE.Vector3());
-      const posX = position[0] - center.x + Math.ceil(xDist) / 2;
-      const posZ = position[2] - center.z + Math.ceil(zDist) / 2;
+      const posX = - center.x;
+      const posZ = - center.z;
 			
 
-			setGridSize([Math.ceil(xDist), Math.ceil(zDist)])
+			setInitialDimensions(Math.ceil(xDist), Math.ceil(zDist))
 
       posRef.current = [posX, posZ];
       setLoaded(true);  // Mark model as loaded
     }
-  }, [gltf, position]);
+  }, [gltf, position, setInitialDimensions]);
 
   // Only render once the model is loaded
   if (!loaded) {
-    return null; // Or a loading spinner, or fallback UI
+    return null; // Or a loading spinner, or fallback UI 
   }
 
   const [posX, posZ] = posRef.current || [0, 0];
+  
 
-	const maxX = boxRef.current?.max.x ?? 0;
-	const minX = boxRef.current?.min.x ?? 0;
-	const maxZ = boxRef.current?.max.x ?? 0;
-	const minZ = boxRef.current?.min.x ?? 0;
-	const xDist = maxX - minX;
-	const zDist = maxZ - minZ;
-  const gridPosition = [position[0] + Math.ceil(xDist) / 2, 0, position[2] + Math.ceil(zDist) / 2];
 
   return (
     <>
@@ -65,11 +66,11 @@ const Model = ({
         rotation={rotation}
       />
       <Grid
-				position={gridPosition}
-				height={gridSize[0]/2}
-				width={gridSize[1]/2}
-				linesHeight={gridSize[0]}
-				linesWidth={gridSize[1]}
+				position={position}
+				height={typeof height === 'string' ? 0 : height/2}
+				width={typeof width === 'string' ? 0 : width/2}
+				linesHeight={typeof height === 'string' ? 0 : height}
+				linesWidth={typeof width === 'string' ? 0 : width}
 			/>
     </>
   );

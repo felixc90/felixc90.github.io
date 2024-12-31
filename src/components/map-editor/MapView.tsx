@@ -1,9 +1,5 @@
 import { Canvas } from '@react-three/fiber';
 import { OrthographicCamera } from '@react-three/drei';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import Grid from '../../utils/gridHelper';
-import Model from './Model.tsx'
-
 
 function Scene() {
   return (
@@ -15,8 +11,8 @@ function Scene() {
   			zoom={25}
       />
       <ambientLight intensity={1} />
-			<Model position={[0,0,0]} input={`/assets/Plane.glb`}  />
-			<Model position={[1, 0, 10]} input={`/assets/Cafe.glb`}  />
+			{/* <Model position={[0,0,0]} input={`/assets/Plane.glb`}  />
+			<Model position={[1, 0, 10]} input={`/assets/Cafe.glb`}  /> */}
 			<gridHelper args={[32, 32]}/>
     </>
   );
