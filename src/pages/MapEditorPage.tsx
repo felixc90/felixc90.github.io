@@ -5,10 +5,10 @@ import { IconStack2, IconCloud, IconPlanet } from '@tabler/icons-react';
 import ModelsTab from '../components/map-editor/ModelsTab';
 import ModelView from '../components/map-editor/ModelView';
 
-
 const MapEditorPage = () => {
 	const iconStyle = { width: '1rem', height: '1rem' };
 	const fontStyle = { fontSize: '10pt' };
+
 	return (
 		<Flex style={{width: '100%'}}>
 			<MapView />
@@ -27,15 +27,12 @@ const MapEditorPage = () => {
 								Properties
 							</Tabs.Tab>
 						</Tabs.List>
-
 						<Tabs.Panel value="layers">
 							layers tab content
 						</Tabs.Panel>
-
 						<Tabs.Panel value="models">
 							<ModelsTab />
 						</Tabs.Panel>
-
 						<Tabs.Panel value="properties">
 							properties tab content
 						</Tabs.Panel>
