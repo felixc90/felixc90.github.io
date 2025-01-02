@@ -1,48 +1,27 @@
-import { Canvas } from '@react-three/fiber';
-import { KeyboardControls, PerspectiveCamera } from '@react-three/drei';
-import { Player } from './Player';
+import { BrowserRouter, Routes, Route } from "react-router";
+// import GamePage from "./pages/GamePage";
+import MapEditorPage from './pages/MapEditorPage';
+import '@mantine/core/styles.css';
+import '@mantine/dropzone/styles.css';
+import { createTheme, MantineProvider } from '@mantine/core';
 
-function Scene() {
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 
-  return (
-    <>
-      {/* Add a perspective camera */}
-      <PerspectiveCamera
-        makeDefault
-        position={[0, 50, 100]} // Camera position in the sky
-        fov={100} // Field of view
-        rotation={[- Math.PI / 3, 0, 0]} // Tilt 45 degrees downward and slight rotation
-      />
-
-      {/* Add ambient light */}
-      <ambientLight intensity={0.5} />
-			<Player />
-      {/* Add a large plane */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-        <planeGeometry args={[200, 200]} /> {/* Large plane dimensions */}
-        <meshStandardMaterial color="lightblue" /> {/* Plane color */}
-      </mesh>
-			<gridHelper args={[200,40]}/>
-    </>
-  );
-}
 
 function App() {
   return (
-		<div style={{ width: "100vw", height: "100vh", margin: "auto" }}>
-			<KeyboardControls
-      map={[
-        { name: "forward", keys: ["ArrowUp", "w", "W"] },
-        { name: "back", keys: ["ArrowDown", "s", "S"] },
-        { name: "left", keys: ["ArrowLeft", "a", "A"] },
-        { name: "right", keys: ["ArrowRight", "d", "D"] },
-      ]}>
-				<Canvas>
-					<Scene />
-				</Canvas>
-			</KeyboardControls>
-		</div>
+		<MantineProvider theme={theme}>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<MapEditorPage />} />
+					{/* <Route path="/map-studio" element={<MapStudioPage />} /> */}
+				</Routes>
+			</BrowserRouter>
+		</MantineProvider>
   );
 }
+
 
 export default App;
