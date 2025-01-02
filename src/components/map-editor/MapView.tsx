@@ -1,17 +1,13 @@
 import { Canvas } from '@react-three/fiber';
 import { OrthographicCamera } from '@react-three/drei';
 import useModelsStore from '../../store/useModelsStore';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import MapModel from './MapModel';
 
 const MapView = () => {
 	const { models } = useModelsStore();
 	
 	const mapStyle = { width: "70%", height: "100vh", margin: "auto" }; 
-
-	useEffect(() => {
-		console.log('length ', models.length);
-	}, [models]);
 
 	return (
 		<div style={mapStyle}>

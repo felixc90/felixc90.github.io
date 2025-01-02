@@ -19,7 +19,7 @@ const EditModelPanel = () => {
 		<div style={{height: '30%'}}>
 			{/* TODO: add a proper fallback */}
 			<Suspense fallback={<>Loading...</>}>
-				<ModelView />
+				<ModelView model={model}/>
 			</Suspense>
 		</div>
 		<Popover width={300} trapFocus position="left" withArrow shadow="md">

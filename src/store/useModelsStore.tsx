@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import Model from '../types/Model';
+import { Model } from '../types/Model';
 
 interface ModelsStore {
   models: Model[];

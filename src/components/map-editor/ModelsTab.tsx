@@ -1,22 +1,26 @@
-import { Button, ButtonGroup, Flex, Group } from '@mantine/core';
+import { Button, ButtonGroup, Flex } from '@mantine/core';
 import { Dropzone, FileWithPath } from '@mantine/dropzone';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import ModelCard from './ModelCard';
+import useAssetsStore from '../../store/useAssetsStore';
+import { v4 } from 'uuid';
 
 const ModelsTab = () => {
 	const openRef = useRef<() => void>(null);
 
-	const [gltfFiles, setGltfFiles] = useState<FileWithPath[]>([]);
+	const { assets, addAsset } = useAssetsStore();
 
 	const handleDrop = (files: FileWithPath[]) => {
-		const newFiles = [...gltfFiles, ...files];
-		setGltfFiles(newFiles);
+		files.forEach(file => addAsset({ 
+			id: v4(),
+			name: file.name.replace(/\.[^/.]+$/, ""),
+			file: file,
+		}))
 	}
-	
 
 	return (
 		<>
-			<ButtonGroup>
+			<ButtonGroup my='xs'>
 				<Dropzone openRef={openRef} onDrop={handleDrop} activateOnClick={false} style={{padding:'0'}}>
 					<Button size='xs' onClick={() => openRef.current?.()} style={{ pointerEvents: 'all' }}>
 						Upload models
@@ -24,9 +28,9 @@ const ModelsTab = () => {
 				</Dropzone>
 			</ButtonGroup>
 			<Flex direction='column' style={{'gap': '0'}}>
-				{gltfFiles.map((gltfFile, i) => (
+				{assets.map((asset, i) => (
 					<div key={i}>
-						<ModelCard gltfFile={gltfFile} />
+						<ModelCard asset={asset} />
 					</div>
 				))}
 			</Flex>

@@ -9,7 +9,7 @@ export interface Model {
 	minWidth: number;
 	minHeight: number;
 	mapPosition: [number, number, number];
-	hide?: boolean;
+	hide: boolean;
 }
 
 export interface ModelProps {

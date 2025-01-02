@@ -1,48 +1,27 @@
-import { Flex, Space, Tabs } from '@mantine/core';
+import { Flex, Tabs } from '@mantine/core';
 import MapView from '../components/map-editor/MapView';
 // import TilePicker from '../components/map-editor/TilePicker';
 import { IconStack2, IconCloud, IconPlanet } from '@tabler/icons-react';
 import ModelsTab from '../components/map-editor/ModelsTab';
 import EditModelPanel from '../components/map-editor/EditModelPanel';
-import { useEffect } from 'react';
 import useModelsStore from '../store/useModelsStore';
-import { v4 } from 'uuid';
 import LayersTab from '../components/map-editor/LayersTab';
 
 const MapEditorPage = () => {
 	const iconStyle = { width: '1rem', height: '1rem' };
 	const fontStyle = { fontSize: '10pt' };
 
-	const { addModel, selectModel, getSelectedModel } = useModelsStore();
+	const { getSelectedModel } = useModelsStore();
 	const model = getSelectedModel();
-
-	useEffect(() => {
-		const modelId = v4();
-		console.log('CALLED');
-		addModel({
-			id: modelId,
-			src: '/assets/Cafe.glb',
-			name: 'Cafe',
-			position: [0, 0, 0],
-			rotation: [0, 0, 0],
-			width: 0,
-			height: 0,
-			minWidth: 0,
-			minHeight: 0,
-			mapPosition: [1, 0, 1]
-		})
-
-		selectModel(modelId);
-	}, [addModel, selectModel])
 
 	return (
 		<Flex style={{width: '100%'}}>
 			<MapView />
-			<Flex direction='column'>
+			<Flex direction='column' w={'30%'}>
 				<EditModelPanel />
-				<div style={{width: 'fit-content'}}>
+				<div style={{width: '100%'}}>
 					<Tabs defaultValue="layers">
-						<Tabs.List mb='xs'>
+						<Tabs.List>
 							{model && (
 								<Tabs.Tab
 									value="properties"
