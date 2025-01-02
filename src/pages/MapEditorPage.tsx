@@ -1,4 +1,4 @@
-import { Flex, Tabs } from '@mantine/core';
+import { Flex, Space, Tabs } from '@mantine/core';
 import MapView from '../components/map-editor/MapView';
 // import TilePicker from '../components/map-editor/TilePicker';
 import { IconStack2, IconCloud, IconPlanet } from '@tabler/icons-react';
@@ -42,7 +42,7 @@ const MapEditorPage = () => {
 				<EditModelPanel />
 				<div style={{width: 'fit-content'}}>
 					<Tabs defaultValue="layers">
-						<Tabs.List>
+						<Tabs.List mb='xs'>
 							{model && (
 								<Tabs.Tab
 									value="properties"

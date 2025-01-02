@@ -1,5 +1,4 @@
-import Model from './Model';
-
-export {
-	type Model
-}
+export { 
+	type Model, 
+	type ModelProps 
+} from './Model';

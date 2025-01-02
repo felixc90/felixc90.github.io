@@ -1,4 +1,4 @@
-interface Model {
+export interface Model {
   id: string;
 	src: string;
   name: string;
@@ -12,4 +12,6 @@ interface Model {
 	hide?: boolean;
 }
 
-export default Model;
+export interface ModelProps {
+	model: Model;
+}

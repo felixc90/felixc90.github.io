@@ -1,6 +1,6 @@
 import { Stack } from "@mantine/core";
 import useModelsStore from "../../store/useModelsStore"
-import ModelCard from "./ModelCard";
+import LayerCard from "./LayerCard";
 
 const LayersTab = () => {
 	const { models } = useModelsStore();
@@ -11,10 +11,11 @@ const LayersTab = () => {
       justify="flex-start"
 			style={{gap: 0}}
     >
-			{ models.map((model) => <ModelCard model={model} />)}
-			{ models.map((model) => <ModelCard model={model} />)}
-			{ models.map((model) => <ModelCard model={model} />)}
-
+			{ models.map((model, i) => (
+				<div key={i}>
+					<LayerCard model={model} />
+				</div>
+			))}
 		</Stack>
 	)
 }

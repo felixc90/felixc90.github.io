@@ -1,60 +1,34 @@
-import { Flex, Group, Text, rem } from '@mantine/core';
-import { IconUpload, IconPhoto, IconX } from '@tabler/icons-react';
-import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
-import { useState } from 'react';
+import { Button, ButtonGroup, Flex, Group } from '@mantine/core';
+import { Dropzone, FileWithPath } from '@mantine/dropzone';
+import { useRef, useState } from 'react';
+import ModelCard from './ModelCard';
 
 const ModelsTab = () => {
-	const [tiles, setTiles] = useState<File[]>([]);
+	const openRef = useRef<() => void>(null);
 
+	const [gltfFiles, setGltfFiles] = useState<FileWithPath[]>([]);
 
-	const handleDrop = (files: File[]) => {
-		const newTiles = [...tiles];
-		newTiles.push(...files);
-		setTiles(newTiles);
-		console.log(files)
+	const handleDrop = (files: FileWithPath[]) => {
+		const newFiles = [...gltfFiles, ...files];
+		setGltfFiles(newFiles);
 	}
+	
 
 	return (
 		<>
-			<Dropzone
-				onDrop={handleDrop}
-				onReject={(files) => console.log('rejected files', files)}
-				maxSize={5 * 1024 ** 2}
-				accept={IMAGE_MIME_TYPE}
-				style={{ margin: '1rem' }}
-			>
-				<Group justify="center" gap="md" mih={100} style={{ pointerEvents: 'none' }}>
-					<Dropzone.Accept>
-						<IconUpload
-							style={{ width: rem(52), height: rem(52), color: 'var(--mantine-color-blue-6)' }}
-							stroke={1.5}
-						/>
-					</Dropzone.Accept>
-					<Dropzone.Reject>
-						<IconX
-							style={{ width: rem(52), height: rem(52), color: 'var(--mantine-color-red-6)' }}
-							stroke={1.5}
-						/>
-					</Dropzone.Reject>
-					<Dropzone.Idle>
-						<IconPhoto
-							style={{ width: rem(52), height: rem(52), color: 'var(--mantine-color-dimmed)' }}
-							stroke={1.5}
-						/>
-					</Dropzone.Idle>
-
-					<div>
-						<Text size="md" inline>
-							Drag images here or click to select files
-						</Text>
+			<ButtonGroup>
+				<Dropzone openRef={openRef} onDrop={handleDrop} activateOnClick={false} style={{padding:'0'}}>
+					<Button size='xs' onClick={() => openRef.current?.()} style={{ pointerEvents: 'all' }}>
+						Upload models
+					</Button>
+				</Dropzone>
+			</ButtonGroup>
+			<Flex direction='column' style={{'gap': '0'}}>
+				{gltfFiles.map((gltfFile, i) => (
+					<div key={i}>
+						<ModelCard gltfFile={gltfFile} />
 					</div>
-				</Group>
-			</Dropzone>
-			<Flex style={{ padding: '2rem', 'gap': '1rem'}}>
-				{tiles.map((tile) => {
-					const file = URL.createObjectURL(tile);
-					return (<img width='32' height='32' src={file} />)
-				})}
+				))}
 			</Flex>
 		</>
 	)
