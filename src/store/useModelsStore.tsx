@@ -1,16 +1,5 @@
 import { create } from 'zustand';
-
-interface Model {
-  id: string;
-	src: string;
-  name: string;
-  position: [number, number, number];
-  rotation: [number, number, number];
-  width: number;
-  height: number;
-	minWidth: number;
-	minHeight: number;
-}
+import Model from '../types/Model';
 
 interface ModelsStore {
   models: Model[];

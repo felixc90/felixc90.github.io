@@ -1,29 +1,34 @@
 import { Canvas } from '@react-three/fiber';
 import { OrthographicCamera } from '@react-three/drei';
-
-function Scene() {
-  return (
-    <>
-      <OrthographicCamera
-        makeDefault
-        position={[0,10,0]}
-        rotation={[- Math.PI / 2, 0, 0]} 
-  			zoom={25}
-      />
-      <ambientLight intensity={1} />
-			{/* <Model position={[0,0,0]} input={`/assets/Plane.glb`}  />
-			<Model position={[1, 0, 10]} input={`/assets/Cafe.glb`}  /> */}
-			<gridHelper args={[32, 32]}/>
-    </>
-  );
-}
+import useModelsStore from '../../store/useModelsStore';
+import { Suspense, useEffect } from 'react';
+import MapModel from './MapModel';
 
 const MapView = () => {
+	const { models } = useModelsStore();
+	
 	const mapStyle = { width: "70%", height: "100vh", margin: "auto" }; 
+
+	useEffect(() => {
+		console.log('length ', models.length);
+	}, [models]);
+
 	return (
 		<div style={mapStyle}>
 			<Canvas>
-				<Scene />
+				<OrthographicCamera
+					makeDefault
+					position={[0,10,0]}
+					rotation={[- Math.PI / 2, 0, 0]} 
+					zoom={25}
+				/>
+				<ambientLight intensity={1} />
+				{ models.map((model, i) => (
+					<Suspense key={i}>
+						<MapModel model={model}/>
+					</Suspense>)
+				)}
+				<gridHelper args={[32, 32]}/>
 			</Canvas>
 		</div>
 	)
