@@ -9,11 +9,10 @@ import { useEffect, useRef } from 'react';
 const MapModel = ({ model } : ModelProps) => {
 	const { updateModel } = useModelsStore();
 	const gltf = useLoader(GLTFLoader, model.src);
-
 	const boxRef = useRef<THREE.Box3 | null>(null);
 
 	useEffect(() => {
-		if (gltf && !boxRef.current) {
+		if (gltf && !boxRef.current && !model.loaded) {
 			// Calculate the bounding box once the model is loaded
 			const box = new THREE.Box3().setFromObject(gltf.scene);
 			boxRef.current = box;
@@ -21,16 +20,13 @@ const MapModel = ({ model } : ModelProps) => {
 			const xDist = box.max.x - box.min.x;
 			const zDist = box.max.z - box.min.z;
 			const center = box.getCenter(new THREE.Vector3());
-			const posX =  -center.x;
-			const posZ =  -center.z;
-
 			updateModel(model.id, { 
 				minWidth: Math.ceil(xDist), 
 				minHeight: Math.ceil(zDist),
 				width: Math.ceil(xDist), 
 				height: Math.ceil(zDist),
-				position: [posX, 0, posZ],
-				hide: false
+				center: [center.x, 0, center.z],
+				loaded: true
 			});
 		}
 	}, [gltf, model, updateModel]);
@@ -39,38 +35,38 @@ const MapModel = ({ model } : ModelProps) => {
 		return <></>
 	}
 
-	const modelMapPosition = model.mapPosition;
-
-	const mapPosition = new THREE.Vector3(
-		model.height/2 + modelMapPosition[0],
-		0, 
-		model.width/2 + modelMapPosition[2]
-	);
-	
-	const position = [
-		model.position[0] + modelMapPosition[0] + model.height/2,
-		model.position[1] + modelMapPosition[1],
-		model.position[2] + modelMapPosition[2] + model.width/2,
-	]
-
-	if (model.hide) {
+	if (model.hide || !model.loaded) {
 		return <></>
 	}
+
+	const gridPosition: [number,  number, number] = [
+		model.mapPosition[0] + model.width / 2,
+		0,
+		model.mapPosition[2] + model.height / 2,
+	]
+
+	const modelPosition = [
+		model.mapPosition[0] - model.center[0] + model.width / 2,
+		0,
+		model.mapPosition[2] - model.center[2] + model.height / 2,
+	]
 
 	return (
 		<>
 			<primitive
 				object={gltf.scene.clone()}
-				position={position} // Using memoized position
+				position={modelPosition}
 				rotation={model.rotation}
 			/>
-			<Grid
-				position={mapPosition}
-				height={model.height/2}
-				width={model.width/2}
-				linesHeight={model.height}
-				linesWidth={model.width}
-			/>
+			{ model.grid && 
+				(<Grid
+					position={gridPosition}
+					height={model.height/2}
+					width={model.width/2}
+					linesHeight={model.height}
+					linesWidth={model.width}
+				/>)
+			}
 		</>
 	)
 }

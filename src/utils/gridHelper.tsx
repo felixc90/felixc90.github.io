@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
 import { Line } from '@react-three/drei';
-import { Vector3 } from 'three';
 
 interface GridProps {
-	position: Vector3 | [number, number, number];
+	position: [number, number, number];
   height?: number;
   width?: number;
   linesHeight?: number;
@@ -12,32 +11,32 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({
-	position = [0,0,0],
+	position = [0, 0, 0],
   height = 2,
   width = 2,
   linesHeight = 4,
   linesWidth = 4,
   color = 0xdd006c,
 }) => {
-	const [posX, posY, posZ] = position;
 
   const lines = useMemo(() => {
     const positions: [start: [number, number, number], end: [number, number, number]][] = [];
     const stepW = (2 * width) / linesWidth;
     const stepH = (2 * height) / linesHeight;
 
+
     // Vertical lines
     for (let i = -width; i <= width; i += stepW) {
-      positions.push([[-height+ posX, 0, i+ posZ], [height+ posX, 0, i+ posZ]]);
+      positions.push([[position[0] + i, 0, position[2] - height], [position[0] + i, 0, position[2] + height]]);
     }
 
-    // Horizontal lines
-    for (let i = -height; i <= height; i += stepH) {
-      positions.push([[i+ posX, 0, -width+ posZ], [i+ posX, 0, width + posZ]]);
+    // // Horizontal lines
+		for (let i = -height; i <= height; i += stepH) {
+      positions.push([[position[0] - width, 0, position[2] + i], [position[0] + width, 0, position[2] + i]]);
     }
 
     return positions;
-  }, [height, width, linesHeight, linesWidth, posX, posY, posZ]);
+  }, [height, width, linesHeight, linesWidth, position]);
 
   return (
     <>
