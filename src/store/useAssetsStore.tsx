@@ -6,6 +6,7 @@ interface AssetsStore {
 
   addAsset: (asset: Asset) => void;
   removeAsset: (id: string) => void;
+	updateAsset: (id: string, updates: Partial<Asset>) => void;
 }
 
 const useAssetsStore = create<AssetsStore>((set) => ({
@@ -15,6 +16,13 @@ const useAssetsStore = create<AssetsStore>((set) => ({
   removeAsset: (id) => {
     set((state) => ({
       assets: state.assets.filter((asset) => asset.id !== id),
+    }))
+	},
+	updateAsset: (id, updates) => {
+    set((state) => ({
+      assets: state.assets.map((asset) =>
+        asset.id === id ? { ...asset, ...updates } : asset
+      ),
     }))
 	},
 }));

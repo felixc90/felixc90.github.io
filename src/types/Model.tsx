@@ -10,6 +10,7 @@ export interface Model {
   height: number;
 	minWidth: number;
 	minHeight: number;
+	icon: string;
 	hide: boolean;
 	grid: boolean;
 	loaded: boolean;

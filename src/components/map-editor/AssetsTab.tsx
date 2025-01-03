@@ -15,6 +15,7 @@ const AssetsTab = () => {
 			id: v4(),
 			name: file.name.replace(/\.[^/.]+$/, ""),
 			file: file,
+			imageDataUrl: ''
 		}))
 	}
 
@@ -22,7 +23,7 @@ const AssetsTab = () => {
 		<>
 			<ButtonGroup my='xs'>
 				<Dropzone openRef={openRef} onDrop={handleDrop} activateOnClick={false} style={{padding:'0'}}>
-					<Button size='xs' onClick={() => openRef.current?.()} style={{ pointerEvents: 'all' }}>
+					<Button size='xs' onClick={() => openRef.current?.()} style={{ pointerEvents: 'all' }} variant='default'>
 						Upload models
 					</Button>
 				</Dropzone>

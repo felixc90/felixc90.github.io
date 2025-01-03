@@ -4,7 +4,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
 
 const ModelToPNG = () => {
-  const [downloadUrl, setDownloadUrl] = useState('');
   const canvasRef = useRef(null);
   const gltf = useLoader(GLTFLoader, '/assets/Cafe.glb'); // Replace with your GLTF file
 

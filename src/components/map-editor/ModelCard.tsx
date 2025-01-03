@@ -7,7 +7,7 @@ import { IconCopy, IconEye, IconEyeOff, IconPencil, IconTrash } from "@tabler/ic
 import { v4 } from "uuid";
 
 const ModelCard = ({ model } : ModelProps) => {
-	const { selectModel, addModel, selectedModelId, removeModel, updateModel } = useModelsStore();
+	const { models, selectModel, addModel, selectedModelId, removeModel, updateModel } = useModelsStore();
 	const [toggleEdit, setToggleEdit] = useState<boolean>(false);
 	const handleClick = () => {
 		selectModel(model.id);
@@ -44,7 +44,7 @@ const ModelCard = ({ model } : ModelProps) => {
 		>
 			<Flex h='80' w='100%' justify='space-between' >
 				<Suspense fallback={<div style={{ width: '80px', height: '80px'}}>Loading..</div>}>
-					{model.src && <ModelIcon url={model.src}/>}
+					{models && model.src && <ModelIcon dataUrl={model.icon}/>}
 				</Suspense>
 				<Container my='auto'>
 					{ toggleEdit ? (

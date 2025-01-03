@@ -10,7 +10,6 @@ interface ModelsStore {
   removeModel: (id: string) => void;
   selectModel: (id: string | null) => void;
 	getSelectedModel: () => Model | null;
-
 }
 
 const useModelsStore = create<ModelsStore>((set, get) => ({

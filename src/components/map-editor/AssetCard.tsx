@@ -1,5 +1,5 @@
 import { Text, Flex, Paper, ActionIcon, rem } from "@mantine/core";
-import ModelIcon from "./ModelIcon";
+import AssetIcon from "./AssetIcon";
 import { Suspense } from "react";
 import { IconChevronDown, IconChevronUp, IconPlus, IconTrash } from "@tabler/icons-react";
 import { v4 } from "uuid";
@@ -26,6 +26,7 @@ const AssetCard = ({ asset } : AssetProps) => {
 			height: 0,
 			minWidth: 0,
 			minHeight: 0,
+			icon: asset.imageDataUrl,
 			hide: false,
 			grid: true,
 			loaded: false,
@@ -50,7 +51,7 @@ const AssetCard = ({ asset } : AssetProps) => {
 		<Paper shadow="xs" radius="xs">
 			<Flex h='80' w='100%' justify='space-between'>
 				<Suspense fallback={<div style={{ width: '80px', height: '80px'}}>Loading..</div>}>
-					{gltfUrl && <ModelIcon url={gltfUrl}/>}
+					{gltfUrl && <AssetIcon gltfUrl={gltfUrl} url={gltfUrl} asset={asset}/>}
 				</Suspense>
 				<Text my='auto'>
 					{asset.name}

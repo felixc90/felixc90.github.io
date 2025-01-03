@@ -31,7 +31,7 @@ const EditModelPanel = () => {
 				<Flex direction='column' gap='md'>
 					<Popover width={300} trapFocus position="left" withArrow shadow="md">
 						<Popover.Target>
-							<ActionIcon aria-label="Settings" size="md">
+							<ActionIcon aria-label="Settings" size="lg" variant='default'>
 								<IconAdjustments style={{ width: '70%', height: '70%' }} stroke={1.5} />
 							</ActionIcon>
 						</Popover.Target>
@@ -83,7 +83,7 @@ const EditModelPanel = () => {
 						</Popover.Dropdown>
 					</Popover>
 					<ActionIcon.Group>
-						<ActionIcon variant="default" size="md" aria-label="Toggle Grid" onClick={toggleGrid}>
+						<ActionIcon variant="default" size="lg" aria-label="Toggle Grid" onClick={toggleGrid}>
 							{model.grid ? (
 								<IconGridPatternFilled style={{ width: rem(20) }} stroke={1.5} />) : (
 								<IconGridPattern style={{ width: rem(20) }} stroke={1.5} />

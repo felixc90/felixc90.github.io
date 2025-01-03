@@ -18,11 +18,9 @@ const ModelView = ({ model }: ModelProps) => {
 		-model.center[2],
 	]
 
-
-
 	const gridPosition: [number, number, number] = [0, 0, 0];
   // const aspect = size.x / size.z; // Aspect ratio (width/height)
-  const cameraZoom = Math.min(250 / model.width, 250 / model.height); // Adjust zoom based on size
+  const cameraZoom = Math.min(200 / model.width, 200 / model.height); // Adjust zoom based on size
 
   return (
     <Canvas>
