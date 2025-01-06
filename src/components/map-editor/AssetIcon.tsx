@@ -6,14 +6,14 @@ import useAssetsStore from '../../store/useAssetsStore';
 import { Asset } from '../../types';
 
 interface ModelIconProps {
-  url: string;
+  gltfUrl: string;
 	asset: Asset;
 }
 
-const ModelIcon = ({ url, asset }: ModelIconProps) => {
+const ModelIcon = ({ gltfUrl, asset }: ModelIconProps) => {
 	const { updateAsset } = useAssetsStore();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const gltf = useLoader(GLTFLoader, url); // Load model dynamically
+  const gltf = useLoader(GLTFLoader, gltfUrl); // Load model dynamically
 
 	useEffect(() => {
 		if (asset.imageDataUrl && canvasRef && canvasRef.current) {
@@ -30,7 +30,6 @@ const ModelIcon = ({ url, asset }: ModelIconProps) => {
       const height = 256;
       const renderer = new THREE.WebGLRenderer( {canvas, alpha: true } );
 			renderer.setClearColor( 0x000000, 0 ); // the default
-
 
       renderer.setSize(width, height);
 			renderer.shadowMap.enabled = true;

@@ -1,5 +1,5 @@
 export interface Model {
-  id: string;
+	id: string;
 	src: string;
   name: string;
 	position: [number, number, number];

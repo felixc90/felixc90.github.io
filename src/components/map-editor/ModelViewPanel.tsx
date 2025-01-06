@@ -1,19 +1,17 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useRef } from 'react';
 import { Popover, ActionIcon, NumberInput, Flex, InputLabel, rem, Space, Container } from '@mantine/core';
 import { IconAdjustments, IconGridPattern, IconGridPatternFilled } from '@tabler/icons-react';
 import useModelsStore from '../../store/useModelsStore';
-import ModelView from './ModelView';
 import { ensureNumber } from '../../utils/inputHelper';
+import ModelView from './ModelView';
+import { Canvas } from '@react-three/fiber';
+import { Mode } from '../../types/Mode';
 
 
-const EditModelPanel = () => {
-	const { models, updateModel, getSelectedModel, selectedModelId } = useModelsStore();
+const ModelViewPanel = () => {
+	const { updateModel, getSelectedModel, selectedModelId } = useModelsStore();
 	const model = getSelectedModel();
-
-	useEffect(() => {
-		console.log(models);
-	}, [models])
-
+	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	
 	if (!selectedModelId || !model) {
 		return <div style={{height: '30%'}}></div>
@@ -94,7 +92,9 @@ const EditModelPanel = () => {
 				</Flex>
 				<Container p='1rem'>
 					<Suspense fallback={<>Loading...</>} >
-						<ModelView model={model}/>
+						<Canvas ref={canvasRef}>
+							<ModelView model={model} mode={Mode.Edit} canvasRef={canvasRef}/>
+						</Canvas>
 					</Suspense>
 				</Container>
 			</Flex>
@@ -103,4 +103,4 @@ const EditModelPanel = () => {
 	)
 }
 
-export default EditModelPanel;
+export default ModelViewPanel;

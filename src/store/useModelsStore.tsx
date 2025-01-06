@@ -9,7 +9,10 @@ interface ModelsStore {
   updateModel: (id: string, updates: Partial<Model>) => void;
   removeModel: (id: string) => void;
   selectModel: (id: string | null) => void;
+	shiftModelUp: (id: string) => void;
+	shiftModelDown: (id: string) => void;
 	getSelectedModel: () => Model | null;
+	modelIndexOf: (id: string) => number | null;
 }
 
 const useModelsStore = create<ModelsStore>((set, get) => ({
@@ -34,6 +37,28 @@ const useModelsStore = create<ModelsStore>((set, get) => ({
 	getSelectedModel: () => {
     const state = get();
     return state.models.find((m) => m.id === state.selectedModelId) || null;
+  },
+	shiftModelUp: (id) => set((state) => {
+		const index = state.modelIndexOf(id);
+    if (index === null || index <= 0 || index >= state.models.length) return {}; // Out of bounds
+    const newModels = [...state.models];
+    [newModels[index], newModels[index - 1]] = [newModels[index - 1], newModels[index]];
+    return { models: newModels };
+  }),
+	shiftModelDown: (id) => set((state) => {
+		const index = state.modelIndexOf(id);
+    if (index === null || index < 0 || index >= state.models.length - 1) return {}; // Out of bounds
+    const newModels = [...state.models];
+    [newModels[index], newModels[index + 1]] = [newModels[index + 1], newModels[index]];
+    return { models: newModels };
+  }),
+	modelIndexOf: (id) => {
+		let index = null;
+		const state = get();
+		for (let i = 0; i < state.models.length; i++) {
+			if (state.models[i].id === id) index = i;
+		}
+		return index;
   },
 }));
 

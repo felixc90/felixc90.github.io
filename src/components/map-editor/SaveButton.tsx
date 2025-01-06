@@ -1,5 +1,5 @@
-import { Button } from '@mantine/core';
-import { IconDownload } from '@tabler/icons-react';
+import { ActionIcon, Button, rem } from '@mantine/core';
+import { IconDownload, IconPlus } from '@tabler/icons-react';
 import useModelsStore from '../../store/useModelsStore';
 
 interface SaveButtonProps {
@@ -30,9 +30,14 @@ const SaveButton = ({ filename }: SaveButtonProps) => {
   };
 
   return (
-		<Button leftSection={<IconDownload size={14} />} variant="default" onClick={handleDownload}>
-			Save
-		</Button>
+		<ActionIcon
+			style={{ width: 'fit-content' }}
+			variant="default"
+			size='md'
+			onClick={handleDownload}
+		>
+			<IconDownload style={{ width: rem(20) }} stroke={1.5} />
+		</ActionIcon>
   );
 };
 

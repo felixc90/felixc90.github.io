@@ -3,37 +3,58 @@ import ModelIcon from "./ModelIcon";
 import { Suspense, useState } from "react";
 import { ModelProps } from "../../types";
 import useModelsStore from "../../store/useModelsStore";
-import { IconCopy, IconEye, IconEyeOff, IconPencil, IconTrash } from "@tabler/icons-react";
+import { IconChevronDown, IconChevronUp, IconCopy, IconEye, IconEyeOff, IconPencil, IconTrash } from "@tabler/icons-react";
 import { v4 } from "uuid";
 
 const ModelCard = ({ model } : ModelProps) => {
-	const { models, selectModel, addModel, selectedModelId, removeModel, updateModel } = useModelsStore();
+	const { 
+		models, 
+		selectModel, 
+		addModel, 
+		removeModel, 
+		updateModel,
+		shiftModelUp,
+		shiftModelDown,
+		selectedModelId,
+		modelIndexOf
+
+	} = useModelsStore();
 	const [toggleEdit, setToggleEdit] = useState<boolean>(false);
 	const handleClick = () => {
 		selectModel(model.id);
 	}
 
-	const editName = (e) => {
+	const editName = (e: { stopPropagation: () => void; }) => {
 		e.stopPropagation();
 		setToggleEdit(!toggleEdit);
 	}
 
-	const copyModel = (e) => {
+	const copyModel = (e: { stopPropagation: () => void; }) => {
 		e.stopPropagation();
 		const modelId = v4();
 		addModel({...model, id: modelId})
 	}
 
-	const handleRemove = (e) => {
+	const handleRemove = (e: { stopPropagation: () => void; }) => {
 		e.stopPropagation();
 		removeModel(model.id);
 	}
 
-	const toggleHide = (e) => {
+	const toggleHide = (e: { stopPropagation: () => void; }) => {
 		e.stopPropagation();
 		updateModel(model.id, {
 			hide: !model.hide
 		})
+	}
+
+	const moveUp = (e: { stopPropagation: () => void; }) => {
+		e.stopPropagation();
+		shiftModelUp(model.id);
+	}
+	
+	const moveDown = (e: { stopPropagation: () => void; }) => {
+		e.stopPropagation();
+		shiftModelDown(model.id);
 	}
 
 	return (
@@ -78,6 +99,14 @@ const ModelCard = ({ model } : ModelProps) => {
 						</ActionIcon>
 						<ActionIcon variant="default" size="sm" aria-label="Remove" onClick={handleRemove}>
 							<IconTrash style={{ width: rem(20) }} stroke={1.5} />
+						</ActionIcon>
+						<ActionIcon variant="default" size="sm" aria-label="Move Up" 
+							onClick={moveUp} disabled={modelIndexOf(model.id) == 0}>
+							<IconChevronUp style={{ width: rem(20) }} stroke={1.5} />
+						</ActionIcon>
+						<ActionIcon variant="default" size="sm" aria-label="Move Down" 
+							onClick={moveDown} disabled={modelIndexOf(model.id) == models.length - 1}>
+							<IconChevronDown style={{ width: rem(20) }} stroke={1.5} />
 						</ActionIcon>
 					</ActionIcon.Group>
 				</Flex>

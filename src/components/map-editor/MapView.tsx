@@ -1,15 +1,17 @@
-import { Canvas } from '@react-three/fiber';
 import { OrthographicCamera } from '@react-three/drei';
 import useModelsStore from '../../store/useModelsStore';
-import { Suspense } from 'react';
-import MapModel from './MapModel';
+import { MutableRefObject, Suspense } from 'react';
+import ModelView from './ModelView';
+import { Mode } from '../../types/Mode';
 
-const MapView = () => {
+interface MapViewProps {
+	canvasRef: MutableRefObject<HTMLCanvasElement | null>
+}
+
+const MapView = ({ canvasRef }: MapViewProps) => {
 	const { models } = useModelsStore();
-
-
 	return (
-		<Canvas>
+		<>
 			<OrthographicCamera
 				makeDefault
 				position={[0,10,0]}
@@ -17,13 +19,13 @@ const MapView = () => {
 				zoom={25}
 			/>
 			<ambientLight intensity={1} />
-			{ models.map((model, i) => (
-				<Suspense key={i}>
-					<MapModel model={model}/>
+			{ models.map((model) => (
+				<Suspense key={model.id}>
+					<ModelView model={model} mode={Mode.Map} canvasRef={canvasRef}/>
 				</Suspense>)
 			)}
 			<gridHelper args={[32, 32]}/>
-		</Canvas>
+		</>
 	)
 }
 

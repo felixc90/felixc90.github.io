@@ -8,6 +8,7 @@ interface GridProps {
   linesHeight?: number;
   linesWidth?: number;
   color?: string | number;
+	renderOrder?: number;
 }
 
 const Grid: React.FC<GridProps> = ({
@@ -17,6 +18,7 @@ const Grid: React.FC<GridProps> = ({
   linesHeight = 4,
   linesWidth = 4,
   color = 0xdd006c,
+	renderOrder = 0,
 }) => {
 
   const lines = useMemo(() => {
@@ -42,12 +44,12 @@ const Grid: React.FC<GridProps> = ({
     <>
       {lines.map(([start, end], index) => (
         <Line
+					renderOrder={renderOrder}
           key={index}
           points={[start, end]}
           color={color}
           lineWidth={1}
           transparent
-          opacity={0.5}
         />
       ))}
     </>
