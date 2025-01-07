@@ -5,6 +5,8 @@ import ModelView from './ModelView';
 import useMapStore from '../../store/useMapStore';
 import Grid from '../../utils/gridHelper';
 import { MapConstants } from '../../types/MapConstants';
+import useEditorStore from '../../store/useEditorStore';
+import GlobalCollisionMap from './GlobalCollisionMap';
 
 interface MapViewProps {
 	canvasRef: MutableRefObject<HTMLCanvasElement | null>
@@ -13,6 +15,7 @@ interface MapViewProps {
 const MapView = ({ canvasRef }: MapViewProps) => {
 	const { models } = useModelsStore();
 	const { map } = useMapStore();
+	const { showCollisionMap } = useEditorStore();
 	const [canvasSize, setCanvasSize] = useState<{ width: number; height: number }>({
 		width: 0,
 		height: 0,
@@ -62,6 +65,7 @@ const MapView = ({ canvasRef }: MapViewProps) => {
 					<ModelView model={model} canvasRef={canvasRef} onMap/>
 				</Suspense>)
 			)}
+			{ showCollisionMap && <GlobalCollisionMap />}
 			<Grid width={map.width} height={map.height} renderOrder={-1}/>
 		</>
 	)

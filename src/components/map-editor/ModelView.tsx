@@ -119,7 +119,7 @@ const ModelView = ({ model, onMap, canvasRef } : ModelViewProps) => {
 					<ambientLight intensity={1} />
 				</>
 			)}
-			{showCollisionMap && <CollisionMap />}
+			{!onMap && showCollisionMap && <CollisionMap />}
 			<primitive
 				object={scene}
 				position={modelPosition}

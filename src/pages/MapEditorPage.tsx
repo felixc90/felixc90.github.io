@@ -1,4 +1,4 @@
-import { Flex, Group, NumberInput, Select, Tabs, TextInput } from '@mantine/core';
+import { Flex, Group, Select, Tabs, TextInput } from '@mantine/core';
 import MapView from '../components/map-editor/MapView';
 import { IconStack2, IconCloud } from '@tabler/icons-react';
 import ModelsTab from '../components/map-editor/ModelsTab';
@@ -14,7 +14,7 @@ import { Model } from '../types/Model.tsx';
 import EditModelPanel from '../components/map-editor/EditModelPanel.tsx';
 import useEditorStore from '../store/useEditorStore.tsx';
 import useMapStore from '../store/useMapStore.tsx';
-import { ensureNumber } from '../utils/inputHelper.tsx';
+import MapViewActions from '../components/map-editor/MapViewActions.tsx';
 
 const MapEditorPage = () => {
 	const iconStyle = { width: '1rem', height: '1rem' };
@@ -54,22 +54,7 @@ const MapEditorPage = () => {
 							onChange={(value) => setMode(value as Mode)}
 						/>
 					</Group>
-					<Group>
-						<NumberInput
-							size='xs'
-							label="Width"
-							value={map.width}
-							min={1}
-							onChange={(value) => updateMap({width: ensureNumber(value)})}
-							/>
-						<NumberInput
-							size='xs'
-							label="Height"
-							value={map.height}
-							min={1}
-							onChange={(value) => updateMap({height: ensureNumber(value)})}
-							/>
-					</Group>
+					{ mode === Mode.Map && <MapViewActions />}
 				</Group>
 				<Canvas ref={canvasRef}>
 					{ mode === Mode.Map && <MapView canvasRef={canvasRef} /> }

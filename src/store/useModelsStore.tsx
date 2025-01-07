@@ -27,13 +27,16 @@ const useModelsStore = create<ModelsStore>((set, get) => ({
 			if (!model) return state;
 
 			const [newWidth, newHeight] = [updates.width ?? model.width, updates.height ?? model.height];
-			const newCollisionMap = Array.from({ length: newHeight }, () => Array(newWidth).fill(0));
-
-			for (let y = 0; y < Math.min(model.collisionMap.length, newHeight); y++) {
-					for (let x = 0; x < Math.min(model.collisionMap[0].length, newWidth); x++) {
-            newCollisionMap[y][x] = model.collisionMap[y][x];
-        }
-    	}
+			
+			let newCollisionMap = null;
+			if (model.collisionMap) {
+				newCollisionMap = Array.from({ length: newHeight }, () => Array(newWidth).fill(0));
+				for (let y = 0; y < Math.min(model.collisionMap.length, newHeight); y++) {
+						for (let x = 0; x < Math.min(model.collisionMap[0].length, newWidth); x++) {
+							newCollisionMap[y][x] = model.collisionMap[y][x];
+					}
+				}
+			}
 			updates = {...updates, collisionMap: newCollisionMap};
 
 			return ({
