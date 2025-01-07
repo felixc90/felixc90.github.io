@@ -1,18 +1,18 @@
-import { forwardRef, useRef } from 'react';
-import { ColorSwatch, Text, NumberInput, Flex, InputLabel, rem, Space, Container, Select, Group, Avatar, ComboboxLikeRenderOptionInput, ComboboxItem } from '@mantine/core';
-import { IconAdjustments, IconGridPattern, IconGridPatternFilled } from '@tabler/icons-react';
+import { NumberInput, Flex, InputLabel, Container, Switch } from '@mantine/core';
 import useModelsStore from '../../store/useModelsStore';
 import { ensureNumber } from '../../utils/inputHelper';
-import SelectCollisionTile from './SelectCollisionTile';
+import SelectCollisionType from './SelectCollisionType';
+import useEditorStore from '../../store/useEditorStore';
 
 
 const EditModelPanel = () => {
 	const { updateModel, getSelectedModel, selectedModelId } = useModelsStore();
+	const { showCollisionMap, toggleCollisionMap } = useEditorStore();
 	const model = getSelectedModel();
 	
 	if (!selectedModelId || !model) {
 		return <div style={{height: '30%'}}></div>
-	}	
+	}
 
 	return (
 		<div style={{height: '30%'}}>
@@ -38,36 +38,13 @@ const EditModelPanel = () => {
 						</Flex>
 					</Container>
 					<Container w='100%'>
-						<InputLabel>Position</InputLabel>
-						<Flex gap='md'>
-							<NumberInput
-								size='xs'
-								label="x"
-								value={model.mapPosition[0]}
-								onChange={(value) => updateModel(selectedModelId, {
-									mapPosition: [ensureNumber(value), model.mapPosition[1], model.mapPosition[2]]
-								})}
-								/>
-							<NumberInput
-								size='xs'
-								label="y"
-								value={model.mapPosition[1]}
-								onChange={(value) => updateModel(selectedModelId, {
-									mapPosition: [model.mapPosition[0], ensureNumber(value), model.mapPosition[2]]
-								})}
-								/>
-							<NumberInput
-								size='xs'
-								label="z"
-								value={model.mapPosition[2]}
-								onChange={(value) => updateModel(selectedModelId, {
-									mapPosition: [model.mapPosition[0], model.mapPosition[1], ensureNumber(value)]
-								})}
-								/>
-						</Flex>
-					</Container>
-					<Container w='100%'>
-					<SelectCollisionTile />
+						<Switch 
+							checked={showCollisionMap} 
+							label="Collision Map"
+							labelPosition="left"
+							onChange={toggleCollisionMap} mb='md'
+						/>
+						<SelectCollisionType disabled={!showCollisionMap} />
 					</Container>
 				</Flex>
 			</Flex>

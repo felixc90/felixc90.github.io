@@ -3,19 +3,19 @@ export const CollisionTypes = [
 		label: 'Empty',
 		value: 'Empty',
 		description: 'Nothing here...',
-		color: 'blue',
+		color: [59, 91, 165]
 	},
 	{
 		label: 'Wall',
 		value: 'Wall',
 		description: 'Blocked!',
-		color: 'red',
+		color: [232, 122, 93]
 	},
 	{
 		label: 'Floor',
 		value: 'Floor',
 		description: 'Walk on me',
-		color: 'green',
+		color: [243, 185, 65],
 	}
 ]
 

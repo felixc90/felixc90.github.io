@@ -8,15 +8,18 @@ import { MutableRefObject, useEffect, useState } from 'react';
 import { Mode } from '../../types/Mode';
 import { OrthographicCamera } from '@react-three/drei';
 import CollisionMap from './CollisionMap';
+import useEditorStore from '../../store/useEditorStore';
 
 interface ModelViewProps {
 	model: Model,
-	mode: Mode,
+	onMap?: boolean,
 	canvasRef: MutableRefObject<HTMLCanvasElement | null>
 }
 
-const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
+const ModelView = ({ model, onMap, canvasRef } : ModelViewProps) => {
 	const { updateModel, modelIndexOf } = useModelsStore();
+	const { mode, showCollisionMap } = useEditorStore();
+
 	const gltf = useLoader(GLTFLoader, model.src);
 	const [canvasSize, setCanvasSize] = useState<{ width: number; height: number }>({
 		width: 0,
@@ -36,7 +39,6 @@ const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
 				height: Math.ceil(zDist),
 				center: [center.x, 0, center.z],
 				loaded: true,
-				collisionMap: Array.from({ length: Math.ceil(xDist) }, () => Array(Math.ceil(zDist)).fill(0))
 			});
 		}
 	}, [gltf, model, updateModel]);
@@ -52,7 +54,6 @@ const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
 				});
 			}
 		};
-		console.log(canvasRef?.current?.clientWidth ?? 0, canvasRef?.current?.clientHeight ?? 0)
 		// Initial size
 		updateSize();
 
@@ -79,9 +80,13 @@ const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
 	// TODO: increase grid width/height from center, not top left
 	const gridPosition: [number,  number, number] = [0, 0, 0];
 	const modelPosition = [-model.center[0], 0, -model.center[2]]
-	let cameraZoom = Math.min((canvasSize.width - 100) / model.width, (canvasSize.height - 100) / model.height);
+	
+	const CANVAS_PADDING = 50
+	const MIN_LENGTH = 16
 
-	if (mode === Mode.Map) {
+	let cameraZoom = Math.min((canvasSize.width - CANVAS_PADDING) / model.width, (canvasSize.height - CANVAS_PADDING) / model.height);
+
+	if (onMap) {
 		[gridPosition[0], gridPosition[2]] = [
 			model.mapPosition[0] + model.width / 2,
 			model.mapPosition[2] + model.height / 2,
@@ -90,24 +95,28 @@ const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
 			model.mapPosition[0] - model.center[0] + model.width / 2,
 			model.mapPosition[2] - model.center[2] + model.height / 2,
 		];
-
-		cameraZoom = Math.min((canvasSize.width - 20) / model.width, (canvasSize.height - 20) / model.width);
+	}
+	
+	if (mode === Mode.Edit) {
+		cameraZoom = Math.min(
+			(canvasSize.width - CANVAS_PADDING) / Math.max(model.width, MIN_LENGTH), 
+			(canvasSize.height - CANVAS_PADDING) / Math.max(model.height, MIN_LENGTH))
 	}
 
 	return (
 		<>
-			{ mode === Mode.Edit && (
+			{ !onMap && (
 				<>
 					<OrthographicCamera
 						makeDefault
 						position={[0, 10, 0]} // Position camera above the model
 						rotation={[-Math.PI / 2, 0, 0]} // Top-down view
-						zoom={100} // Adjust zoom to fit the model
+						zoom={cameraZoom} // Adjust zoom to fit the model
 					/>
 					<ambientLight intensity={1} />
-					<CollisionMap model={model} />
 				</>
 			)}
+			{showCollisionMap && <CollisionMap model={model} />}
 			<primitive
 				object={scene}
 				position={modelPosition}

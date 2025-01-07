@@ -12,17 +12,18 @@ import ModelViewPanel from '../components/map-editor/ModelViewPanel.tsx';
 import { Canvas } from '@react-three/fiber';
 import { Model } from '../types/Model.tsx';
 import EditModelPanel from '../components/map-editor/EditModelPanel.tsx';
+import useEditorStore from '../store/useEditorStore.tsx';
 
 const MapEditorPage = () => {
 	const iconStyle = { width: '1rem', height: '1rem' };
 	const fontStyle = { fontSize: '10pt' };
 		
-	const mapStyle = { width: "70%", height: "100vh", margin: "auto", padding: '2rem', background: 'darkgrey'};
+	const mapStyle = { width: "70%", height: "100vh", margin: "auto", padding: '3rem'};
 
 	const { selectedModelId, getSelectedModel, models } = useModelsStore();
+	const { mode, setMode } = useEditorStore();
 
 	const [mapName, setMapName] = useState('my_map');
-	const [mode, setMode] = useState<Mode>(Mode.Map);
 	const [selectedModel, setSelectedModel] = useState<Model | null>(null);
 
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -52,12 +53,12 @@ const MapEditorPage = () => {
 				</Group>
 				<Canvas ref={canvasRef}>
 					{ mode === Mode.Map && <MapView canvasRef={canvasRef} /> }
-					{ mode === Mode.Edit && selectedModel && <ModelView canvasRef={canvasRef} model={selectedModel} mode={Mode.Edit}/> }
+					{ mode === Mode.Edit && selectedModel && <ModelView canvasRef={canvasRef} model={selectedModel} /> }
 				</Canvas>
 			</div>
 			<Flex direction='column' w='30%' style={{padding: '2rem'}}>
 				{ mode === Mode.Map && <ModelViewPanel /> }
-				{ mode === Mode.Edit && selectedModel && <EditModelPanel /> }
+				{ mode === Mode.Edit && <EditModelPanel /> }
 				<div style={{width: '100%'}}>
 					<Tabs defaultValue="models">
 						<Tabs.List mb='xs'>

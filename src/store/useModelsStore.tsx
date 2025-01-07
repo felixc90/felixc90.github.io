@@ -22,11 +22,31 @@ const useModelsStore = create<ModelsStore>((set, get) => ({
   addModel: (model) =>
     set((state) => ({ models: [...state.models, model] })),
   updateModel: (id, updates) => {
-    set((state) => ({
-      models: state.models.map((model) =>
-        model.id === id ? { ...model, ...updates } : model
-      ),
-    }))
+		console.log(updates)
+    set((state) => {
+			const model = state.models.find((m) => m.id === id) || null;
+			if (!model) return state;
+
+			const [newWidth, newHeight] = [updates.width ?? model.width, updates.height ?? model.height];
+			const newCollisionMap = Array.from({ length: newHeight }, () => Array(newWidth).fill(0));
+
+			for (let y = 0; y < Math.min(model.collisionMap.length, newHeight); y++) {
+					for (let x = 0; x < Math.min(model.collisionMap[0].length, newWidth); x++) {
+            newCollisionMap[y][x] = model.collisionMap[y][x];
+        }
+    	}
+
+			console.log('start', model.collisionMap)
+			console.log('end', newCollisionMap)
+
+			updates = {...updates, collisionMap: newCollisionMap};
+
+			return ({
+				models: state.models.map((model) =>
+					model.id === id ? { ...model, ...updates } : model
+				),
+			})
+		})
 	},
   removeModel: (id) => {
     set((state) => ({

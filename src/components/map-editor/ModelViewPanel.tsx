@@ -5,7 +5,6 @@ import useModelsStore from '../../store/useModelsStore';
 import { ensureNumber } from '../../utils/inputHelper';
 import ModelView from './ModelView';
 import { Canvas } from '@react-three/fiber';
-import { Mode } from '../../types/Mode';
 
 
 const ModelViewPanel = () => {
@@ -93,7 +92,7 @@ const ModelViewPanel = () => {
 				<Container p='1rem'>
 					<Suspense fallback={<>Loading...</>} >
 						<Canvas ref={canvasRef}>
-							<ModelView model={model} mode={Mode.Edit} canvasRef={canvasRef}/>
+							<ModelView model={model} canvasRef={canvasRef}/>
 						</Canvas>
 					</Suspense>
 				</Container>

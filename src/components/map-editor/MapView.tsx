@@ -1,30 +1,65 @@
 import { OrthographicCamera } from '@react-three/drei';
 import useModelsStore from '../../store/useModelsStore';
-import { MutableRefObject, Suspense } from 'react';
+import { MutableRefObject, Suspense, useEffect, useState } from 'react';
 import ModelView from './ModelView';
-import { Mode } from '../../types/Mode';
 
 interface MapViewProps {
 	canvasRef: MutableRefObject<HTMLCanvasElement | null>
 }
 
+const [GRID_WIDTH, GRID_HEIGHT] = [20, 20]
+
 const MapView = ({ canvasRef }: MapViewProps) => {
 	const { models } = useModelsStore();
+	const [canvasSize, setCanvasSize] = useState<{ width: number; height: number }>({
+		width: 0,
+		height: 0,
+	});
+
+	// TODO: remove duplicate code
+	useEffect(() => {
+		// Update parent size on component mount or resize
+		const updateSize = () => {
+			if (canvasRef.current) {
+				setCanvasSize({
+					width: canvasRef.current.clientWidth,
+					height: canvasRef.current.clientHeight,
+				});
+			}
+		};
+		// Initial size
+		updateSize();
+
+		// Add resize event listener
+		window.addEventListener('resize', updateSize);
+
+		// Cleanup the event listener
+		return () => {
+			window.removeEventListener('resize', updateSize);
+		};
+	}, [canvasRef]);
+
+	const CANVAS_PADDING = 50
+
+	const cameraZoom = Math.min(
+		(canvasSize.width - CANVAS_PADDING) / GRID_WIDTH, 
+		(canvasSize.height - CANVAS_PADDING) / GRID_HEIGHT);
+
 	return (
 		<>
 			<OrthographicCamera
 				makeDefault
 				position={[0,10,0]}
 				rotation={[- Math.PI / 2, 0, 0]} 
-				zoom={25}
+				zoom={cameraZoom}
 			/>
 			<ambientLight intensity={1} />
 			{ models.map((model) => (
 				<Suspense key={model.id}>
-					<ModelView model={model} mode={Mode.Map} canvasRef={canvasRef}/>
+					<ModelView model={model} canvasRef={canvasRef} onMap/>
 				</Suspense>)
 			)}
-			<gridHelper args={[32, 32]}/>
+			<gridHelper args={[GRID_WIDTH, GRID_HEIGHT]}/>
 		</>
 	)
 }
