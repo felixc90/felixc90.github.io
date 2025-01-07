@@ -51,11 +51,13 @@ const MapView = ({ canvasRef }: MapViewProps) => {
 		(canvasSize.height - CANVAS_PADDING) / Math.max(map.height, MapConstants.MIN_HEIGHT), 
 	);
 
+	const gridPosition: [number, number, number] = [map.width / 2, 0, map.height / 2]
+
 	return (
 		<>
 			<OrthographicCamera
 				makeDefault
-				position={[0,10,0]}
+				position={[gridPosition[0],10,gridPosition[2]]}
 				rotation={[- Math.PI / 2, 0, 0]} 
 				zoom={cameraZoom}
 			/>
@@ -66,7 +68,7 @@ const MapView = ({ canvasRef }: MapViewProps) => {
 				</Suspense>)
 			)}
 			{ showCollisionMap && <GlobalCollisionMap />}
-			<Grid width={map.width} height={map.height} renderOrder={-1}/>
+			<Grid width={map.width} height={map.height} position={gridPosition} renderOrder={-1}/>
 		</>
 	)
 }

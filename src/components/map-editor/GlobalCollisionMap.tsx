@@ -8,19 +8,21 @@ const GlobalCollisionMap = () => {
 	const { map } = useMapStore();
 	const { models } = useModelsStore();
 
-	const [collisionMap, setCollisionMap] = useState<number[][]>(Array.from({ length: map.width }, () => Array(map.height).fill(0)));
+	const [collisionMap, setCollisionMap] = useState<number[][]>(Array.from({ length: map.height }, () => Array(map.width).fill(0)));
 
 	useEffect(() => {
-		const newCollisionMap = Array.from({ length: map.width }, () => Array(map.height).fill(0));
+		const newCollisionMap = Array.from({ length: map.height }, () => Array(map.width).fill(0));
+
+		console.log(newCollisionMap.length, newCollisionMap[0].length)
 		for (let m = models.length - 1; m >= 0; m--) {
 			const model = models[m];
-			if (!model.collisionMap.length) continue;
-			for (let i = 0; i < model.width; i++) {
-				for (let j = 0; j < model.height; j++) {
-					console.log(model.width, model.height)
-					const [y, x] = [model.mapPosition[1] + map.height/2 + j, model.mapPosition[0] + map.width/2 + i];
+			if (!model.collisionMap.length || !model.collisionMap[0].length) continue;
+			console.log('dim', model.collisionMap.length, model.collisionMap[0].length)
+			for (let i = 0; i < model.collisionMap.length; i++) {
+				for (let j = 0; j < model.collisionMap[0].length; j++) {
+					const [y, x] = [model.mapPosition[1] + i, model.mapPosition[0] + j];
 					if (y >= map.height || x >= map.width || y < 0 || x < 0) continue;
-					newCollisionMap[x][y] = model.collisionMap[j][i];
+					newCollisionMap[y][x] = model.collisionMap[i][j];
 				}
 			} 
 		}
@@ -37,7 +39,7 @@ const GlobalCollisionMap = () => {
 						<mesh 
 							key={`${i}_${j}`}
 							rotation={[-Math.PI / 2, 0, 0]} 
-							position={[i - map.width / 2 +  1/2, 8, j - map.height / 2 + 1/2 ]}
+							position={[j + 1/2, 8, i + 1/2]}
 							>
 							<Text color={`rgb(${r}, ${g}, ${b})`}>
 									{cell}

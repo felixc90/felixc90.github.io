@@ -7,9 +7,9 @@ import useModelsStore from '../../store/useModelsStore';
 import { MutableRefObject, useEffect, useState } from 'react';
 import { Mode } from '../../types/Mode';
 import { OrthographicCamera } from '@react-three/drei';
-import CollisionMap from './CollisionMap';
 import useEditorStore from '../../store/useEditorStore';
 import { MapConstants } from '../../types/MapConstants';
+import CollisionMap from './CollisionMap';
 
 interface ModelViewProps {
 	model: Model,
