@@ -13,6 +13,7 @@ interface ModelsStore {
 	shiftModelDown: (id: string) => void;
 	getSelectedModel: () => Model | null;
 	modelIndexOf: (id: string) => number | null;
+	setCollisionType: (id: string, x: number, y: number, collisionType: number) => void;
 }
 
 const useModelsStore = create<ModelsStore>((set, get) => ({
@@ -60,6 +61,21 @@ const useModelsStore = create<ModelsStore>((set, get) => ({
 		}
 		return index;
   },
+	setCollisionType: (id, x, y, collisionType) => {
+		set((state) => ({
+			models: state.models.map((model) => {
+				if (model.id !== id) return model;
+				
+				const updatedCollisionMap = model.collisionMap.map((row, rowIndex) =>
+					rowIndex === y
+						? row.map((tile, colIndex) => (colIndex === x ? collisionType : tile))
+						: row
+				);
+	
+				return { ...model, collisionMap: updatedCollisionMap };
+			}),
+		}));
+	},
 }));
 
 export default useModelsStore;

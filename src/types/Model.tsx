@@ -14,6 +14,7 @@ export interface Model {
 	hide: boolean;
 	grid: boolean;
 	loaded: boolean;
+	collisionMap: number[][];
 }
 
 export interface ModelProps {

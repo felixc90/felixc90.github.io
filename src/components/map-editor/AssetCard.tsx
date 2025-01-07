@@ -30,6 +30,7 @@ const AssetCard = ({ asset } : AssetProps) => {
 			hide: false,
 			grid: true,
 			loaded: false,
+			collisionMap: []
 		})
 	}
 

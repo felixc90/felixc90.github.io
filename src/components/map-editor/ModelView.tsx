@@ -4,9 +4,10 @@ import Grid from '../../utils/gridHelper';
 import { Model } from '../../types/Model';
 import * as THREE from 'three';
 import useModelsStore from '../../store/useModelsStore';
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
 import { Mode } from '../../types/Mode';
 import { OrthographicCamera } from '@react-three/drei';
+import CollisionMap from './CollisionMap';
 
 interface ModelViewProps {
 	model: Model,
@@ -34,7 +35,8 @@ const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
 				width: Math.ceil(xDist), 
 				height: Math.ceil(zDist),
 				center: [center.x, 0, center.z],
-				loaded: true
+				loaded: true,
+				collisionMap: Array.from({ length: Math.ceil(xDist) }, () => Array(Math.ceil(zDist)).fill(0))
 			});
 		}
 	}, [gltf, model, updateModel]);
@@ -100,9 +102,10 @@ const ModelView = ({ model, mode, canvasRef } : ModelViewProps) => {
 						makeDefault
 						position={[0, 10, 0]} // Position camera above the model
 						rotation={[-Math.PI / 2, 0, 0]} // Top-down view
-						zoom={cameraZoom} // Adjust zoom to fit the model
+						zoom={100} // Adjust zoom to fit the model
 					/>
 					<ambientLight intensity={1} />
+					<CollisionMap model={model} />
 				</>
 			)}
 			<primitive

@@ -31,8 +31,14 @@ const ModelCard = ({ model } : ModelProps) => {
 
 	const copyModel = (e: { stopPropagation: () => void; }) => {
 		e.stopPropagation();
+
+		const newCollisionMap = [];
+
+		for (let i = 0; i < model.collisionMap.length; i++)
+			newCollisionMap[i] = model.collisionMap[i].slice();
+
 		const modelId = v4();
-		addModel({...model, id: modelId})
+		addModel({...model, id: modelId, collisionMap: newCollisionMap})
 	}
 
 	const handleRemove = (e: { stopPropagation: () => void; }) => {
