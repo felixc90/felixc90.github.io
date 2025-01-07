@@ -2,15 +2,17 @@ import { OrthographicCamera } from '@react-three/drei';
 import useModelsStore from '../../store/useModelsStore';
 import { MutableRefObject, Suspense, useEffect, useState } from 'react';
 import ModelView from './ModelView';
+import useMapStore from '../../store/useMapStore';
+import Grid from '../../utils/gridHelper';
+import { MapConstants } from '../../types/MapConstants';
 
 interface MapViewProps {
 	canvasRef: MutableRefObject<HTMLCanvasElement | null>
 }
 
-const [GRID_WIDTH, GRID_HEIGHT] = [20, 20]
-
 const MapView = ({ canvasRef }: MapViewProps) => {
 	const { models } = useModelsStore();
+	const { map } = useMapStore();
 	const [canvasSize, setCanvasSize] = useState<{ width: number; height: number }>({
 		width: 0,
 		height: 0,
@@ -42,8 +44,9 @@ const MapView = ({ canvasRef }: MapViewProps) => {
 	const CANVAS_PADDING = 50
 
 	const cameraZoom = Math.min(
-		(canvasSize.width - CANVAS_PADDING) / GRID_WIDTH, 
-		(canvasSize.height - CANVAS_PADDING) / GRID_HEIGHT);
+		(canvasSize.width - CANVAS_PADDING) / Math.max(map.width, MapConstants.MIN_WIDTH), 
+		(canvasSize.height - CANVAS_PADDING) / Math.max(map.height, MapConstants.MIN_HEIGHT), 
+	);
 
 	return (
 		<>
@@ -59,7 +62,7 @@ const MapView = ({ canvasRef }: MapViewProps) => {
 					<ModelView model={model} canvasRef={canvasRef} onMap/>
 				</Suspense>)
 			)}
-			<gridHelper args={[GRID_WIDTH, GRID_HEIGHT]}/>
+			<Grid width={map.width} height={map.height} renderOrder={-1}/>
 		</>
 	)
 }

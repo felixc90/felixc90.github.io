@@ -9,6 +9,7 @@ import { Mode } from '../../types/Mode';
 import { OrthographicCamera } from '@react-three/drei';
 import CollisionMap from './CollisionMap';
 import useEditorStore from '../../store/useEditorStore';
+import { MapConstants } from '../../types/MapConstants';
 
 interface ModelViewProps {
 	model: Model,
@@ -76,13 +77,15 @@ const ModelView = ({ model, onMap, canvasRef } : ModelViewProps) => {
 
 	const scene = gltf.scene.clone();
 	scene.renderOrder = -1 * (modelIndexOf(model.id) ?? 0);
+	// TODO: implement opacity of the object
 
 	// TODO: increase grid width/height from center, not top left
 	const gridPosition: [number,  number, number] = [0, 0, 0];
+
+	// TODO: implement model position
 	const modelPosition = [-model.center[0], 0, -model.center[2]]
 	
 	const CANVAS_PADDING = 50
-	const MIN_LENGTH = 16
 
 	let cameraZoom = Math.min((canvasSize.width - CANVAS_PADDING) / model.width, (canvasSize.height - CANVAS_PADDING) / model.height);
 
@@ -99,8 +102,8 @@ const ModelView = ({ model, onMap, canvasRef } : ModelViewProps) => {
 	
 	if (mode === Mode.Edit) {
 		cameraZoom = Math.min(
-			(canvasSize.width - CANVAS_PADDING) / Math.max(model.width, MIN_LENGTH), 
-			(canvasSize.height - CANVAS_PADDING) / Math.max(model.height, MIN_LENGTH))
+			(canvasSize.width - CANVAS_PADDING) / Math.max(model.width, MapConstants.MIN_WIDTH), 
+			(canvasSize.height - CANVAS_PADDING) / Math.max(model.height, MapConstants.MIN_HEIGHT))
 	}
 
 	return (
@@ -116,7 +119,7 @@ const ModelView = ({ model, onMap, canvasRef } : ModelViewProps) => {
 					<ambientLight intensity={1} />
 				</>
 			)}
-			{showCollisionMap && <CollisionMap model={model} />}
+			{showCollisionMap && <CollisionMap />}
 			<primitive
 				object={scene}
 				position={modelPosition}
@@ -126,10 +129,9 @@ const ModelView = ({ model, onMap, canvasRef } : ModelViewProps) => {
 				(<Grid
 					renderOrder={-1 * (modelIndexOf(model.id) ?? 0)}
 					position={gridPosition}
-					height={model.height/2}
-					width={model.width/2}
-					linesHeight={model.height}
-					linesWidth={model.width}
+					height={model.height}
+					width={model.width}
+					color='#DE350B'
 				/>)
 			}
 		</>

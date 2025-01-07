@@ -22,7 +22,6 @@ const useModelsStore = create<ModelsStore>((set, get) => ({
   addModel: (model) =>
     set((state) => ({ models: [...state.models, model] })),
   updateModel: (id, updates) => {
-		console.log(updates)
     set((state) => {
 			const model = state.models.find((m) => m.id === id) || null;
 			if (!model) return state;
@@ -35,10 +34,6 @@ const useModelsStore = create<ModelsStore>((set, get) => ({
             newCollisionMap[y][x] = model.collisionMap[y][x];
         }
     	}
-
-			console.log('start', model.collisionMap)
-			console.log('end', newCollisionMap)
-
 			updates = {...updates, collisionMap: newCollisionMap};
 
 			return ({

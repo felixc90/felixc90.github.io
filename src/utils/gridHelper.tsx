@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Line } from '@react-three/drei';
 
 interface GridProps {
-	position: [number, number, number];
+	position?: [number, number, number];
   height?: number;
   width?: number;
   linesHeight?: number;
@@ -13,19 +13,15 @@ interface GridProps {
 
 const Grid: React.FC<GridProps> = ({
 	position = [0, 0, 0],
-  height = 2,
-  width = 2,
-  linesHeight = 4,
-  linesWidth = 4,
-  color = 0xdd006c,
+  height = 1,
+  width = 1,
+  color = '#000000',
 	renderOrder = 0,
 }) => {
-
+	[height, width] = [height/2, width/2]
   const lines = useMemo(() => {
     const positions: [start: [number, number, number], end: [number, number, number]][] = [];
-    const stepW = (2 * width) / linesWidth;
-    const stepH = (2 * height) / linesHeight;
-
+    const [stepW, stepH] = [1, 1];
 
     // Vertical lines
     for (let i = -width; i <= width; i += stepW) {
@@ -38,7 +34,7 @@ const Grid: React.FC<GridProps> = ({
     }
 
     return positions;
-  }, [height, width, linesHeight, linesWidth, position]);
+  }, [height, width, position]);
 
   return (
     <>

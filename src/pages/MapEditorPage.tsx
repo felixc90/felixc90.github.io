@@ -1,4 +1,4 @@
-import { Flex, Group, Select, Tabs, TextInput } from '@mantine/core';
+import { Flex, Group, NumberInput, Select, Tabs, TextInput } from '@mantine/core';
 import MapView from '../components/map-editor/MapView';
 import { IconStack2, IconCloud } from '@tabler/icons-react';
 import ModelsTab from '../components/map-editor/ModelsTab';
@@ -13,6 +13,8 @@ import { Canvas } from '@react-three/fiber';
 import { Model } from '../types/Model.tsx';
 import EditModelPanel from '../components/map-editor/EditModelPanel.tsx';
 import useEditorStore from '../store/useEditorStore.tsx';
+import useMapStore from '../store/useMapStore.tsx';
+import { ensureNumber } from '../utils/inputHelper.tsx';
 
 const MapEditorPage = () => {
 	const iconStyle = { width: '1rem', height: '1rem' };
@@ -22,8 +24,8 @@ const MapEditorPage = () => {
 
 	const { selectedModelId, getSelectedModel, models } = useModelsStore();
 	const { mode, setMode } = useEditorStore();
+	const { map, updateMap } = useMapStore();
 
-	const [mapName, setMapName] = useState('my_map');
 	const [selectedModel, setSelectedModel] = useState<Model | null>(null);
 
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -35,21 +37,39 @@ const MapEditorPage = () => {
 	return (
 		<Flex w='100%'>
 			<div style={mapStyle}>
-				<Group gap='sm'>
-					<TextInput
-						value={mapName}
-						label='Save'
-						onChange={(e) => setMapName(e.target.value)}
-						rightSection={<SaveButton filename={mapName}/>}
-					/> 
-					<Select
-						label="Mode"
-						data={Object.keys(Mode)}
-						value={mode}
-						defaultValue={Mode.Map}
-						allowDeselect={false}
-						onChange={(value) => setMode(value as Mode)}
-					/>
+				<Group justify='space-between'>
+					<Group>
+						<TextInput
+							value={map.name}
+							label='Save'
+							onChange={(e) => updateMap({ name: e.target.value})}
+							rightSection={<SaveButton filename={map.name}/>}
+						/> 
+						<Select
+							label="Mode"
+							data={Object.keys(Mode)}
+							value={mode}
+							defaultValue={Mode.Map}
+							allowDeselect={false}
+							onChange={(value) => setMode(value as Mode)}
+						/>
+					</Group>
+					<Group>
+						<NumberInput
+							size='xs'
+							label="Width"
+							value={map.width}
+							min={1}
+							onChange={(value) => updateMap({width: ensureNumber(value)})}
+							/>
+						<NumberInput
+							size='xs'
+							label="Height"
+							value={map.height}
+							min={1}
+							onChange={(value) => updateMap({height: ensureNumber(value)})}
+							/>
+					</Group>
 				</Group>
 				<Canvas ref={canvasRef}>
 					{ mode === Mode.Map && <MapView canvasRef={canvasRef} /> }

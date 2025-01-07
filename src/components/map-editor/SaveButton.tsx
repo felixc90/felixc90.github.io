@@ -1,6 +1,7 @@
-import { ActionIcon, Button, rem } from '@mantine/core';
-import { IconDownload, IconPlus } from '@tabler/icons-react';
+import { ActionIcon, rem } from '@mantine/core';
+import { IconDownload } from '@tabler/icons-react';
 import useModelsStore from '../../store/useModelsStore';
+import useMapStore from '../../store/useMapStore';
 
 interface SaveButtonProps {
 	filename: string
@@ -8,13 +9,14 @@ interface SaveButtonProps {
 
 const SaveButton = ({ filename }: SaveButtonProps) => {
 	const { models } = useModelsStore();
+	const { map } = useMapStore();
 
 	if (!models) {
 		return <></>;
 	}
 
   const handleDownload = () => {
-    const jsonString = JSON.stringify({ models: models }, null, 2); // Convert JSON object to a pretty-printed string
+    const jsonString = JSON.stringify({ models: models, map: map }, null, 2); // Convert JSON object to a pretty-printed string
     const blob = new Blob([jsonString], { type: 'application/json' }); // Create a Blob
     const url = URL.createObjectURL(blob); // Create a download URL
 

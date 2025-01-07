@@ -46,6 +46,19 @@ const EditModelPanel = () => {
 						/>
 						<SelectCollisionType disabled={!showCollisionMap} />
 					</Container>
+					{/* <Container w='100%'>
+						<InputLabel>Opacity</InputLabel>
+						<Slider
+							value={Math.round(model.opacity * 100)}
+							onChange={(value) => updateModel(model.id, { opacity: value / 100 })}
+							color="blue"
+							marks={[
+								{ value: 20, label: '20%' },
+								{ value: 50, label: '50%' },
+								{ value: 80, label: '80%' },
+							]}
+						/>
+					</Container> */}
 				</Flex>
 			</Flex>
 	</div>

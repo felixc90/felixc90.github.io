@@ -21,7 +21,8 @@ const ModelCard = ({ model } : ModelProps) => {
 	} = useModelsStore();
 	const [toggleEdit, setToggleEdit] = useState<boolean>(false);
 	const handleClick = () => {
-		selectModel(model.id);
+		if (selectedModelId === model.id) selectModel(null)
+		else selectModel(model.id);
 	}
 
 	const editName = (e: { stopPropagation: () => void; }) => {
