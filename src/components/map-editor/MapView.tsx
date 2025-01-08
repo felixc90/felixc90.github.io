@@ -68,7 +68,7 @@ const MapView = ({ canvasRef }: MapViewProps) => {
 				</Suspense>)
 			)}
 			{ showCollisionMap && <GlobalCollisionMap />}
-			<Grid width={map.width} height={map.height} position={gridPosition} renderOrder={-1}/>
+			<Grid width={map.width} height={map.height} position={gridPosition} renderOrder={-1000}/>
 		</>
 	)
 }

@@ -5,6 +5,7 @@ import { MapConstants } from '../types/MapConstants';
 interface MapStore {
 	map: Map;
 	updateMap: (updates: Partial<Map>) => void;
+	loadMap: (newMap: Map) => void;
 }
 
 const useMapStore = create<MapStore>((set) => ({
@@ -15,7 +16,8 @@ const useMapStore = create<MapStore>((set) => ({
 	},
 	updateMap: (updates: Partial<Map>) => set((state) => ({
 		map: {...state.map, ...updates}
-	}))
+	})),
+	loadMap: (newMap) => set(() => ({ map: newMap })),
 }));
 
 export default useMapStore;

@@ -7,3 +7,7 @@ export {
 	type Asset, 
 	type AssetProps 
 } from './Asset';
+
+export { 
+	type Map, 
+} from './Map';

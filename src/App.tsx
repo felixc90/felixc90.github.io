@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-// import GamePage from "./pages/GamePage";
+import GamePage from "./pages/GamePage";
 import MapEditorPage from './pages/MapEditorPage';
 import '@mantine/core/styles.css';
 import '@mantine/dropzone/styles.css';
@@ -15,8 +15,8 @@ function App() {
 		<MantineProvider theme={theme}>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<MapEditorPage />} />
-					{/* <Route path="/map-studio" element={<MapStudioPage />} /> */}
+					<Route path="/" element={<GamePage />} />
+					<Route path="/editor" element={<MapEditorPage />} />
 				</Routes>
 			</BrowserRouter>
 		</MantineProvider>
