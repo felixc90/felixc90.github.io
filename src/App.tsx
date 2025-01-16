@@ -2,14 +2,15 @@ import { KeyboardControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Experience } from "./components/Experience"
 
-function App() {
+const keyboardMap = [
+	{ name: "forward", keys: ["ArrowUp", "KeyW"] },
+	{ name: "backward", keys: ["ArrowDown", "KeyS"] },
+	{ name: "left", keys: ["ArrowLeft", "KeyA"] },
+	{ name: "right", keys: ["ArrowRight", "KeyD"] },
+	{ name: "run", keys: ["Shift"] },
+];
 
-	const keyboardMap = [
-		{ name: "forward", keys: ["ArrowUp", "KeyW"] },
-		{ name: "backward", keys: ["ArrowDown", "KeyS"] },
-		{ name: "left", keys: ["ArrowLeft", "KeyA"] },
-		{ name: "right", keys: ["ArrowRight", "KeyD"] },
-	]
+function App() {
 
   return (
     <>

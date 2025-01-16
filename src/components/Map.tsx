@@ -1,6 +1,7 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import { RigidBody } from "@react-three/rapier"
+import { Wisetech } from "./Wisetech"
 
 export const Map = ({ model, ...props }) => {
   const { scene, animations } = useGLTF(model);

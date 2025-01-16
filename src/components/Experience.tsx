@@ -1,6 +1,6 @@
 import {
   Environment,
-  OrbitControls,
+	OrbitControls,
   OrthographicCamera,
 } from "@react-three/drei";
 import { useControls } from "leva";
@@ -30,7 +30,11 @@ const maps = {
     scale: 0.4,
     position: [-4, 0, -6],
   },
-	Plane: {
+	plane: {
+    scale: 0.4,
+    position: [0, -4, 0],
+  },
+	plat: {
     scale: 0.4,
     position: [0, 0, 0],
   },
@@ -40,14 +44,14 @@ export const Experience = () => {
   const shadowCameraRef = useRef();
   const { map } = useControls("Map", {
     map: {
-      value: "castle_on_hills",
+      value: "plane",
       options: Object.keys(maps),
     },
   });
 
   return (
     <>
-      {/* <OrbitControls /> */}
+      <OrbitControls />
       <Environment preset="sunset" />
       <directionalLight
         intensity={0.65}
