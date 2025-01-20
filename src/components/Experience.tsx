@@ -6,8 +6,10 @@ import {
 import { useControls } from "leva";
 import { useRef } from "react";
 import { Map } from "./Map";
-import { Physics } from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
+import { Anita } from "./Anita";
+import { John } from "./John.tsx";
 
 const maps = {
   castle_on_hills: {
@@ -31,7 +33,7 @@ const maps = {
     position: [-4, 0, -6],
   },
 	plane: {
-    scale: 0.4,
+    scale: 1,
     position: [0, -4, 0],
   },
 	plat: {
@@ -51,7 +53,7 @@ export const Experience = () => {
 
   return (
     <>
-      <OrbitControls />
+			<OrbitControls />
       <Environment preset="sunset" />
       <directionalLight
         intensity={0.65}
@@ -70,13 +72,19 @@ export const Experience = () => {
           attach={"shadow-camera"}
         />
       </directionalLight>
-			<Physics debug>
+			<Physics debug={false}>
 				<Map
 					scale={maps[map].scale}
 					position={maps[map].position}
 					model={`models/${map}.glb`}
 				/>
 				<CharacterController />
+				<RigidBody colliders='trimesh'>
+					<Anita scale={[0.7,0.7,0.7]} position={[0,-3,3]} rotation={[0, Math.PI, 0]}/>
+				</RigidBody>
+				<RigidBody colliders='trimesh' >
+					<John scale={[0.7,0.7,0.7]} position={[6,-3,3]} rotation={[0, Math.PI, 0]}/>
+				</RigidBody>
 			</Physics>
       
     </>
