@@ -82,9 +82,9 @@ export const Experience = () => {
 					model={`models/${map}.glb`}
 				/>
 				<CharacterController />
-				{/* <RigidBody colliders='trimesh' >
-					<Center scale={[.036,.036,.036]} position={[0,-4,6]} rotation={[0, Math.PI, 0]}/>
-				</RigidBody> */}
+				<RigidBody colliders='trimesh' >
+					<Anita scale={[.66,.66,.66]} position={[0,-3,6]} rotation={[0, Math.PI, 0]}/>
+				</RigidBody>
 				{/* <RigidBody colliders='trimesh' >
 					<Clancy scale={[0.7,0.7,0.7]} position={[6,-3,0]} rotation={[0, Math.PI, 0]}/>
 				</RigidBody>
