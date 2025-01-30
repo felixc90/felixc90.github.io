@@ -6,8 +6,8 @@ Command: npx gltfjsx@6.5.3 public/models/john.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function John(props) {
-  const { nodes, materials } = useGLTF('/models/john.glb')
+export function Clancy(props) {
+  const { nodes, materials } = useGLTF('/models/clancy.glb')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Cube.geometry} material={materials['Material.001']} scale={[1, 0.5, 1]} />
@@ -18,4 +18,4 @@ export function John(props) {
   )
 }
 
-useGLTF.preload('/models/john.glb')
+useGLTF.preload('/models/clancy.glb')

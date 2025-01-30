@@ -103,25 +103,25 @@ export const CharacterController = () => {
 			rb.current.setLinvel(vel, true);
 		}
 
-		// if (cameraPosition.current) {
-		// 	cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
-		// 	camera.position.lerp(cameraWorldPosition.current, 0.1);
-		// }
+		if (cameraPosition.current) {
+			cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
+			camera.position.lerp(cameraWorldPosition.current, 0.1);
+		}
 
-    // if (cameraTarget.current) {
-    //   cameraTarget.current.getWorldPosition(cameraLookAtWorldPosition.current);
-    //   cameraLookAt.current.lerp(cameraLookAtWorldPosition.current, 0.1);
+    if (cameraTarget.current) {
+      cameraTarget.current.getWorldPosition(cameraLookAtWorldPosition.current);
+      cameraLookAt.current.lerp(cameraLookAtWorldPosition.current, 0.1);
 
-    //   camera.lookAt(cameraLookAt.current);
-    // }
+      camera.lookAt(cameraLookAt.current);
+    }
 
   });
 
   return (
     <RigidBody colliders={false} lockRotations ref={rb}>
       <group ref={container}>
-        <group ref={cameraTarget} position-z={1.5} />
-        <group ref={cameraPosition} position-y={10} position-z={-10} />
+        <group ref={cameraTarget} position-z={0} position-y={0} />
+        <group ref={cameraPosition} position-y={12} position-z={-10} />
         <group ref={character}>
 					<Sprite 
 						textureImageURL="/34024.png"

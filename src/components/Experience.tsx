@@ -8,8 +8,11 @@ import { useRef } from "react";
 import { Map } from "./Map";
 import { Physics, RigidBody } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
-import { Anita } from "./Anita";
-import { John } from "./John.tsx";
+import { Anita } from "./models/Anita";
+import { Ainsworth } from "./models/Ainsworth";
+import { Scientia } from "./models/Scientia";
+import { Clancy } from "./models/Clancy";
+import { Center } from "./models/Center";
 
 const maps = {
   castle_on_hills: {
@@ -53,7 +56,7 @@ export const Experience = () => {
 
   return (
     <>
-			<OrbitControls />
+			{/* <OrbitControls /> */}
       <Environment preset="sunset" />
       <directionalLight
         intensity={0.65}
@@ -79,12 +82,18 @@ export const Experience = () => {
 					model={`models/${map}.glb`}
 				/>
 				<CharacterController />
-				<RigidBody colliders='trimesh'>
-					<Anita scale={[0.7,0.7,0.7]} position={[0,-3,3]} rotation={[0, Math.PI, 0]}/>
+				{/* <RigidBody colliders='trimesh' >
+					<Center scale={[.036,.036,.036]} position={[0,-4,6]} rotation={[0, Math.PI, 0]}/>
+				</RigidBody> */}
+				{/* <RigidBody colliders='trimesh' >
+					<Clancy scale={[0.7,0.7,0.7]} position={[6,-3,0]} rotation={[0, Math.PI, 0]}/>
 				</RigidBody>
 				<RigidBody colliders='trimesh' >
-					<John scale={[0.7,0.7,0.7]} position={[6,-3,3]} rotation={[0, Math.PI, 0]}/>
+					<Ainsworth scale={[0.7,0.7,0.7]} position={[-6,-3,0]} rotation={[0, Math.PI, 0]}/>
 				</RigidBody>
+				<RigidBody colliders='trimesh' >
+					<Scientia scale={[0.7,0.7,0.7]} position={[0,0,9]} rotation={[0, Math.PI, 0]}/>
+				</RigidBody> */}
 			</Physics>
       
     </>
