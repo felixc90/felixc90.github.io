@@ -10,38 +10,39 @@ export function Scientia(props) {
   const { nodes, materials } = useGLTF('/models/scientia.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.right.geometry} material={materials['Material.009']} position={[4.5, 0, 0]} scale={[1, 1, 2]} />
-      <mesh geometry={nodes.bridgefront.geometry} material={materials['Material.005']} position={[0, 3.5, 2.21]} scale={[5, 0.25, 1.2]} />
-      <mesh geometry={nodes['bridge-mid'].geometry} material={materials['Material.006']} position={[0, 2.09, 0]} scale={[5, 0.25, 3.2]} />
-      <mesh geometry={nodes['base-ceiling'].geometry} material={materials.Material} position={[0, 9.35, 0]} scale={[3, 0.094, 4.5]} />
-      <mesh geometry={nodes.base.geometry} material={materials.Material} position={[0, 2.35, 0]} scale={[2.475, 2.325, 1.6]} />
-      <mesh geometry={nodes['base-ceiling-mid'].geometry} material={materials['Material.004']} position={[0, 7.049, 0]} scale={[0.45, 0.1, 4.1]} />
-      <mesh geometry={nodes.bridgeback.geometry} material={materials['Material.005']} position={[0, 3.5, -2.21]} scale={[5, 0.25, 1.2]} />
-      <mesh geometry={nodes.basetexture.geometry} material={materials.metal} position={[0, 2.35, 0]} scale={[2.475, 2.325, 1.6]} />
-      <mesh geometry={nodes.right001.geometry} material={materials['Material.003']} position={[-4.5, 0, 0]} scale={[1, 1, 2]} />
-      <mesh geometry={nodes.Plane.geometry} material={materials['Material.002']} position={[3.5, 2.875, 4.1]} rotation={[Math.PI / 2, 0, 0]} scale={[0.65, 1, 2.25]} />
-      <mesh geometry={nodes.Plane001.geometry} material={materials['Material.010']} position={[-3.5, 2.5, 4.1]} rotation={[Math.PI / 2, 0, 0]} scale={[0.65, 1, 3]} />
-      <mesh geometry={nodes.Cylinder.geometry} material={materials['Material.007']} position={[0, 0, 3]} scale={[1, 1.014, 1]} />
-      <mesh geometry={nodes.Cylinder001.geometry} material={materials['Material.008']} position={[0, 0, 3]} />
-      <mesh geometry={nodes.Cylinder002.geometry} material={materials['Material.008']} position={[0, 0, 3]} />
-      <mesh geometry={nodes.Cylinder003.geometry} material={materials['Material.007']} scale={[1, 1.014, 1]} />
-      <mesh geometry={nodes.Cylinder012.geometry} material={materials['Material.008']} />
-      <mesh geometry={nodes.Cylinder015.geometry} material={materials['Material.008']} />
-      <mesh geometry={nodes.Cylinder016.geometry} material={materials['Material.007']} position={[0, 0, -3]} scale={[1, 1.014, 1]} />
-      <mesh geometry={nodes.Cylinder017.geometry} material={materials['Material.008']} position={[0, 0, -3]} />
-      <mesh geometry={nodes.Cylinder018.geometry} material={materials['Material.008']} position={[0, 0, -3]} />
-      <mesh geometry={nodes.Cylinder004.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder005.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder006.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder007.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder008.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder009.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder010.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder013.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder014.geometry} material={materials.silver} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes.Cylinder011.geometry} material={materials.silver} position={[-0.166, -0.078, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
-      <mesh geometry={nodes['frame1-l'].geometry} material={materials.metal} position={[-1.663, 7.882, 4.425]} rotation={[0, 0, -0.44]} scale={[1.46, 0.026, 0.077]} />
-      <mesh geometry={nodes['frame1-r'].geometry} material={materials.metal} position={[1.663, 7.882, 4.425]} rotation={[0, 0, 0.44]} scale={[1.46, 0.026, 0.077]} />
+      <mesh geometry={nodes.right.geometry} material={materials['Material.009']} position={[4.5, 0, 0]} scale={[1, 0.875, 2]} />
+      <mesh geometry={nodes.bridgefront.geometry} material={materials['Material.005']} position={[0, 3, 2.21]} scale={[5, 0.25, 1.2]} />
+      <mesh geometry={nodes['bridge-mid'].geometry} material={materials['Material.006']} position={[0, 1.79, 0]} scale={[5, 0.25, 3.2]} />
+      <mesh geometry={nodes['base-ceiling'].geometry} material={materials.Material} position={[0, 9.05, 0]} scale={[3, 0.094, 4.5]} />
+      <mesh geometry={nodes.base.geometry} material={materials.Material} position={[0, 2.05, 0]} scale={[2.475, 2.325, 1.6]} />
+      <mesh geometry={nodes['base-ceiling-mid'].geometry} material={materials['Material.004']} position={[0, 6.749, 0]} scale={[0.45, 0.1, 4.1]} />
+      <mesh geometry={nodes.bridgeback.geometry} material={materials['Material.005']} position={[0, 3, -2.21]} scale={[5, 0.25, 1.2]} />
+      <mesh geometry={nodes.basetexture.geometry} material={materials.metal} position={[0, 2.05, 0]} scale={[2.475, 2.325, 1.6]} />
+      <mesh geometry={nodes.right001.geometry} material={materials['Material.003']} position={[-4.5, 0, 0]} scale={[1, 0.875, 2]} />
+      <mesh geometry={nodes.Cylinder003.geometry} material={materials['Material.007']} position={[0, -0.3, 0]} scale={[1, 1.014, 1]} />
+      <mesh geometry={nodes.Cylinder015.geometry} material={materials['Material.008']} position={[0, -0.3, 0]} />
+      <mesh geometry={nodes.Cylinder016.geometry} material={materials['Material.008']} position={[0, -0.3, 0]} />
+      <mesh geometry={nodes.Cylinder017.geometry} material={materials['Material.007']} position={[0, -0.3, -3]} scale={[1, 1.014, 1]} />
+      <mesh geometry={nodes.Cylinder018.geometry} material={materials['Material.008']} position={[0, -0.3, -3]} />
+      <mesh geometry={nodes.Cylinder019.geometry} material={materials['Material.008']} position={[0, -0.3, -3]} />
+      <mesh geometry={nodes.Plane.geometry} material={materials['Material.002']} position={[3.5, 2.487, 4.1]} rotation={[Math.PI / 2, 0, 0]} scale={[0.65, 1, 2.025]} />
+      <mesh geometry={nodes.Plane001.geometry} material={materials['Material.010']} position={[-3.5, 2.15, 4.1]} rotation={[Math.PI / 2, 0, 0]} scale={[0.65, 1, 2.7]} />
+      <mesh geometry={nodes.Cylinder.geometry} material={materials['Material.007']} position={[0, -0.3, 3]} scale={[1, 1.014, 1]} />
+      <mesh geometry={nodes.Cylinder001.geometry} material={materials['Material.008']} position={[0, -0.3, 3]} />
+      <mesh geometry={nodes.Cylinder002.geometry} material={materials['Material.008']} position={[0, -0.3, 3]} />
+      <mesh geometry={nodes.Cylinder004.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder005.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder006.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder007.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder008.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder009.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder010.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder013.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder014.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder011.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes.Cylinder012.geometry} material={materials.silver} position={[0, -0.3, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.25]} />
+      <mesh geometry={nodes['frame1-l'].geometry} material={materials.metal} position={[-1.663, 7.582, 4.425]} rotation={[0, 0, -0.44]} scale={[1.46, 0.026, 0.077]} />
+      <mesh geometry={nodes['frame1-r'].geometry} material={materials.metal} position={[1.663, 7.582, 4.425]} rotation={[0, 0, 0.44]} scale={[1.46, 0.026, 0.077]} />
     </group>
   )
 }

@@ -121,7 +121,7 @@ export const CharacterController = () => {
     <RigidBody colliders={false} lockRotations ref={rb}>
       <group ref={container}>
         <group ref={cameraTarget} position-z={0} position-y={0} />
-        <group ref={cameraPosition} position-y={12} position-z={-10} />
+        <group ref={cameraPosition} position-y={15} position-z={-15} />
         <group ref={character}>
 					<Sprite 
 						textureImageURL="/34024.png"
