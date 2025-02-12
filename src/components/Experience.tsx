@@ -8,13 +8,7 @@ import { useRef } from "react";
 import { Map } from "./Map";
 import { Physics, RigidBody } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
-import { Anita } from "./models/Anita";
-import { Ainsworth } from "./models/Ainsworth";
-import { Scientia } from "./models/Scientia";
-import { Clancy } from "./models/Clancy";
-import { TowerOne } from "./models/TowerOne";
-import { TheToaster1 } from "./models/TheToaster1";
-import { TheToaster2 } from "./models/TheToaster2";
+
 
 const maps = {
   castle_on_hills: {
@@ -84,27 +78,6 @@ export const Experience = () => {
 					model={`models/${map}.glb`}
 				/>
 				<CharacterController />
-				{/* <RigidBody colliders='hull' type="fixed" >
-					<Anita scale={[.66,.66,.66]} position={[3.5,-3,0]} rotation={[0, Math.PI, 0]}/>
-				</RigidBody>
-				<RigidBody colliders='hull' type="fixed" >
-					<Clancy scale={[.66,.66,.66]} position={[3.5,-3,7.5]} rotation={[0, Math.PI, 0]}/>
-				</RigidBody>
-				<RigidBody colliders='hull' type="fixed" >
-					<Ainsworth scale={[.70,.70,.70]} position={[3.5,-3,15]} rotation={[0, Math.PI, 0]}/>
-				</RigidBody>
-				<RigidBody colliders='hull' type="fixed" >
-					<Scientia scale={[0.7,0.7,0.7]} position={[0,-3,25]} rotation={[0, Math.PI, 0]}/>
-				</RigidBody> */}
-				<RigidBody colliders='hull' type="fixed" >
-					<TowerOne scale={[.66,.66,.66]} position={[0,-3,3]} rotation={[0, -Math.PI/2, 0]}/>
-				</RigidBody>
-				<RigidBody colliders='hull' type="fixed" >
-					<TheToaster1 scale={[.66,.66,.66]} position={[-3.5,-3,0]} rotation={[0, -Math.PI/2, 0]}/>
-				</RigidBody>
-				<RigidBody colliders='hull' type="fixed" >
-					<TheToaster2 scale={[.66,.66,.66]} position={[3.5,-3,0]} rotation={[0, -Math.PI/2, 0]}/>
-				</RigidBody>
 			</Physics>
       
     </>
