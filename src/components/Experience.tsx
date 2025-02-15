@@ -9,50 +9,12 @@ import { Map } from "./Map";
 import { Physics, RigidBody } from "@react-three/rapier";
 import { CharacterController } from "./CharacterController";
 
-
-const maps = {
-  castle_on_hills: {
-    scale: 3,
-    position: [-6, -7, 0],
-  },
-  animal_crossing_map: {
-    scale: 20,
-    position: [-15, -1, 10],
-  },
-  city_scene_tokyo: {
-    scale: 0.72,
-    position: [0, -1, -3.5],
-  },
-  de_dust_2_with_real_light: {
-    scale: 0.3,
-    position: [-5, -3, 13],
-  },
-  medieval_fantasy_book: {
-    scale: 0.4,
-    position: [-4, 0, -6],
-  },
-	plane: {
-    scale: 4,
-    position: [0, -4, 0],
-  },
-	plat: {
-    scale: 0.4,
-    position: [0, 0, 0],
-  },
-};
-
 export const Experience = () => {
   const shadowCameraRef = useRef();
-  const { map } = useControls("Map", {
-    map: {
-      value: "plane",
-      options: Object.keys(maps),
-    },
-  });
 
   return (
     <>
-			{/* <OrbitControls /> */}
+			<OrbitControls />
       <Environment preset="sunset" />
       <directionalLight
         intensity={0.65}
@@ -71,11 +33,12 @@ export const Experience = () => {
           attach={"shadow-camera"}
         />
       </directionalLight>
-			<Physics debug={false}>
+			<Physics debug={true}>
 				<Map
-					scale={maps[map].scale}
-					position={maps[map].position}
-					model={`models/${map}.glb`}
+					scale={0.66}
+					rotation={[0, Math.PI, 0]}
+					position={[0, -1, 0]}
+					model={`models/map.glb`}
 				/>
 				<CharacterController />
 			</Physics>

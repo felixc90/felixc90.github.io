@@ -29,8 +29,8 @@ const lerpAngle = (start: number, end: number, t: number) => {
 
 export const CharacterController = () => {
 	const { WALK_SPEED, RUN_SPEED } = useControls("Character Control", {
-		WALK_SPEED: { value: 0.8, min: 0.1, max: 4, step: 0.1 },
-		RUN_SPEED: { value: 1.6, min: 0.2, max: 12, step: 0.1 },
+		WALK_SPEED: { value: 1.6, min: 0.1, max: 4, step: 0.1 },
+		RUN_SPEED: { value: 3.2, min: 0.2, max: 12, step: 0.1 },
 	})
 
 	const [animation, setAnimation] = useState("idle");
@@ -121,8 +121,8 @@ export const CharacterController = () => {
     <RigidBody colliders={false} lockRotations ref={rb}>
       <group ref={container}>
         <group ref={cameraTarget} position-z={0} position-y={0} />
-        <group ref={cameraPosition} position-y={12} position-z={-12} />
-        <group ref={character}>
+        <group ref={cameraPosition} position-y={70} position-z={-70} />
+        <group ref={character} >
 					<Sprite 
 						textureImageURL="/34024.png"
 						numberOfFrames={4}

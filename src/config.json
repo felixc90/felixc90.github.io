@@ -2,33 +2,203 @@
 		"objects": [
 			{
 				"type": "RedCenter",
-				"position": { "x": 5, "y": -4, "z": 5 },
+				"position": { "x": -6, "y": -1, "z": 15.5 },
 				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
 				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
 			},
 			{
 				"type": "Ainsworth",
-				"position": { "x": 5, "y": -4, "z": 15 },
+				"position": { "x": -6, "y": -1, "z": 22.5 },
 				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
 				"scale": { "x": 0.7, "y": 0.7, "z": 0.7 }
 			},
 			{
 				"type": "Auditorium",
-				"position": { "x": 5, "y": -4, "z": 25 },
+				"position": { "x": 6, "y": -1, "z": 20 },
 				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
 				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
 			},
 			{
 				"type": "Scientia",
-				"position": { "x": 0, "y": -4, "z": 35 },
+				"position": { "x": 0, "y": 0.333333333333333, "z": 42 },
 				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
 				"scale": { "x": 0.7, "y": 0.7, "z": 0.7 }
 			},
 			{
 				"type": "Centrepoint",
-				"position": { "x": 0, "y": -4, "z": -5 },
+				"position": {"x": -22.75, "y": 0, "z": -3.5},
 				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
 				"scale": { "x": 0.7, "y": 0.7, "z": 0.7 }
+			},
+			{
+				"type": "TowerOne",
+				"position": { "x": -19.8, "y": 0, "z": 11 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "Modern",
+				"position": { "x": -24.1, "y": 0, "z": 11.3 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			
+			{
+				"type": "Historic",
+				"position": { "x": -24.1, "y": 0, "z": 8.7 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "TowerOne",
+				"position": { "x": -28.4, "y": 0, "z": 11.3 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "Historic",
+				"position": { "x": -36.3, "y": 0, "z": 8.3 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -36, "y": 0, "z": 10.6 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -36, "y": 0, "z": 13.1 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "Modern",
+				"position": { "x": -19, "y": 0, "z": 0.6 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -21.5, "y": 0, "z": -0.2 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -24, "y": 0, "z": -0.2 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -26.5, "y": 0, "z": 0.6 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -19, "y": 0, "z": -3 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -26.5, "y": 0, "z": -3 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -19, "y": 0, "z": -6 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "TowerOne",
+				"position": { "x": -39.6, "y": 0, "z": 10.5 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "TowerOne",
+				"position": { "x": -39.6, "y": 0, "z": 13.5 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "TowerOne",
+				"position": { "x": -41.2, "y": 0, "z": -2 },
+				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "TowerOne",
+				"position": { "x": -41.2, "y": 0, "z": -6 },
+				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "TowerOne",
+				"position": { "x": -41.2, "y": 0, "z": -10 },
+				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "TowerOne",
+				"position": { "x": -41.2, "y": 0, "z": -14 },
+				"rotation": { "x": 0, "y": 3.141592653589793, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -38.7, "y": 0, "z": -1 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -38.7, "y": 0, "z": -5 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -38.7, "y": 0, "z": -9 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Modern",
+				"position": { "x": -38.7, "y": 0, "z": -13 },
+				"rotation": { "x": 0, "y": 0, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+
+			{
+				"type": "Historic",
+				"position": { "x": -30.3, "y": 0, "z": -15 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -35.8, "y": 0, "z": -15 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.66 }
+			},
+			{
+				"type": "Historic",
+				"position": { "x": -33.05, "y": 0, "z": -15 },
+				"rotation": { "x": 0, "y": -1.57079633, "z": 0 },
+				"scale": { "x": 0.66, "y": 0.66, "z": 0.70 }
 			}
 		]
 	}

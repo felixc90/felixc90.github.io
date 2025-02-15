@@ -24,7 +24,7 @@ export const Sprite = ({
 	animationNames,
 	fps,
 	pause
-}: SpriteProps ) => {
+}: SpriteProps) => {
 	const t = useRef(0);
   const currentFrame = useRef<number>(0);
 	const currentAnimation = useRef<number>(animationNames.get(animationName) ?? 0);
