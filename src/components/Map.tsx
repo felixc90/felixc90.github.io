@@ -45,28 +45,6 @@ export const Map = ({ model, ...props }) => {
         <primitive object={scene} {...props} ref={group} />
       </RigidBody>
 
-			{/* Lower */}
-			<Forest position={[5.5, 0.2, -1]} width={5} height={3} />
-			<Forest position={[-2.5, 0.2, -1]} width={-9} height={3} />
-
-			{/* UNSW Lower Left */}
-			<Forest position={[5.5, 0.2, 6.5]} width={4} height={4} /> 
-			<Forest position={[2.5, 0.2, 6.5]} width={2} height={3} /> 
-
-			{/* UNSW Lower Right */}
-			<Forest position={[-2.5, 0.2, 8]} width={-5} height={2} /> 
-			<Forest position={[-2.5, 0.2, 6.5]} width={-5} height={2} /> 
-			<Forest position={[-5.5, 0.2, 11]} width={-3} height={1} /> 
-
-			<Forest position={[10, 0.2, 11]} width={6} height={10} />
-			<Forest position={[-10, 0.2, 11-2*1.5]} width={-4} height={13} />
-
-			<Forest position={[10, 0.7, 27.5]} width={6} height={5} />
-			<Forest position={[-10-5*1.5, 0.7, 27.5]} width={6} height={5} />
-
-			<Forest position={[7, 1.2, 35.5]} width={6} height={10} />
-			<Forest position={[-7-5*1.5, 1.2, 35.5]} width={6} height={10} />
-
 
       {/* Dynamically load objects from config */}
       {config.objects.map((obj, index) => {
