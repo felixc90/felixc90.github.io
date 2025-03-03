@@ -1,27 +1,31 @@
-import { BrowserRouter, Routes, Route } from "react-router";
-// import GamePage from "./pages/GamePage";
-import MapEditorPage from './pages/MapEditorPage';
-import '@mantine/core/styles.css';
-import '@mantine/dropzone/styles.css';
-import { createTheme, MantineProvider } from '@mantine/core';
+import { KeyboardControls } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
+import { Experience } from "./components/Experience"
 
-const theme = createTheme({
-  /** Put your mantine theme override here */
-});
-
+const keyboardMap = [
+	{ name: "forward", keys: ["ArrowUp", "KeyW"] },
+	{ name: "backward", keys: ["ArrowDown", "KeyS"] },
+	{ name: "left", keys: ["ArrowLeft", "KeyA"] },
+	{ name: "right", keys: ["ArrowRight", "KeyD"] },
+	{ name: "run", keys: ["Shift"] },
+];
 
 function App() {
+
   return (
-		<MantineProvider theme={theme}>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<MapEditorPage />} />
-					{/* <Route path="/map-studio" element={<MapStudioPage />} /> */}
-				</Routes>
-			</BrowserRouter>
-		</MantineProvider>
-  );
+    <>
+      <KeyboardControls map={keyboardMap}>
+				<Canvas
+					shadows
+					camera={{ position: [0, 1, 0], near: 0.1, fov: 5 }}
+					dpr={4.0}
+					>
+					<color attach="background" args={["#ececec"]} />
+					<Experience />
+				</Canvas>
+			</KeyboardControls>
+			</>
+  )
 }
 
-
-export default App;
+export default App
