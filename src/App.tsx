@@ -1,30 +1,34 @@
-import { KeyboardControls } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
-import { Experience } from "./components/Experience"
-
-const keyboardMap = [
-	{ name: "forward", keys: ["ArrowUp", "KeyW"] },
-	{ name: "backward", keys: ["ArrowDown", "KeyS"] },
-	{ name: "left", keys: ["ArrowLeft", "KeyA"] },
-	{ name: "right", keys: ["ArrowRight", "KeyD"] },
-	{ name: "run", keys: ["Shift"] },
-];
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
+  const [count, setCount] = useState(0)
 
   return (
     <>
-      <KeyboardControls map={keyboardMap}>
-				<Canvas
-					shadows
-					camera={{ position: [0, 1, 0], near: 0.1, fov: 5 }}
-					dpr={4.0}
-					>
-					<color attach="background" args={["#ececec"]} />
-					<Experience />
-				</Canvas>
-			</KeyboardControls>
-			</>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
   )
 }
 
