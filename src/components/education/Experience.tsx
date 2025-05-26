@@ -1,8 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
-import { University } from "./models";
+import { University } from "../../models";
 import { useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
-import { Vector3 } from "three";
 
 export default function Experience()
 {
@@ -27,10 +26,6 @@ export default function Experience()
 		<>
 			<OrbitControls />
 			<University />
-			{/* <mesh position={[0,0,0]}>
-				<meshBasicMaterial color={0x00ff00} />
-				<boxGeometry args={[1,1,1]} />
-			</mesh> */}
 			<ambientLight intensity={1}/>
 		</>
 	)
