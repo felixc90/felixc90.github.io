@@ -24,7 +24,7 @@ export default function Experience()
 
 	return (
 		<>
-			<OrbitControls />
+			{/* <OrbitControls /> */}
 			<University />
 			<ambientLight intensity={1}/>
 		</>

@@ -127,8 +127,8 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 		}
 
 		state.camera.lookAt(new THREE.Vector3(
-			lightRailRef.current.position.x,
-			lightRailRef.current.position.y,
+			lightRailRef.current.position.x + 2,
+			lightRailRef.current.position.y + 0.5, 
 			lightRailRef.current.position.z - 5 ,
 		));
 		state.camera.updateProjectionMatrix();
