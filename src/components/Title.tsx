@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ArchiveBox from "../assets/icons/ArchiveBox";
 import Icon from "./title/Icon";
 import { FileMusic, Medal, PaintBucket, Ship } from "lucide-react";
 
@@ -20,7 +19,7 @@ export default function Title() {
 	const navItems = ["Home", "About", "Experience", "Projects"]
 
 
-	const [iconSize, iconStrokeWidth] = [30, 1];
+	const [iconSize, iconStrokeWidth] = [35, 1];
 
 	return (
 		<div className="h-screen bg-amber-50">
@@ -42,7 +41,7 @@ export default function Title() {
 							}
 						</div>
 					</div>
-				<div className="mb-20">
+				<div className="mb-15">
 					<div>
 						{
 							["Felix", "Cao"].map(word => (
@@ -78,38 +77,59 @@ export default function Title() {
 						</p>
 					</div>
 				</div>
-				<div className="flex justify-between">
-					<div className="text-7xl ml-70" style={NeueMontrealStyle}>
-						Sydney
+				<div>
+					<div className="flex justify-between my-2">
+						<div 
+							className="flex mr-30 my-auto gap-4 mb-3"
+						>
+							<Icon>
+								<Ship strokeWidth={iconStrokeWidth} size={iconSize}/>
+							</Icon>
+							<Icon>
+								<Medal strokeWidth={iconStrokeWidth} size={iconSize}/>
+							</Icon>
+							<Icon>
+								<FileMusic strokeWidth={iconStrokeWidth} size={iconSize}/>
+							</Icon>
+							<Icon>
+								<PaintBucket strokeWidth={iconStrokeWidth} size={iconSize}/>
+							</Icon>
+						</div>
+						<div className="text-5xl tracking-wide mt-5" style={NeueMontrealStyle}>
+							<span className="mr-6">
+								Software
+							</span>
+							<span>
+								Engineer
+							</span>
+						</div>
 					</div>
-					<div 
-						className="flex mr-60 my-auto gap-4"
-					>
-						<Icon>
-							<Ship strokeWidth={iconStrokeWidth} size={iconSize}/>
-						</Icon>
-						<Icon>
-							<Medal strokeWidth={iconStrokeWidth} size={iconSize}/>
-						</Icon>
-						<Icon>
-							<FileMusic strokeWidth={iconStrokeWidth} size={iconSize}/>
-						</Icon>
-						<Icon>
-							<PaintBucket strokeWidth={iconStrokeWidth} size={iconSize}/>
-						</Icon>
+					<hr />
+					<div className="flex justify-between">
+						<div className="text-5xl tracking-wide" style={NeueMontrealStyle}>
+							<span className="mr-6">
+								Based
+							</span>
+							<span className="mr-6">
+								in
+							</span>
+							<span>
+								Sydney
+							</span>
+						</div>
+						<div className="flex gap-10 mt-7 mx-20">
+							{
+								[1, 2, 3].map((i) => (
+									<div className="w-50 h-30 bg-amber-100">
+										{`Photo ${i}`}
+									</div>
+								))
+							}
+						</div>
+
 					</div>
 				</div>
-				<hr />
-				<div className="text-7xl" style={NeueMontrealStyle}>
-					<div>
-						<span className="mr-60">
-							Software
-						</span>
-						<span>
-							Engineer
-						</span>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	)
