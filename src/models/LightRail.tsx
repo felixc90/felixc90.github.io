@@ -4,125 +4,42 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 */
 
 import * as THREE from 'three'
-import React, { useEffect, useRef, useState } from 'react'
-import { shaderMaterial, useGLTF } from '@react-three/drei'
-import { extend, useFrame } from '@react-three/fiber'
-import { ToonShader1, ToonShaderDotted, ToonShaderHatching } from 'three/examples/jsm/Addons.js'
-import GhibliShaderMaterial from '../components/GhibliShaderMaterial'
-import { GhibliShader } from '../components/GhibliShader'
-
-const ToonShaderMaterial = shaderMaterial(
-	{
-		uAmbientLightColor: new THREE.Color('lightblue'),
-		uDirLightPos: new THREE.Vector3(10, 10, 0),
-		uDirLightColor: new THREE.Color('#0000ff'),
-		uBaseColor: new THREE.Color('#ff0000'),
-		uLineColor1: new THREE.Color('lightblue'),
-		uLineColor2: new THREE.Color('blue'),
-		uLineColor3: new THREE.Color('green'),
-		uLineColor4: new THREE.Color('orange'),
-	},
-	ToonShader1.vertexShader,
-	ToonShader1.fragmentShader,
-)
-extend({ ToonShaderMaterial })
-
-interface CursorType {
-	x: number,
-	y: number
-};
+import React, { useEffect, useRef } from 'react'
+import { useGLTF, useScroll } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber';
+import { NUM_PAGES, SEGMENT_LENGTH } from '../../constants';
+import useModelStore from '../../store/useModelStore';
 
 
-export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes } = useGLTF('models/light-rail.glb');	
-	const [ cursor, setCursor ] = useState<CursorType>({
-		x: 0,
-		y: 0
-	})
-	console.log(nodes)
+export function Model() {
+  const { scene } = useGLTF('models/light-rail.glb');
+	const lightRail = useRef<THREE.Object3D>(null);
+	const { setLightRail } = useModelStore();
 
-	const lightRailRef = useRef<THREE.Group>(null);
-
-	const LR_INITIAL_POSITION = new THREE.Vector3(0, 50, 0);
-	const LR_FINAL_POSITION = new THREE.Vector3(0, 0, 0);
-	const CAMERA_INITIAL_POSITION = new THREE.Vector3(8, 52, 8);
-	const CAMERA_FINAL_POSITION = new THREE.Vector3(18, 6, 15);
+	const scroll = useScroll();
 
 	useEffect(() => {
-		window.addEventListener('mousemove', (event) =>
-		{
-			const newCursor = {
-				x: event.clientX / window.innerWidth - 0.5,
-				y: event.clientY / window.innerHeight - 0.5,
-			}
-			setCursor(newCursor);
-		})
-	}, [])
+		if (lightRail && lightRail.current) {
+			setLightRail(lightRail as React.RefObject<THREE.Object3D<THREE.Object3DEventMap>>);
+		}
+	} ,[lightRail, setLightRail]);
 
-	
-	// useEffect(() => {
-	// 	scene.traverse((children) => {
-	// 		if (children instanceof THREE.Mesh) {
-	// 			children.receiveShadow = true;
-	// 			children.castShadow = true;
-	// 			children.material = new THREE.GhibliShaderMaterial();
-	// 			console.log(children.material)
-	// 		}
-	// 	})
-	// }, [scene])
-
-	const colors = new Uint8Array( 0 + 2 );
-
-	for ( let c = 0; c <= colors.length; c ++ ) {
-
-		colors[ c ] = ( c / colors.length ) * 256;
-
-	}
-
-	const gradientMap = new THREE.DataTexture( colors, colors.length, 1, THREE.RedFormat );
-	gradientMap.needsUpdate = true;
-	const diffuseColor = new THREE.Color().setHSL( 0, 0.5, 0 * 0.5 + 0.1 ).multiplyScalar( 1 - 0 * 0.2 );
-
-	const material = new THREE.MeshToonMaterial( {
-		color: diffuseColor,
-		gradientMap: gradientMap
-	} );
-	
-	useFrame((state) => {
-		// TODO
-		const innerHeight = window.innerHeight;
-		const offset = Math.min(1, Math.max(window.scrollY - innerHeight - 100, 0) / (2 * innerHeight - 300));
-
-		const lrPosition = new THREE.Vector3(); 
-		lrPosition.addScaledVector(LR_INITIAL_POSITION, 1 - offset);
-		lrPosition.addScaledVector(LR_FINAL_POSITION, offset);
-		lightRailRef.current?.position.lerp(lrPosition, 1);
-
-		const cameraPosition = new THREE.Vector3(); 
-		cameraPosition.addScaledVector(CAMERA_INITIAL_POSITION, 1 - offset);
-		cameraPosition.addScaledVector(CAMERA_FINAL_POSITION, offset);
-
-		// TODO: fix scale and direction
-		state.camera.position.lerp(cameraPosition.addScaledVector(
-			new THREE.Vector3(cursor.x, -cursor.y, 0), 3
-		), 1); 
-		state.camera.lookAt(lrPosition.addScaledVector(new THREE.Vector3(0, 1, 1), 1 - offset));
-		state.camera.updateProjectionMatrix();
-	})
-
+	useFrame(() => {
+		if (lightRail.current) {
+			lightRail.current.position.lerp(new THREE.Vector3(
+				lightRail.current.position.x,
+				lightRail.current.position.y, 
+				(NUM_PAGES - 1) * SEGMENT_LENGTH * scroll.offset
+			), 0.4);
+		}
+	});
 
 	return (
-		<mesh
-			ref={lightRailRef}
-			geometry={nodes.Tram.geometry}
+		<primitive
+			ref={lightRail}
+			object={ scene }
 			scale={ 0.05 }
-			position={[5,5,5]}
-		>
-			<shaderMaterial
-          attach="material"
-          {...GhibliShader}
-        />
-		</mesh>
+    />
 	)
 }
 

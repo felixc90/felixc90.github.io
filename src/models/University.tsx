@@ -4,18 +4,51 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 */
 
 import * as THREE from 'three'
-import React, { useEffect, useRef } from 'react'
-import { shaderMaterial, useGLTF, useKeyboardControls } from '@react-three/drei'
+import React, { JSX } from 'react'
+import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { useFrame } from '@react-three/fiber'
-import { Controls, Color } from 'three';
-import { GhibliShader } from '../components/GhibliShader'
-import ghibliFragmentShader from '../components/shaders/ghibli.frag';
-import ghibliVertexShader from '../components/shaders/ghibli.vert';
 
 type GLTFResult = GLTF & {
   nodes: {
+    lightrail: THREE.Mesh
     Plane: THREE.Mesh
+    Cylinder003: THREE.Mesh
+    base: THREE.Mesh
+    basetexture: THREE.Mesh
+    baseceiling: THREE.Mesh
+    baseceilingmid: THREE.Mesh
+    bridgeback: THREE.Mesh
+    bridgefront: THREE.Mesh
+    bridgemid: THREE.Mesh
+    Cylinder: THREE.Mesh
+    Cylinder001: THREE.Mesh
+    Cylinder002: THREE.Mesh
+    Cylinder0041: THREE.Mesh
+    Cylinder0051: THREE.Mesh
+    Cylinder0061: THREE.Mesh
+    Cylinder007: THREE.Mesh
+    Cylinder008: THREE.Mesh
+    Cylinder009: THREE.Mesh
+    Cylinder010: THREE.Mesh
+    Cylinder011: THREE.Mesh
+    Cylinder012: THREE.Mesh
+    Cylinder013: THREE.Mesh
+    Cylinder014: THREE.Mesh
+    Cylinder015: THREE.Mesh
+    Cylinder016: THREE.Mesh
+    Cylinder017: THREE.Mesh
+    Cylinder018: THREE.Mesh
+    frame1l: THREE.Mesh
+    frame1r: THREE.Mesh
+    Plane001: THREE.Mesh
+    Plane002: THREE.Mesh
+    rib1: THREE.Mesh
+    rib1001: THREE.Mesh
+    rib1002: THREE.Mesh
+    right: THREE.Mesh
+    right001: THREE.Mesh
+    right002: THREE.Mesh
+    right003: THREE.Mesh
     Cube001: THREE.Mesh
     roof1002: THREE.Mesh
     Cube002: THREE.Mesh
@@ -79,16 +112,30 @@ type GLTFResult = GLTF & {
     Cube028: THREE.Mesh
     Plane007: THREE.Mesh
     Plane008: THREE.Mesh
-    lightrail: THREE.Mesh
   }
   materials: {
-    ['university-base']: THREE.MeshStandardMaterial
+    ['lr-red']: THREE.MeshStandardMaterial
+    universitybase: THREE.MeshStandardMaterial
+    ['sc-pillar']: THREE.MeshStandardMaterial
+    ['Material.001']: THREE.MeshPhysicalMaterial
+    ['sc-metal.001']: THREE.MeshStandardMaterial
+    ['sc-metal.001']: THREE.MeshStandardMaterial
+    ['sc-cream']: THREE.MeshStandardMaterial
+    ['sc-metal.001']: THREE.MeshStandardMaterial
+    silver: THREE.MeshStandardMaterial
+    ['sc-metal.001']: THREE.MeshStandardMaterial
+    ['sc-yellowflag']: THREE.MeshStandardMaterial
+    ['sc-blackflag']: THREE.MeshStandardMaterial
+    ['sc-cream']: THREE.MeshStandardMaterial
+    ['sc-light']: THREE.MeshStandardMaterial
     ['aw-bottom']: THREE.MeshStandardMaterial
     ['aw-cream']: THREE.MeshStandardMaterial
     ['aw-top']: THREE.MeshStandardMaterial
     ['aw-trim']: THREE.MeshStandardMaterial
     ['aw-border']: THREE.MeshStandardMaterial
     ['aw-window1']: THREE.MeshStandardMaterial
+    ['aw-bottom']: THREE.MeshStandardMaterial
+    ['aw-trim']: THREE.MeshStandardMaterial
     ['aw-window2']: THREE.MeshStandardMaterial
     ['aw-window3']: THREE.MeshStandardMaterial
     ['aw-text']: THREE.MeshStandardMaterial
@@ -97,6 +144,7 @@ type GLTFResult = GLTF & {
     ['rc-window']: THREE.MeshStandardMaterial
     ['rc-roof']: THREE.MeshStandardMaterial
     ['rc-roof1']: THREE.MeshStandardMaterial
+    ['rc-roof']: THREE.MeshStandardMaterial
     ['rc-white']: THREE.MeshStandardMaterial
     ['rc-white']: THREE.MeshStandardMaterial
     ['rc-metallic']: THREE.MeshStandardMaterial
@@ -104,128 +152,118 @@ type GLTFResult = GLTF & {
     ['rc-metallic']: THREE.MeshStandardMaterial
     ['rc-roof-metallic']: THREE.MeshStandardMaterial
     ['rc-black-solar']: THREE.MeshPhysicalMaterial
+    ['rc-metallic']: THREE.MeshStandardMaterial
     ['rc-door']: THREE.MeshStandardMaterial
-    ['lr-red']: THREE.MeshStandardMaterial
   }
   animations: GLTFAction[]
 }
 
 export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('models/university.glb') as GLTFResult;
-
-	const groupRef = useRef<THREE.Group>(null);	
-	function toGhibliPalette(color: THREE.Color): THREE.Color {
-  const hsl = { h: 0, s: 0, l: 0 };
-  color.getHSL(hsl);
-
-  // Modify the HSL values to match Ghibli's style
-  hsl.s *= 0.4;              // Desaturate significantly
-  hsl.l = 0.5 + (hsl.l - 0.5) * 0.6; // Slightly soften highlights/shadows
-
-  // Optional: gently round hue to nearby "pleasant" hues
-  // (Ghibli often avoids neon reds and blues)
-  if (hsl.h > 0.9 || hsl.h < 0.05) hsl.h = 0.02; // Bias reds to warm brown-red
-  else if (hsl.h > 0.55 && hsl.h < 0.7) hsl.h = 0.6; // Push strong blues to cyan
-
-  const ghibliColor = new THREE.Color();
-  ghibliColor.setHSL(hsl.h, hsl.s, hsl.l);
-  return ghibliColor;
-}
-	function getDarkerShades(color: THREE.Color) {
-		const factors = [1, 0.75, 0.5, 0.25]; // 25%, 50%, 75% darker
-		const res = factors.map(factor => new THREE.Color(color).multiplyScalar(factor));
-		console.log(res);
-		return res;
-	}
-
-	useEffect(() => {
-		groupRef.current?.traverse((children) => {
-			if (children instanceof THREE.Mesh) {
-				const color = children.material.color;
-				if (color) {
-						children.material = new THREE.ShaderMaterial({
-							vertexShader: ghibliVertexShader,
-							fragmentShader: ghibliFragmentShader,
-							uniforms: {
-								colorMap: { value: getDarkerShades(toGhibliPalette(color)).map(
-									color => color.convertLinearToSRGB()
-								) },
-								brightnessThresholds: { value: [0.9, 0.45, 0.001] },
-								lightPosition: { value: new THREE.Vector3(5, 15, 5) },
-							}
-						});
-				}
-				
-			}
-		});
-	}, [groupRef])
-
-	return (
-    <group {...props} dispose={null} ref={groupRef}>
-      <mesh geometry={nodes.Plane.geometry} material={materials['university-base']} position={[-8, 0, 0]} scale={[32, 16, 16]} />
-      <mesh geometry={nodes.Cube001.geometry} material={materials['aw-bottom']} position={[-9.26, 0, -8]} scale={[3, 0.9, 2]} />
-      <mesh geometry={nodes.roof1002.geometry} material={materials['aw-cream']} position={[-9.26, 1.65, -8]} scale={[0.9, 0.038, 0.6]} />
-      <mesh geometry={nodes.Cube002.geometry} material={materials['aw-top']} position={[-9.26, 1.95, -8]} scale={[3, 2, 2]} />
-      <mesh geometry={nodes.roof1003.geometry} material={materials['aw-cream']} position={[-9.26, 5.8, -8]} scale={[0.9, 0.038, 0.6]} />
-      <mesh geometry={nodes.Cube003.geometry} material={materials['aw-trim']} position={[-9.26, 1.4, -8]} />
-      <mesh geometry={nodes.Cube029.geometry} material={materials['aw-trim']} position={[-9.26, 0.2, -8]} />
-      <mesh geometry={nodes.Cube030.geometry} material={materials['aw-trim']} position={[-9.26, 0.4, -8]} />
-      <mesh geometry={nodes.window001.geometry} material={materials['aw-border']} position={[-11.21, 0.65, -5.95]} rotation={[0, 0, -Math.PI]} scale={[-0.643, -0.301, -0.1]} />
-      <mesh geometry={nodes.window002.geometry} material={materials['aw-window1']} position={[-11.21, 0.65, -5.95]} rotation={[0, 0, -Math.PI]} scale={[-0.643, -0.301, -0.1]} />
-      <mesh geometry={nodes.Cube042.geometry} material={materials['aw-cream']} position={[-9.41, 1.95, -5.958]} scale={[0.775, 2, 0.03]} />
-      <mesh geometry={nodes.Cylinder019.geometry} material={materials['aw-bottom']} position={[-7.078, 1.48, -7.138]} scale={[1.353, 0.15, 2.977]} />
-      <mesh geometry={nodes.Cylinder020.geometry} material={materials['aw-trim']} position={[-7.078, 0.2, -7.138]} scale={[1.407, 0.04, 3.083]} />
-      <mesh geometry={nodes.Cylinder021.geometry} material={materials['aw-trim']} position={[-7.078, 0.4, -7.138]} scale={[1.407, 0.04, 3.083]} />
-      <mesh geometry={nodes.Cylinder022.geometry} material={materials['aw-trim']} position={[-7.078, 1.4, -7.138]} scale={[1.407, 0.04, 3.083]} />
-      <mesh geometry={nodes.Cylinder023.geometry} material={materials['aw-bottom']} position={[-7.078, 0, -7.138]} scale={[1.353, 0.2, 2.977]} />
-      <mesh geometry={nodes.Cylinder024.geometry} material={materials['aw-window2']} position={[-7.078, 0.48, -7.138]} scale={[1.353, 0.5, 2.923]} />
-      <mesh geometry={nodes.Cube031.geometry} material={materials['aw-trim']} position={[-8.348, 0, -5.997]} rotation={[0, -0.611, 0]} scale={[0.03, 0.9, 0.025]} />
-      <mesh geometry={nodes.Cylinder025.geometry} material={materials['aw-trim']} position={[-7.078, 1, -7.138]} scale={[1.407, 0.025, 3.083]} />
-      <mesh geometry={nodes.Cube032.geometry} material={materials['aw-window3']} position={[-8.279, 0.48, -6.02]} scale={[0.04, 0.5, 0.025]} />
-      <mesh geometry={nodes.Cube034.geometry} material={materials['aw-trim']} position={[-6.209, 0.48, -5.737]} rotation={[0, Math.PI / 9, 0]} scale={[0.03, 0.7, 0.025]} />
-      <mesh geometry={nodes.Cube035.geometry} material={materials['aw-trim']} position={[-5.825, 0.48, -5.998]} rotation={[0, 1.222, 0]} scale={[0.03, 0.7, 0.025]} />
-      <mesh geometry={nodes.Cube036.geometry} material={materials['aw-trim']} position={[-6.208, 0.48, -8.536]} rotation={[-Math.PI, 0.305, -Math.PI]} scale={[0.03, 0.7, 0.025]} />
-      <mesh geometry={nodes.Cube033.geometry} material={materials['aw-trim']} position={[-7.947, 0.48, -5.738]} rotation={[0, -Math.PI / 9, 0]} scale={[0.03, 0.7, 0.025]} />
-      <mesh geometry={nodes.Cube037.geometry} material={materials['aw-trim']} position={[-7.628, 0.48, -5.738]} scale={[0.03, 0.5, 0.025]} />
-      <mesh geometry={nodes.Cube038.geometry} material={materials['aw-trim']} position={[-6.528, 0.48, -5.738]} scale={[0.03, 0.5, 0.025]} />
-      <mesh geometry={nodes.Cube039.geometry} material={materials['aw-trim']} position={[-5.818, 0, -6.512]} rotation={[0, Math.PI / 2, 0]} scale={[0.03, 0.9, 0.025]} />
-      <mesh geometry={nodes.Cube040.geometry} material={materials['aw-trim']} position={[-5.818, 0, -7.612]} rotation={[0, Math.PI / 2, 0]} scale={[0.03, 0.9, 0.025]} />
-      <mesh geometry={nodes.Text.geometry} material={materials['aw-text']} position={[-7.421, 1.161, -5.746]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Cube041.geometry} material={materials['aw-border']} position={[-9.41, 0, -5.996]} scale={[0.65, 0.775, 0.1]} />
-      <mesh geometry={nodes.Plane009.geometry} material={materials['aw-window1']} position={[-9.41, 0.7, -5.932]} rotation={[Math.PI / 2, 0, 0]} scale={[0.5, 1, 0.7]} />
-      <mesh geometry={nodes.Cube043.geometry} material={materials['aw-cream']} position={[-11.204, 1.95, -9.28]} scale={[0.5, 2, 1]} />
-      <mesh geometry={nodes.Cube044.geometry} material={materials['aw-grey']} position={[-11.204, 1.95, -9.28]} scale={[0.5, 2, 1]} />
-      <mesh geometry={nodes.Cube045.geometry} material={materials['aw-window1']} position={[-11.204, 1.95, -9.28]} scale={[0.5, 2, 1]} />
-      <mesh geometry={nodes.Cube046.geometry} material={materials['aw-cream']} position={[-7.619, 1.95, -9.28]} scale={[0.5, 2, 1]} />
-      <mesh geometry={nodes.Cube047.geometry} material={materials['aw-grey']} position={[-7.619, 1.95, -9.28]} scale={[0.5, 2, 1]} />
-      <mesh geometry={nodes.Cube048.geometry} material={materials['aw-window1']} position={[-7.619, 1.95, -9.28]} scale={[0.5, 2, 1]} />
-      <mesh geometry={nodes.Cube009.geometry} material={materials['rc-body.002']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
-      <mesh geometry={nodes.Cube010.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
-      <mesh geometry={nodes.Cube011.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} />
-      <mesh geometry={nodes.Cube012.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
-      <mesh geometry={nodes.Cube013.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
-      <mesh geometry={nodes.Cube014.geometry} material={materials['rc-roof']} position={[-1.837, 0, -7.412]} scale={[1, 0.675, 0.5]} />
-      <mesh geometry={nodes.Cube015.geometry} material={materials['rc-roof']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
-      <mesh geometry={nodes.Cube016.geometry} material={materials['rc-roof1']} position={[0.663, 3, -6.912]} scale={0.999} />
-      <mesh geometry={nodes.Cylinder031.geometry} material={materials['rc-roof']} position={[-1.587, 0, -6.312]} scale={[4, 9.2, 4]} />
-      <mesh geometry={nodes.Cylinder032.geometry} material={materials['rc-roof']} position={[-2.587, 0, -6.312]} scale={[4, 9.2, 4]} />
-      <mesh geometry={nodes.Cube017.geometry} material={materials['rc-roof']} position={[-1.587, 1.15, -6.912]} scale={[0.3, 0.1, 1]} />
-      <mesh geometry={nodes.Cube018.geometry} material={materials['rc-roof']} position={[-2.587, 1.15, -6.912]} scale={[0.3, 0.1, 1]} />
-      <mesh geometry={nodes.Cube019.geometry} material={materials['rc-white']} position={[-2.337, 1.65, -6.037]} scale={[0.038, 0.075, 0.025]} />
-      <mesh geometry={nodes.Cube020.geometry} material={materials['rc-white']} position={[3.038, 1.65, -6.037]} scale={[0.038, 0.075, 0.025]} />
-      <mesh geometry={nodes.Cube021.geometry} material={materials['rc-white']} position={[3.038, 0.6, -6.037]} scale={[0.038, 0.075, 0.025]} />
-      <mesh geometry={nodes.Cube022.geometry} material={materials['rc-white']} position={[0.939, 0.6, -6.037]} scale={[0.038, 0.075, 0.025]} />
-      <mesh geometry={nodes.Cube023.geometry} material={materials['rc-white']} position={[0.663, 0, -6.912]} />
-      <mesh geometry={nodes.Cylinder033.geometry} material={materials['rc-roof']} position={[-3.737, 0, -8.278]} rotation={[0, Math.PI / 2, 0]} scale={[4, 10.8, 4]} />
-      <mesh geometry={nodes.Cylinder034.geometry} material={materials['rc-roof']} position={[-3.737, 0, -7.278]} rotation={[0, Math.PI / 2, 0]} scale={[1, 0.675, 1]} />
-      <mesh geometry={nodes.Cube024.geometry} material={materials['rc-metallic']} position={[-3.187, 1.35, -7.912]} scale={[1, 0.182, 1]} />
-      <mesh geometry={nodes.Cube025.geometry} material={materials['rc-sidewindow']} position={[-3.187, 1.65, -7.912]} scale={[0.9, 1, 0.9]} />
-      <mesh geometry={nodes.Cube026.geometry} material={nodes.Cube026.material} position={[-3.132, 1.846, -7.912]} scale={[0.95, 0.025, 1]} />
-      <mesh geometry={nodes.Cube027.geometry} material={materials['rc-metallic']} position={[2.35, 3, -6.736]} scale={[24, 4, 6]} />
-      <mesh geometry={nodes.Cylinder042.geometry} material={materials['rc-roof-metallic']} position={[1.054, 3, -7.221]} scale={[0.15, 1.25, 0.15]} />
-      <mesh geometry={nodes.Cube028.geometry} material={materials['rc-black-solar']} position={[2.35, 3.035, -6.711]} scale={[21.397, 3.566, 5.349]} />
-      <mesh geometry={nodes.Plane007.geometry} material={materials['rc-metallic']} position={[-4.237, 1.689, -7.912]} rotation={[0, 0, -Math.PI / 2]} />
-      <mesh geometry={nodes.Plane008.geometry} material={materials['rc-door']} position={[-0.07, 0.7, -5.811]} rotation={[-Math.PI / 2, 0, 0]} scale={[0.5, 1, 0.7]} />
+  const { nodes, materials } = useGLTF('models/university.glb') as GLTFResult
+  return (
+    <group {...props} dispose={null}>
+      <mesh castShadow receiveShadow geometry={nodes.Plane.geometry} material={materials.universitybase} position={[-8, 0, 0]} scale={[32, 16, 16]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder003.geometry} material={materials['sc-pillar']} position={[-21.809, 0, -9.944]} scale={[0.75, 0.761, 0.75]}>
+        <mesh castShadow receiveShadow geometry={nodes.base.geometry} material={materials['Material.001']} position={[0, 2.317, 0]} scale={[2.475, 2.292, 1.6]} />
+        <mesh castShadow receiveShadow geometry={nodes.basetexture.geometry} material={materials['sc-metal.001']} position={[0, 2.317, 0]} scale={[2.475, 2.292, 1.6]} />
+        <mesh castShadow receiveShadow geometry={nodes.baseceiling.geometry} material={materials['Material.001']} position={[0, 9.218, 0]} scale={[3, 0.093, 4.5]} />
+        <mesh castShadow receiveShadow geometry={nodes.baseceilingmid.geometry} material={materials['sc-metal.001']} position={[0, 6.95, 0]} scale={[0.45, 0.099, 4.1]} />
+        <mesh castShadow receiveShadow geometry={nodes.bridgeback.geometry} material={materials['sc-cream']} position={[0, 3.451, -2.21]} scale={[5, 0.246, 1.2]} />
+        <mesh castShadow receiveShadow geometry={nodes.bridgefront.geometry} material={materials['sc-cream']} position={[0, 3.451, 2.21]} scale={[5, 0.246, 1.2]} />
+        <mesh castShadow receiveShadow geometry={nodes.bridgemid.geometry} material={materials['sc-cream']} position={[0, 2.061, 0]} scale={[5, 0.246, 3.2]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder.geometry} material={materials['sc-pillar']} position={[0, 0, 3]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder001.geometry} material={materials['sc-pillar']} position={[0, 0, 3]} scale={[1, 0.986, 1]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder002.geometry} material={materials['sc-pillar']} position={[0, 0, 3]} scale={[1, 0.986, 1]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder0041.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder0051.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder0061.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder007.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder008.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder009.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder010.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder011.geometry} material={materials.silver} position={[-0.166, -0.077, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder012.geometry} material={materials['sc-pillar']} scale={[1, 0.986, 1]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder013.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder014.geometry} material={materials['sc-metal.001']} rotation={[Math.PI / 2, 0, 0]} scale={[0.25, 2.425, 0.246]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder015.geometry} material={materials['sc-pillar']} scale={[1, 0.986, 1]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder016.geometry} material={materials['sc-pillar']} position={[0, 0, -3]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder017.geometry} material={materials['sc-pillar']} position={[0, 0, -3]} scale={[1, 0.986, 1]} />
+        <mesh castShadow receiveShadow geometry={nodes.Cylinder018.geometry} material={materials['sc-pillar']} position={[0, 0, -3]} scale={[1, 0.986, 1]} />
+        <mesh castShadow receiveShadow geometry={nodes.frame1l.geometry} material={materials['sc-metal.001']} position={[-1.663, 7.771, 4.425]} rotation={[0, 0, -0.44]} scale={[1.456, 0.026, 0.077]} />
+        <mesh castShadow receiveShadow geometry={nodes.frame1r.geometry} material={materials['sc-metal.001']} position={[1.663, 7.771, 4.425]} rotation={[0, 0, 0.44]} scale={[1.456, 0.026, 0.077]} />
+        <mesh castShadow receiveShadow geometry={nodes.Plane001.geometry} material={materials['sc-yellowflag']} position={[-3.5, 2.465, 4.367]} rotation={[Math.PI / 2, 0, 0]} scale={[0.65, 1, 2.958]} />
+        <mesh castShadow receiveShadow geometry={nodes.Plane002.geometry} material={materials['sc-blackflag']} position={[3.5, 2.835, 4.367]} rotation={[Math.PI / 2, 0, 0]} scale={[0.65, 1, 2.218]} />
+        <mesh castShadow receiveShadow geometry={nodes.rib1.geometry} material={materials['sc-cream']} position={[0, 0.296, 3]} scale={[1.01, 0.005, 2.01]} />
+        <mesh castShadow receiveShadow geometry={nodes.rib1001.geometry} material={materials['sc-cream']} position={[0, 2.16, 3]} scale={[1.01, 0.005, 2.01]} />
+        <mesh castShadow receiveShadow geometry={nodes.rib1002.geometry} material={materials['sc-cream']} position={[0, 3.314, 3.245]} scale={[1.01, 0.005, 2.01]} />
+        <mesh castShadow receiveShadow geometry={nodes.right.geometry} material={materials['sc-cream']} position={[4.5, 0, 0]} scale={[1, 0.986, 2]} />
+        <mesh castShadow receiveShadow geometry={nodes.right001.geometry} material={materials['sc-cream']} position={[-4.5, 0, 0]} scale={[1, 0.986, 2]} />
+        <mesh castShadow receiveShadow geometry={nodes.right002.geometry} material={materials['sc-light']} position={[-4.5, 0, 0]} scale={[1, 0.986, 2]} />
+        <mesh castShadow receiveShadow geometry={nodes.right003.geometry} material={materials['sc-light']} position={[4.5, 0, 0]} scale={[1, 0.986, 2]} />
+      </mesh>
+      <mesh castShadow receiveShadow geometry={nodes.Cube001.geometry} material={materials['aw-bottom']} position={[-9.26, 0, -8]} scale={[3, 0.9, 2]} />
+      <mesh castShadow receiveShadow geometry={nodes.roof1002.geometry} material={materials['aw-cream']} position={[-9.26, 1.65, -8]} scale={[0.9, 0.038, 0.6]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube002.geometry} material={materials['aw-top']} position={[-9.26, 1.95, -8]} scale={[3, 2, 2]} />
+      <mesh castShadow receiveShadow geometry={nodes.roof1003.geometry} material={materials['aw-cream']} position={[-9.26, 5.8, -8]} scale={[0.9, 0.038, 0.6]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube003.geometry} material={materials['aw-trim']} position={[-9.26, 1.4, -8]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube029.geometry} material={materials['aw-trim']} position={[-9.26, 0.2, -8]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube030.geometry} material={materials['aw-trim']} position={[-9.26, 0.4, -8]} />
+      <mesh castShadow receiveShadow geometry={nodes.window001.geometry} material={materials['aw-border']} position={[-11.21, 0.65, -5.95]} rotation={[0, 0, -Math.PI]} scale={[-0.643, -0.301, -0.1]} />
+      <mesh castShadow receiveShadow geometry={nodes.window002.geometry} material={materials['aw-window1']} position={[-11.21, 0.65, -5.95]} rotation={[0, 0, -Math.PI]} scale={[-0.643, -0.301, -0.1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube042.geometry} material={materials['aw-cream']} position={[-9.41, 1.95, -5.958]} scale={[0.775, 2, 0.03]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder019.geometry} material={materials['aw-bottom']} position={[-7.078, 1.48, -7.138]} scale={[1.353, 0.15, 2.977]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder020.geometry} material={materials['aw-trim']} position={[-7.078, 0.2, -7.138]} scale={[1.407, 0.04, 3.083]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder021.geometry} material={materials['aw-trim']} position={[-7.078, 0.4, -7.138]} scale={[1.407, 0.04, 3.083]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder022.geometry} material={materials['aw-trim']} position={[-7.078, 1.4, -7.138]} scale={[1.407, 0.04, 3.083]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder023.geometry} material={materials['aw-bottom']} position={[-7.078, 0, -7.138]} scale={[1.353, 0.2, 2.977]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder024.geometry} material={materials['aw-window2']} position={[-7.078, 0.48, -7.138]} scale={[1.353, 0.5, 2.923]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube031.geometry} material={materials['aw-trim']} position={[-8.348, 0, -5.997]} rotation={[0, -0.611, 0]} scale={[0.03, 0.9, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder025.geometry} material={materials['aw-trim']} position={[-7.078, 1, -7.138]} scale={[1.407, 0.025, 3.083]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube032.geometry} material={materials['aw-window3']} position={[-8.279, 0.48, -6.02]} scale={[0.04, 0.5, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube034.geometry} material={materials['aw-trim']} position={[-6.209, 0.48, -5.737]} rotation={[0, Math.PI / 9, 0]} scale={[0.03, 0.7, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube035.geometry} material={materials['aw-trim']} position={[-5.825, 0.48, -5.998]} rotation={[0, 1.222, 0]} scale={[0.03, 0.7, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube036.geometry} material={materials['aw-trim']} position={[-6.208, 0.48, -8.536]} rotation={[-Math.PI, 0.305, -Math.PI]} scale={[0.03, 0.7, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube033.geometry} material={materials['aw-trim']} position={[-7.947, 0.48, -5.738]} rotation={[0, -Math.PI / 9, 0]} scale={[0.03, 0.7, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube037.geometry} material={materials['aw-trim']} position={[-7.628, 0.48, -5.738]} scale={[0.03, 0.5, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube038.geometry} material={materials['aw-trim']} position={[-6.528, 0.48, -5.738]} scale={[0.03, 0.5, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube039.geometry} material={materials['aw-trim']} position={[-5.818, 0, -6.512]} rotation={[0, Math.PI / 2, 0]} scale={[0.03, 0.9, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube040.geometry} material={materials['aw-trim']} position={[-5.818, 0, -7.612]} rotation={[0, Math.PI / 2, 0]} scale={[0.03, 0.9, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Text.geometry} material={materials['aw-text']} position={[-7.421, 1.161, -5.746]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube041.geometry} material={materials['aw-border']} position={[-9.41, 0, -5.996]} scale={[0.65, 0.775, 0.1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Plane009.geometry} material={materials['aw-window1']} position={[-9.41, 0.7, -5.932]} rotation={[Math.PI / 2, 0, 0]} scale={[0.5, 1, 0.7]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube043.geometry} material={materials['aw-cream']} position={[-11.204, 1.95, -9.28]} scale={[0.5, 2, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube044.geometry} material={materials['aw-grey']} position={[-11.204, 1.95, -9.28]} scale={[0.5, 2, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube045.geometry} material={materials['aw-window1']} position={[-11.204, 1.95, -9.28]} scale={[0.5, 2, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube046.geometry} material={materials['aw-cream']} position={[-7.619, 1.95, -9.28]} scale={[0.5, 2, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube047.geometry} material={materials['aw-grey']} position={[-7.619, 1.95, -9.28]} scale={[0.5, 2, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube048.geometry} material={materials['aw-window1']} position={[-7.619, 1.95, -9.28]} scale={[0.5, 2, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube009.geometry} material={materials['rc-body.002']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube010.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube011.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube012.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube013.geometry} material={materials['rc-window']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube014.geometry} material={materials['rc-roof']} position={[-1.837, 0, -7.412]} scale={[1, 0.675, 0.5]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube015.geometry} material={materials['rc-roof']} position={[0.663, 0, -6.912]} scale={[4, 1.5, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube016.geometry} material={materials['rc-roof1']} position={[0.663, 3, -6.912]} scale={0.999} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder031.geometry} material={materials['rc-roof']} position={[-1.587, 0, -6.312]} scale={[4, 9.2, 4]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder032.geometry} material={materials['rc-roof']} position={[-2.587, 0, -6.312]} scale={[4, 9.2, 4]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube017.geometry} material={materials['rc-roof']} position={[-1.587, 1.15, -6.912]} scale={[0.3, 0.1, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube018.geometry} material={materials['rc-roof']} position={[-2.587, 1.15, -6.912]} scale={[0.3, 0.1, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube019.geometry} material={materials['rc-white']} position={[-2.337, 1.65, -6.037]} scale={[0.038, 0.075, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube020.geometry} material={materials['rc-white']} position={[3.038, 1.65, -6.037]} scale={[0.038, 0.075, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube021.geometry} material={materials['rc-white']} position={[3.038, 0.6, -6.037]} scale={[0.038, 0.075, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube022.geometry} material={materials['rc-white']} position={[0.939, 0.6, -6.037]} scale={[0.038, 0.075, 0.025]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube023.geometry} material={materials['rc-white']} position={[0.663, 0, -6.912]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder033.geometry} material={materials['rc-roof']} position={[-3.737, 0, -8.278]} rotation={[0, Math.PI / 2, 0]} scale={[4, 10.8, 4]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder034.geometry} material={materials['rc-roof']} position={[-3.737, 0, -7.278]} rotation={[0, Math.PI / 2, 0]} scale={[1, 0.675, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube024.geometry} material={materials['rc-metallic']} position={[-3.187, 1.35, -7.912]} scale={[1, 0.182, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube025.geometry} material={materials['rc-sidewindow']} position={[-3.187, 1.65, -7.912]} scale={[0.9, 1, 0.9]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube026.geometry} material={nodes.Cube026.material} position={[-3.132, 1.846, -7.912]} scale={[0.95, 0.025, 1]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube027.geometry} material={materials['rc-metallic']} position={[2.35, 3, -6.736]} scale={[24, 4, 6]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cylinder042.geometry} material={materials['rc-roof-metallic']} position={[1.054, 3, -7.221]} scale={[0.15, 1.25, 0.15]} />
+      <mesh castShadow receiveShadow geometry={nodes.Cube028.geometry} material={materials['rc-black-solar']} position={[2.35, 3.035, -6.711]} scale={[21.397, 3.566, 5.349]} />
+      <mesh castShadow receiveShadow geometry={nodes.Plane007.geometry} material={materials['rc-metallic']} position={[-4.237, 1.689, -7.912]} rotation={[0, 0, -Math.PI / 2]} />
+      <mesh castShadow receiveShadow geometry={nodes.Plane008.geometry} material={materials['rc-door']} position={[-0.07, 0.7, -5.811]} rotation={[-Math.PI / 2, 0, 0]} scale={[0.5, 1, 0.7]} />
     </group>
   )
 }
