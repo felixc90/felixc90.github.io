@@ -1,5 +1,5 @@
-import { Environment, useScroll } from "@react-three/drei";
-import { LightRail, University } from "./models";
+import { Environment, useScroll, useTexture } from "@react-three/drei";
+import { LightRail, Map } from "./models";
 import { useEffect, useRef, useState } from "react";
 import { DirectionalLight } from "three";
 import { useFrame } from "@react-three/fiber";
@@ -13,6 +13,8 @@ interface CursorType {
 	x: number,
 	y: number
 };
+import Grass from "./models/GrassMesh";
+import GrassMesh from "./models/GrassMesh";
 
 export default function Experience()
 {
@@ -47,6 +49,7 @@ export default function Experience()
 		})
 	}, [])
 
+	
 	useFrame((state) => {
 		const newCameraPosition = new THREE.Vector3(
 			cameraPosition.x,
@@ -60,6 +63,7 @@ export default function Experience()
 		}
 	});
 
+
 	return (
 		<>
 			{/* <OrbitControls /> */}
@@ -67,17 +71,24 @@ export default function Experience()
 				<Pixelation granularity={2}/>
 			</EffectComposer>
 			<Environment preset="sunset"/>
-			<LightRail />
-			<University rotation={[0, Math.PI/2, 0]} />
+			{/* <LightRail /> */}
+			<Map rotation={[0, Math.PI/2, 0]} />
+			<GrassMesh surfaceMesh={new THREE.Mesh(new THREE.PlaneGeometry(10,10,10,10))}/>
 			<ambientLight intensity={0.1} />
       <directionalLight
 				ref={dirLight}
-        color="white"
-        position={[5, 15, 5]}
+				color="white"
+				position={[5, 15, 5]}
 				intensity={1}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      />
+				castShadow
+				shadow-camera-far={200}
+				shadow-camera-left={-50}
+				shadow-camera-right={50}
+				shadow-camera-top={50}
+				shadow-camera-bottom={-50}
+				shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+			/>
 			{dirLight.current && <directionalLightHelper args={[dirLight.current]} />}
 		</>
 	)

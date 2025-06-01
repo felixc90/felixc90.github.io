@@ -2,9 +2,10 @@ import { Canvas } from '@react-three/fiber'
 import Experience from './Experience'
 
 import { Leva } from 'leva'
-import { ScrollControls } from '@react-three/drei';
+import { Scroll, ScrollControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { INITIAL_CAMERA_POSITION, NUM_PAGES } from '../constants';
+import Home from './components/Home';
 
 function App() {
 
@@ -25,11 +26,10 @@ function App() {
 			>
 				<color attach="background" args={['black']} />
 				<ScrollControls pages={NUM_PAGES}>
-				{/* <Scroll> */}
 					<Experience />
-				{/* </Scroll> */}
-				{/* <Scroll html> */}
-				{/* </Scroll> */}
+				{/* <Scroll html>
+					<Home />
+				</Scroll> */}
 				</ScrollControls>
 			</Canvas>
     </div>
