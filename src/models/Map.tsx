@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 
 import * as THREE from 'three'
 import React, { JSX, useEffect, useRef, useState } from 'react'
-import { useGLTF, useScroll } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import GrassMesh from './GrassMesh';
 
 
@@ -13,7 +13,6 @@ export function Model(props: JSX.IntrinsicElements['group']) {
   const { scene } = useGLTF('models/map.glb');
 	const map = useRef<THREE.Object3D>(null);
 	const [grassMeshes, setGrassMeshes] = useState<THREE.Mesh[]>([]);
-
   useEffect(() => {
     const foundGrassMeshes: THREE.Mesh[] = []
 
@@ -21,6 +20,7 @@ export function Model(props: JSX.IntrinsicElements['group']) {
       if (child instanceof THREE.Mesh && child.name.startsWith('grass_')) {
         console.log('Found grass:', child)
         foundGrassMeshes.push(child)
+				console.log(child)
       }
     })
 
@@ -34,9 +34,9 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 				ref={map}
 				object={ scene }
 			/>
-			{/* {grassMeshes.map((mesh) => (
+			{grassMeshes.map((mesh) => (
         <GrassMesh key={mesh.uuid} surfaceMesh={mesh} />
-      ))} */}
+      ))}
 		</group>
 	)
 }

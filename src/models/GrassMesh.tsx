@@ -1,4 +1,4 @@
-import { useTexture } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { useEffect, useRef, useMemo, useState } from "react";
 import { MeshSurfaceSampler } from "three/examples/jsm/Addons.js";
@@ -12,15 +12,29 @@ interface GrassMeshProps {
 }
 
 const GrassMesh = ({ surfaceMesh }: GrassMeshProps) => {
-  const instancedMeshRef = useRef<THREE.InstancedMesh>(null);
-
-  const perlinNoise = useTexture("/perlinnoise.webp");
-  const grassTexture = useTexture("/grass.jpeg");
-
-  const grassGeometry = useMemo(() => new THREE.PlaneGeometry(0.1, 0.5), []);
-
-	const { grassMaterial, uniforms } = useMemo(() => {
-		const u = { uTime: { value: 0 } };
+		const { scene } = useGLTF('/grassLODs.glb');
+	
+		const instancedMeshRef = useRef<THREE.InstancedMesh>(null);
+		
+		const perlinNoise = useTexture("/perlinnoise.webp");
+		const grassTexture = useTexture("/grass.jpeg");
+		
+		const grassGeometry = useMemo(() => ({
+			geometry: new THREE.PlaneGeometry(0.1, 0.5)
+		}), []);
+		
+		useEffect(() => {
+			scene.traverse((child) => {
+					if (child instanceof THREE.Mesh) {
+						if (child.name.includes("LOD02")) {
+							child.geometry.scale(5, 0.5, 5);
+							grassGeometry.geometry = child.geometry;
+						}
+					}
+				});
+		}, [scene])
+		
+	const { grassMaterial } = useMemo(() => {
 
 		const mat = new GrassMaterial();
 		mat.setupTextures(grassTexture, perlinNoise);
@@ -29,7 +43,6 @@ const GrassMesh = ({ surfaceMesh }: GrassMeshProps) => {
 
 		return {
 			grassMaterial: mat,
-			uniforms: u
 		};
 	}, [grassTexture, perlinNoise]);
 
@@ -62,10 +75,9 @@ const GrassMesh = ({ surfaceMesh }: GrassMeshProps) => {
     setMatrices(newMatrices);
   }, [surfaceMesh]);
 
-	useFrame((state) => {
-		uniforms.uTime.value += state.clock.getDelta();
-		grassMaterial.update(uniforms.uTime.value);
-	})
+  useFrame(({ clock }) => {
+    grassMaterial.uniforms.uTime.value = clock.getElapsedTime();
+  });
 
   // Apply matrices to instanced mesh
   useEffect(() => {
@@ -81,7 +93,7 @@ const GrassMesh = ({ surfaceMesh }: GrassMeshProps) => {
       {/* Instanced grass */}
       <instancedMesh
         ref={instancedMeshRef}
-        args={[grassGeometry, grassMaterial.material, GRASS_COUNT]}
+        args={[grassGeometry.geometry, grassMaterial.material, GRASS_COUNT]}
         receiveShadow
         castShadow
       />

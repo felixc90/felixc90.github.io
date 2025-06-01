@@ -33,21 +33,21 @@ export default function Experience()
 		step: 0.1
 	}})
 
-	const [ , setCursor ] = useState<CursorType>({
-		x: 0,
-		y: 0
-	})
+	// const [ , setCursor ] = useState<CursorType>({
+	// 	x: 0,
+	// 	y: 0
+	// })
 
-	useEffect(() => {
-		window.addEventListener('mousemove', (event) =>
-		{
-			const newCursor = {
-				x: event.clientX / window.innerWidth - 0.5,
-				y: event.clientY / window.innerHeight - 0.5,
-			}
-			setCursor(newCursor);
-		})
-	}, [])
+	// useEffect(() => {
+	// 	window.addEventListener('mousemove', (event) =>
+	// 	{
+	// 		const newCursor = {
+	// 			x: event.clientX / window.innerWidth - 0.5,
+	// 			y: event.clientY / window.innerHeight - 0.5,
+	// 		}
+	// 		setCursor(newCursor);
+	// 	})
+	// }, [])
 
 	
 	useFrame((state) => {
@@ -71,9 +71,8 @@ export default function Experience()
 				<Pixelation granularity={2}/>
 			</EffectComposer>
 			<Environment preset="sunset"/>
-			{/* <LightRail /> */}
+			<LightRail />
 			<Map rotation={[0, Math.PI/2, 0]} />
-			<GrassMesh surfaceMesh={new THREE.Mesh(new THREE.PlaneGeometry(10,10,10,10))}/>
 			<ambientLight intensity={0.1} />
       <directionalLight
 				ref={dirLight}

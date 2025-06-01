@@ -33,7 +33,7 @@ void main() {
 	vec2 uWindDirection = vec2(1.0,1.0);
 	float uWindAmp = 0.1;
 	float uWindFreq = 50.;
-	float uSpeed = 5.0;
+	float uSpeed = 0;
 	float uNoiseFactor = 5.50;
 	float uNoiseSpeed = 0.001;
 
