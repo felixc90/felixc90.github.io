@@ -7,8 +7,9 @@ import * as THREE from 'three'
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
-import { NUM_PAGES, SEGMENT_LENGTH } from '../../constants';
+import { INITIAL_LR_POSITION, NUM_PAGES, SEGMENT_LENGTH } from '../../constants';
 import useModelStore from '../../store/useModelStore';
+import { useControls } from 'leva';
 
 
 export function Model() {
@@ -24,13 +25,31 @@ export function Model() {
 		}
 	} ,[lightRail, setLightRail]);
 
+	const {
+		lightRailControls,
+	} = useControls({ 
+		lightRailControls: true
+	})
+	
+	useEffect(() => {
+		if (lightRail.current) {
+			lightRail.current.position.set(
+				INITIAL_LR_POSITION.x,
+				INITIAL_LR_POSITION.y,
+				INITIAL_LR_POSITION.z,
+			);
+		}
+	}, [lightRail])
+
 	useFrame(() => {
+		if (!lightRailControls) return;
+		console.log(NUM_PAGES * SEGMENT_LENGTH * scroll.offset)
 		if (lightRail.current) {
 			lightRail.current.position.lerp(new THREE.Vector3(
 				lightRail.current.position.x,
 				lightRail.current.position.y, 
-				(NUM_PAGES - 1) * SEGMENT_LENGTH * scroll.offset
-			), 0.4);
+				NUM_PAGES * SEGMENT_LENGTH * scroll.offset
+			), 0.5);
 		}
 	});
 

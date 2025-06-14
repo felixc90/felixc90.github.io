@@ -5,7 +5,7 @@ import { MeshSurfaceSampler } from "three/examples/jsm/Addons.js";
 import { GrassMaterial } from "./GrassMaterial";
 import { useFrame } from "@react-three/fiber";
 
-const GRASS_COUNT = 10000;
+const GRASS_COUNT = 0;
 
 interface GrassMeshProps {
 	surfaceMesh: THREE.Mesh;
@@ -26,8 +26,8 @@ const GrassMesh = ({ surfaceMesh }: GrassMeshProps) => {
 		useEffect(() => {
 			scene.traverse((child) => {
 					if (child instanceof THREE.Mesh) {
-						if (child.name.includes("LOD02")) {
-							child.geometry.scale(5, 0.5, 5);
+						if (child.name.includes("LOD00")) {
+							child.geometry.scale(5, 5, 5);
 							grassGeometry.geometry = child.geometry;
 						}
 					}

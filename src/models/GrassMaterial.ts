@@ -1,4 +1,3 @@
-import { GUI } from "dat.gui";
 import * as THREE from "three";
 
 interface GrassUniformsInterface {
@@ -147,6 +146,7 @@ export class GrassMaterial {
 
         // use perlinNoise to vary the terrainHeight of the grass
         modelPosition.y += exp(texture2D(uNoiseTexture,vGlobalUV * uNoiseScale).r) * 0.5 * (1.-uv.y);
+				modelPosition.y /= 2.0;
 
         vec4 viewPosition = viewMatrix * modelPosition;
         vec4 projectedPosition = projectionMatrix * viewPosition;
@@ -263,29 +263,6 @@ export class GrassMaterial {
 	setupTextures(grassAlphaTexture: THREE.Texture, noiseTexture: THREE.Texture) {
 		this.uniforms.grassAlphaTexture.value = grassAlphaTexture;
 		this.uniforms.noiseTexture.value = noiseTexture;
-	}
-
-	setupGUI(gui: GUI) {
-		const folder = gui.addFolder("Grass Props");
-		folder.addColor(this.grassColorProps, "baseColor").onChange((value) => {
-			this.uniforms.baseColor.value.set(value);
-		});
-		folder.addColor(this.grassColorProps, "tipColor1").onChange((value) => {
-			this.uniforms.tipColor1.value.set(value);
-		});
-		folder.addColor(this.grassColorProps, "tipColor2").onChange((value) => {
-			this.uniforms.tipColor2.value.set(value);
-		});
-		folder.add(this.uniforms.uNoiseScale, "value", 0, 5).name("Noise Scale");
-		folder
-			.add(this.uniforms.uGrassLightIntensity, "value", 0, 2)
-			.name("Light Intensity");
-		folder
-			.add(this.uniforms.uShadowDarkness, "value", 0, 1)
-			.name("ShadowDarkness");
-		folder.add(this.uniforms.uEnableShadows, "value").name("Enable Shadows");
-
-		folder.open();
 	}
 }
 

@@ -2,10 +2,8 @@ import { Canvas } from '@react-three/fiber'
 import Experience from './Experience'
 
 import { Leva } from 'leva'
-import { Scroll, ScrollControls } from '@react-three/drei';
-import * as THREE from 'three';
+import { ScrollControls } from '@react-three/drei';
 import { INITIAL_CAMERA_POSITION, NUM_PAGES } from '../constants';
-import Home from './components/Home';
 
 function App() {
 
@@ -17,19 +15,16 @@ function App() {
 					height: "100vh"
 				}}
 				shadows
+				orthographic
 				camera={ {
-						fov: 45,
 						near: 0.1,
-						far: 200,
+						far: 1000,
+						zoom: 27.5,
 						position: INITIAL_CAMERA_POSITION,
 				} }
 			>
-				<color attach="background" args={['black']} />
 				<ScrollControls pages={NUM_PAGES}>
 					<Experience />
-				{/* <Scroll html>
-					<Home />
-				</Scroll> */}
 				</ScrollControls>
 			</Canvas>
     </div>
