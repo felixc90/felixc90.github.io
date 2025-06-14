@@ -6,7 +6,6 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 import * as THREE from 'three'
 import { JSX } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
-import GrassMesh from './GrassMesh';
 
 export function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes } = useGLTF('models/map.glb');
