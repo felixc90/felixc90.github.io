@@ -17,7 +17,7 @@ export function Model() {
 	const lightRail = useRef<THREE.Object3D>(null);
 	const { setLightRail } = useModelStore();
 
-	const scroll = useScroll();
+	// const scroll = useScroll();
 
 	useEffect(() => {
 		if (lightRail && lightRail.current) {
@@ -48,7 +48,7 @@ export function Model() {
 			lightRail.current.position.lerp(new THREE.Vector3(
 				lightRail.current.position.x,
 				lightRail.current.position.y, 
-				NUM_PAGES * SEGMENT_LENGTH * scroll.offset
+				0 // NUM_PAGES * SEGMENT_LENGTH * scroll.offset
 			), 0.5);
 		}
 	});

@@ -89,3 +89,11 @@
   font-weight: 700;
   font-style: italic;
 }
+
+@font-face {
+  font-family: 'Neue Montreal Mono';
+  src: url('/fonts/neue-montreal/NeueMontrealMono-Regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+

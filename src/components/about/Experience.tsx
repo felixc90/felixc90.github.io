@@ -1,12 +1,12 @@
 import { Center, OrbitControls, useScroll } from "@react-three/drei";
-import { LightRail, Map } from "./models";
+import { LightRail, Map } from "../../models";
 import { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three';
-import { INITIAL_CAMERA_POSITION, NUM_PAGES, SEGMENT_LENGTH } from '../constants';
-import useModelStore from "../store/useModelStore";
+import { INITIAL_CAMERA_POSITION, NUM_PAGES, SEGMENT_LENGTH } from '../../../constants';
+import useModelStore from "../../../store/useModelStore";
 import { useControls } from "leva";
-import { EffectComposer, ToneMapping } from "@react-three/postprocessing";
+import { EffectComposer, Pixelation, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 
 interface CursorType {
@@ -17,7 +17,7 @@ interface CursorType {
 export default function Experience()
 {
 	const { lightRail } = useModelStore();
-	const scroll = useScroll();
+	// const scroll = useScroll();
 
 	const {
 		cameraPosition,
@@ -56,7 +56,7 @@ export default function Experience()
 		const newCameraPosition = new THREE.Vector3(
 			cameraPosition.x,
 			cameraPosition.y, 
-			NUM_PAGES * SEGMENT_LENGTH * scroll.offset + cameraPosition.z
+			cameraPosition.z // + NUM_PAGES * SEGMENT_LENGTH * scroll.offset
 		);
 		state.camera.position.lerp(newCameraPosition, 0.5);
 
@@ -75,6 +75,7 @@ export default function Experience()
 		<>
 			{!lightRailControls && <OrbitControls /> }
 			<EffectComposer>
+				<Pixelation granularity={2} />
 				<ToneMapping mode={ ToneMappingMode.ACES_FILMIC } />
 			</EffectComposer>
 			<Center>
@@ -84,4 +85,3 @@ export default function Experience()
 		</>
 	)
 }
-
