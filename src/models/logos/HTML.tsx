@@ -12,7 +12,7 @@ export function Model() {
 		}
 	})
 	return (
-		<group ref={ref} rotation={[0, -Math.PI / 2, 0]}>
+		<group ref={ref} rotation={[0, -3 * Math.PI / 4, 0]} >
 			<mesh scale={1} geometry={nodes['Cube'].geometry}>
 				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#f16529'}/>
 			</mesh>
