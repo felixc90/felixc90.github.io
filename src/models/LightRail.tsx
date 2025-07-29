@@ -24,12 +24,6 @@ export function Model() {
 			setLightRail(lightRail as React.RefObject<THREE.Object3D<THREE.Object3DEventMap>>);
 		}
 	} ,[lightRail, setLightRail]);
-
-	const {
-		lightRailControls,
-	} = useControls({ 
-		lightRailControls: true
-	})
 	
 	useEffect(() => {
 		if (lightRail.current) {
@@ -42,13 +36,11 @@ export function Model() {
 	}, [lightRail])
 
 	useFrame(() => {
-		if (!lightRailControls) return;
-		console.log(NUM_PAGES * SEGMENT_LENGTH * scroll.offset)
 		if (lightRail.current) {
 			lightRail.current.position.lerp(new THREE.Vector3(
 				lightRail.current.position.x,
 				lightRail.current.position.y, 
-				0 // NUM_PAGES * SEGMENT_LENGTH * scroll.offset
+				0
 			), 0.5);
 		}
 	});

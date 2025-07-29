@@ -3,11 +3,11 @@ import { LightRail, Map } from "../../models";
 import { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three';
-import { INITIAL_CAMERA_POSITION, NUM_PAGES, SEGMENT_LENGTH } from '../../../constants';
 import useModelStore from "../../../store/useModelStore";
 import { useControls } from "leva";
 import { EffectComposer, Pixelation, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
+import { INITIAL_CAMERA_POSITION } from "../../../constants";
 
 interface CursorType {
 	x: number,
@@ -56,18 +56,9 @@ export default function Experience()
 		const newCameraPosition = new THREE.Vector3(
 			cameraPosition.x,
 			cameraPosition.y, 
-			cameraPosition.z // + NUM_PAGES * SEGMENT_LENGTH * scroll.offset
+			cameraPosition.z
 		);
 		state.camera.position.lerp(newCameraPosition, 0.5);
-
-		if (lightRail && lightRail.current) {
-			state.camera.lookAt(new THREE.Vector3(
-				0, 
-				(lightRail?.current.position.y ?? 0) - 2.5,
-				(lightRail?.current.position.z ?? 0)
-			))
-		}
-		
 	});
 
 
@@ -75,7 +66,6 @@ export default function Experience()
 		<>
 			{!lightRailControls && <OrbitControls /> }
 			<EffectComposer>
-				<Pixelation granularity={2} />
 				<ToneMapping mode={ ToneMappingMode.ACES_FILMIC } />
 			</EffectComposer>
 			<Center>

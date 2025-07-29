@@ -1,3 +1,5 @@
+import { NeueMontrealMono } from "../../styles/fonts"
+
 const navigation = [
   { name: 'About', href: '/about', current: false },
   { name: 'Work', href: '/work', current: false },
@@ -6,23 +8,19 @@ const navigation = [
 
 export default function Navbar() {
   return (
-    <nav className="fixed w-full py-2 px-8">
-			<div className="flex text-xl">
-				<div className="w-1/2">
-					<a
-						className="text-3xl"
-						href={'/'}
-					>
-						Felix Cao
-					</a>
+    <nav className="fixed w-full mt-10 px-8 z-10">
+			<div className="flex justify-between">
+				<div className="">
+					LOGO
 				</div>
-				<div className="flex w-1/2 my-auto justify-around">
+				<div className="flex text-md gap-12">
 					{navigation.map((item) => (
 						<a
+							style={NeueMontrealMono}
 							key={item.name}
 							href={item.href}
 						>
-							{item.name}
+							[{item.name}]
 						</a>
 					))}
 				</div>

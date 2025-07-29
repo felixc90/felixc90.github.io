@@ -1,21 +1,22 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
-import Home from './pages/Home';
-import About from './pages/About';
-import Work from './pages/Work';
 import Navbar from './components/Navbar';
-import Contact from './pages/Contact';
+import Home from './sections/Home';
+import About from './sections/About';
+// import Work from './sections/Work';
+// import Contact from './sections/Contact';
+// import Skills from './sections/Skills';
+// import Education from './sections/Education';
 
 function App() {
   return (
-    <BrowserRouter>
+		<>
 			<Navbar />
-			<Routes>
-				<Route index element={<Home />} />
-				<Route path="about" element={<About />} />
-				<Route path="work" element={<Work />} />
-				<Route path="contact" element={<Contact />} />
-			</Routes>
-    </BrowserRouter>
+			<Home />
+			<About />
+			{/* <Education />
+			<Skills />
+			<Work />
+			<Contact /> */}
+		</>
   )
 }
 

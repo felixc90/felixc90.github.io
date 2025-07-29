@@ -1,25 +1,22 @@
 import Experience from "./Experience";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, CanvasProps } from "@react-three/fiber";
 import { INITIAL_CAMERA_POSITION } from "../../../constants";
 
-const University = () => {
+export default function University(props: CanvasProps) {
 	return (
 		<Canvas
-			style={{
-				height: "100vh"
-			}}
+			{...props}
 			shadows
 			orthographic
 			camera={ {
 					near: 0.1,
-					far: 1000,
+					far: 100,
 					zoom: 20,
 					position: INITIAL_CAMERA_POSITION,
 			} }
 		>
+			<ambientLight />
 			<Experience />
 		</Canvas>
 	)
 }
-
-export default University;
