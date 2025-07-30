@@ -1,0 +1,140 @@
+{
+	"skills": [
+		{
+			"name": "JavaScript",
+			"glb": "javascript.glb",
+			"colors": [
+				"#F0DB4F",
+				"#323330"
+			],
+			"description": ""
+		},
+		{
+			"name": "TypeScript",
+			"glb": "javascript.glb",
+			"colors": [
+				"#3178C6",
+				"#ffffff"
+			],
+			"description": ""
+		},
+		{
+			"name": "HTML",
+			"glb": "javascript.glb",
+			"colors": [
+				"#f16529",
+				"#ffffff"
+			],
+			"description": ""
+		},
+		{
+			"name": "CSS",
+			"glb": "javascript.glb",
+			"colors": [
+				"#663399",
+				"#ffffff"
+			],
+			"description": ""
+		},
+		{
+			"name": "React",
+			"glb": "react.glb",
+			"colors": [
+				"#61dafb"
+			],
+			"description": ""
+		},
+		{
+			"name": "Vue",
+			"glb": "vue.glb",
+			"colors": [
+				"#42b883",
+				"#35495e"
+			],
+			"description": ""
+		},
+		{
+			"name": "C",
+			"glb": "c.glb",
+			"colors": [
+				"#5c6bc0",
+				"#3949ab",
+				"283593"
+			],
+			"description": ""
+		},
+		{
+			"name": "C#",
+			"glb": "c.glb",
+			"colors": [
+				"#280068",
+				"#390091",
+				"#A179DC"
+			],
+			"description": ""
+		},
+		{
+			"name": "Java",
+			"glb": "java.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "Python",
+			"glb": "python.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "Docker",
+			"glb": "docker.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "Linux",
+			"glb": "linux.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "Git",
+			"glb": "git.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "Node",
+			"glb": "node.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "MongoDB",
+			"glb": "mongodb.glb",
+			"colors": [
+				""
+			],
+			"description": ""
+		},
+		{
+			"name": "SQL",
+			"glb": "sql.glb",
+			"colors": [
+				""
+			]
+		}
+	]
+}

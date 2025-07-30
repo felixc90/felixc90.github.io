@@ -1,25 +1,25 @@
-import { Text3D, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from 'three';
 
 export function Model() {
 	const ref = useRef<THREE.Group>(null)
-	const { nodes } = useGLTF('/models/javascript.glb');
-	useFrame((_, delta) => {
-		if (ref && ref.current) {
-			ref.current.rotation.y += delta * 2/3
-		}
-	})
-	return (
-		<group ref={ref} rotation={[0, -3 * Math.PI / 4, 0]} >
-			<mesh scale={1} geometry={nodes['Cube'].geometry}>
-				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#663399'}/>
+	const { nodes } = useGLTF('/models/react.glb');
+
+	return (	
+		<group ref={ref} scale={2.2}>
+			<mesh scale={1} geometry={nodes['Icosphere'].geometry}>
+				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#61dafb'}/>
 			</mesh>
-			<Text3D font="./fonts/logos/Dinnish-Bold.json" rotation={[0, Math.PI / 2, 0]} position={[.4,-.7,.3]} scale={0.65}>
-				CSS
-				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#FFFFFF'}/>
-			</Text3D>
+			<mesh scale={1} geometry={nodes['Torus001'].geometry}>
+				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#61dafb'}/>
+			</mesh>
+			<mesh scale={1} geometry={nodes['Torus002'].geometry}>
+				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#61dafb'}/>
+			</mesh>
+			<mesh scale={1} geometry={nodes['Torus003'].geometry}>
+				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#61dafb'}/>
+			</mesh>
 		</group>
 	)
 }
