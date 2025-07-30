@@ -17,3 +17,5 @@ export function Model() {
 		</group>
 	)
 }
+
+useGLTF.preload('models/vue.glb')

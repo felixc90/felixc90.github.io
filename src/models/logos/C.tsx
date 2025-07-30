@@ -27,3 +27,5 @@ export function Model() {
 		</group>
 	)
 }
+
+useGLTF.preload('models/c.glb')

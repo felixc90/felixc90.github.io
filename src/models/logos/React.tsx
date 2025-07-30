@@ -23,3 +23,5 @@ export function Model() {
 		</group>
 	)
 }
+
+useGLTF.preload('models/react.glb')
