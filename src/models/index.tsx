@@ -5,7 +5,6 @@ export { Model as CSS } from "./logos/CSS";
 export { Model as HTML } from "./logos/HTML";
 export { Model as React } from "./logos/React";
 export { Model as Vue } from "./logos/Vue";
-export { Model as Java } from "./logos/Java";
 export { Model as TypeScript } from "./logos/TypeScript";
 export { Model as CSharp } from "./logos/CSharp";
 export { Model as C } from "./logos/C";
