@@ -5,39 +5,6 @@ import Anchor from "../typography/Anchor";
 import { useNavigate } from "react-router";
 
 const Footer = () => {
-	const pages = [ 
-		{
-			name: "Home",
-			link: "/"
-		},
-		{
-			name: "About",
-			link: "/about"
-		},
-		{
-			name: "Contact",
-			link: "/contact"
-		}
-	]
-
-	const links = [ 
-		{
-			name: "Resume",
-			link: "",
-		},
-		{
-			name: "Email",
-			link: "",
-		},
-		{
-			name: "LinkedIn",
-			link: "https://www.linkedin.com/in/felix-cao/",
-		},
-		{
-			name: "GitHub",
-			link: "https://github.com/felixc90/"
-		}
-	]
 
 	const [time, setTime] = useState<Date>(new Date(0,0,0));
 
@@ -86,7 +53,7 @@ const Footer = () => {
 			<div className="flex justify-between w-full neue-montreal-mono text-sm font-[400] mb-4">
 				<div>©2025 FELIX CAO</div>
 				<div>{time.toLocaleTimeString().substring(0,5)} SYD</div>
-				<div>PROGRAMMING 101</div>
+				<div>DEVELOPING APPS</div>
 			</div>
 			<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
 					<Square color="#f8f3df" />
