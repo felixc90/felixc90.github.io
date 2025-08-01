@@ -1,0 +1,29 @@
+{
+	"projects": [
+		{
+			"name": "Achilles",
+			"description": "Strava Discord Bot",
+			"link": "Associate Software Engineer",
+			"technologies": ["JavaScript", "SQL Server", "MongoDB"]
+		},
+		{
+			"name": "Buckets",
+			"description": "Strava Discord Bot",
+			"link": "Strava Discord Bot",
+			"technologies": ["Java", "Spring Boot", "React Native", "PostGreSQL"],
+			"old-technologies": ["Node.js", "Express.js", "React"]
+		},
+		{
+			"name": "Portfolio",
+			"description": "Strava Discord Bot",
+			"link": "Associate Software Engineer",
+			"technologies": ["C#", "SQL Server", "Vue"]
+		},
+		{
+			"name": "WorkWaves",
+			"description": "Strava Discord Bot",
+			"link": "Associate Software Engineer",
+			"technologies": ["Node.js", "Express.js", "React", "PostGreSQL"]
+		}
+	]
+}

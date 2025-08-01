@@ -1,0 +1,18 @@
+{
+	"work": [
+		{
+			"key": "wtg",
+			"name": "WiseTech Global",
+			"date": "2024 - 2025",
+			"role": "Associate Software Engineer",
+			"technologies": ["C#", "Microsoft SQL Server", "Vue"]
+		},
+		{
+			"key": "cse",
+			"name": "UNSW School of Computer Science and Engineering",
+			"date": "2021 - present",
+			"role": "Casual Academic",
+			"technologies": ["C"]
+		}
+	]
+}

@@ -5,7 +5,7 @@ const navigation = [
 
 export default function Navbar() {
   return (
-    <nav className="fixed w-[calc(100%-6rem)] z-10 neue-montreal-mono font-[450]">
+    <nav className="fixed w-[calc(100%-8rem)] z-10 neue-montreal-mono font-[450]">
 			<div className="flex justify-between">
 				<div className="">
 					FELIX CAO

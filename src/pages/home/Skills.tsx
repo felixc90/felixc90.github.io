@@ -5,10 +5,10 @@ import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
 import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue } from '@/models'
 import * as THREE from 'three';
 import data from "@/data/skills.json";
-import Button from "@/components/ui/Button";
+import Button from "@/components/typography/Button";
 import Square from "@/components/ui/Square";
 
-const SkillsSection = () => {
+const Skills = () => {
 	
 	const { skills } = data;
 	const [activeLogo, setActiveLogo] = useState<number>(0);
@@ -31,12 +31,12 @@ const SkillsSection = () => {
 
 	return (
 		<div className="h-4/5 flex">
-			<div className="w-[calc(100%-6rem)] max-w-[50%] pr-8 flex-col flex justify-between" >
+			<div className="w-[calc(100%-8rem)] max-w-[50%] pr-12 flex-col flex justify-between" >
 				<div className="">
 					<Button variant="filled" disabled>
 						TECHNICAL SKILLS
 					</Button>
-					<div className="h-full w-full text-xl">
+					<div className="h-full w-full text-lg">
 						<div className="my-2">
 						{ bio }
 						</div>
@@ -52,9 +52,9 @@ const SkillsSection = () => {
 				<div className="flex justify-between neue-montreal-mono text-xs">
 						<div>
 							<div className="mb-3">COLOR</div>
-							{ skills[activeLogo].colors.map(color => {
+							{ skills[activeLogo].colors.map((color, i) => {
 								return (
-									<div className="flex mt-1">
+									<div className="flex mt-1" key={i}>
 										<Square size={3} color={color} />
 										<div className="ml-1">{ color.toUpperCase() }</div>
 									</div>
@@ -68,7 +68,7 @@ const SkillsSection = () => {
 			</div>
 
 			<Canvas  shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }} 
-			 	style={{ width: "calc(100% - 6rem)", border: "solid 1px", borderRadius: "1rem", borderColor: "white" }}>
+			 	style={{ width: "calc(100% - 8rem)", border: "solid 1px", borderRadius: "1rem", borderColor: "white" }}>
 				<color attach="background" args={['#111111']} />
 				<ambientLight intensity={1} />
 				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={3} castShadow />
@@ -102,4 +102,4 @@ const SkillsSection = () => {
 	)
 }
 
-export default SkillsSection;
+export default Skills;
