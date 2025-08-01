@@ -3,7 +3,7 @@ interface SquareProps {
 	size?: number
 }
 
-const Square = ({ color = "#282924", size = 2.5 }: SquareProps) => {
+const Square = ({ color = "var(--dark)", size = 2.5 }: SquareProps) => {
 		return (
 			<div style={{
 				backgroundColor: color, 

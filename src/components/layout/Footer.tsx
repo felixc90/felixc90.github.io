@@ -17,7 +17,7 @@ const Footer = () => {
 	const navigate = useNavigate();
 
 	return (
-		<footer className="bg-[#282924] pt-16 px-16 pb-8 text-[#f8f3df]">
+		<footer className="bg-darker pt-16 px-16 pb-8 text-[var(--light)]">
 			<div className="flex mb-16">
 				<div style={{ lineHeight: "2rem"}} className="text-6xl w-1/2 neuebit">Get in Touch</div>
 				<div className="flex w-1/4 flex-col gap-2 neue-montreal-mono font-[400] text-sm">
@@ -56,15 +56,15 @@ const Footer = () => {
 				<div>DEVELOPING APPS</div>
 			</div>
 			<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
-					<Square color="#f8f3df" />
+					<Square color="var(--light)" />
 				<div>Y2K DESIGN</div>
 				<div className="flex gap-4">
-					<Square color="#f8f3df" />
-					<Square color="#f8f3df" />
-					<Square color="#f8f3df" />
+					<Square color="var(--light)" />
+					<Square color="var(--light)" />
+					<Square color="var(--light)" />
 				</div>
 				<div>WITH REACT</div>
-				<Square color="#f8f3df" />
+				<Square color="var(--light)" />
 			</div>
 			
 		</footer>

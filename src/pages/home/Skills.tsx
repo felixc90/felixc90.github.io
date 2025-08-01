@@ -5,7 +5,7 @@ import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
 import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue } from '@/models'
 import * as THREE from 'three';
 import data from "@/data/skills.json";
-import Button from "@/components/typography/Button";
+import Button from "@/components/ui/Button";
 import Square from "@/components/ui/Square";
 
 const Skills = () => {

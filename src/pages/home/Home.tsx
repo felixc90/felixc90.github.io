@@ -8,7 +8,7 @@ const Home = () => {
 
 	return (
 		<div className="px-16 py-8">
-			<div className="h-[calc(100vh-8rem)] w-full ">
+			<div className="h-[calc(100vh-6rem)] w-full ">
 				<div className="flex flex-col justify-between h-full">
 					<div className="flex-col flex justify-around mt-18">
 						<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">

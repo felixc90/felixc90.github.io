@@ -1,4 +1,4 @@
-import Button from "@/components/typography/Button";
+import Button from "@/components/ui/Button";
 
 const WTG = () => {
 

@@ -3,10 +3,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-dark: var(--dark);
+	--color-darker: var(--darker);
+  --color-light: var(--light);
+	--color-lighter: var(--lighter);
+}
+
+:root {
+  --light: #f8f3df;
+	--lighter: #FDFBF4;
+  --dark: #282924;
+	--darker: #151613;
+}
+
 body
 {
-	background: #f8f3df;
-	color: #282924;
+	background: var(--light);
+	color: var(--dark);
 	font-family: 'Neue Montreal';
 }
 
