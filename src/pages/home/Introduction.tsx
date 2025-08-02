@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 const Introduction = () => {
 	const [fullScreen, setFullScreen] = useState<boolean>(false)
 
-	const miniStyle = { width: "28rem", height: "16rem", border: "solid 1px", borderRadius: "1rem", borderColor: "var(--lighter)", margin: "0 auto", transition: "all 0.3s ease-in-out", };
+	const miniStyle = { width: "28rem", height: "16rem", border: "solid 1px", borderRadius: "1rem", borderColor: "var(--lighter)", margin: "0 auto", transition: "all 0.3s ease-in-out"};
 
 	const fullStyle = { width: "100vw", height: "100vh", position: "fixed", padding:"0", margin: "0", top: "0", left: "0", zIndex: "20", transition: "all 0.3s ease-in-out", };
 
@@ -35,7 +35,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 
 	const items = [
 		{
-			name: "Education Summary",
+			name: "Academic Summary",
 			description: ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."]
 		},
 		{
@@ -69,6 +69,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 							zoom: 10,
 							position: new THREE.Vector3(30, 15, 30),
 					} }
+					className={fullScreen ? "" : "hover:cursor-pointer"}
 					style={fullScreen ? fullStyle : miniStyle}
 					onClick={() => { requestAnimationFrame(() => setFullScreen(true));}}
 				>

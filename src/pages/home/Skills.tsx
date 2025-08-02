@@ -23,17 +23,17 @@ const Skills = () => {
 		return <group ref={ref}>{children}</group>;
 	}
 
-	const bio = "Throughout my software engineering journey, I've worked with variety of tools." +
+	const bio = "Throughout my software engineering journey, I've worked with variety of tools. " +
 	"Here's a list of technologies I've used, from the ones I know best to the ones I'm still growing with:"
 
 	return (
-		<div className="h-4/5 flex">
-			<div className="w-[calc(100%-8rem)] max-w-[50%] pr-12 flex-col flex justify-between" >
+		<div className="h-4/5 flex w-full flex-col md:flex-row">
+			<div className="w-full md:w-[calc(100%-8rem)] md:max-w-[50%] md:pr-12 flex-col flex justify-between" >
 				<div className="">
 					<Button variant="filled" disabled>
 						TECHNICAL SKILLS
 					</Button>
-					<div className="h-full w-full text-xl">
+					<div className="h-full w-full lg:text-xl md:text-sm">
 						<div className="my-2">
 						{ bio }
 						</div>
@@ -46,7 +46,7 @@ const Skills = () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex justify-between neue-montreal-mono text-xs">
+				<div className="flex justify-between neue-montreal-mono text-xs my-8">
 						<div>
 							<div className="mb-3">COLOR</div>
 							{ skills[activeLogo].colors.map((color, i) => {
@@ -65,7 +65,8 @@ const Skills = () => {
 			</div>
 
 			<Canvas  shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }} 
-			 	style={{ width: "calc(100% - 8rem)", border: "solid 1px", borderRadius: "1rem", borderColor: "white" }}>
+				className="w-[calc(100%-8rem)]"
+			 	style={{ border: "solid 1px", borderRadius: "1rem", borderColor: "white" }}>
 				<color attach="background" args={['#111111']} />
 				<ambientLight intensity={1} />
 				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={3} castShadow />

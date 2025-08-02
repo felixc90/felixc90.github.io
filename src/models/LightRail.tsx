@@ -18,7 +18,7 @@ export function Model() {
 		if (lightRail.current) {
 			let increment = 0.5;
 			if (Math.abs(lightRail.current.position.z) < 0.2) {
-				increment = 0.0015;
+				increment = 0.002;
 			}
 			lightRail.current.position.lerp(new THREE.Vector3(
 				lightRail.current.position.x,

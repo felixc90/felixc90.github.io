@@ -8,10 +8,10 @@ import { EffectComposer, Noise, Pixelation, ToneMapping } from "@react-three/pos
 import { ToneMappingMode } from "postprocessing";
 import { lerp } from "three/src/math/MathUtils.js";
 
-interface CursorType {
-	x: number,
-	y: number
-};
+// interface CursorType {
+// 	x: number,
+// 	y: number
+// };
 
 interface Props {
 	fullScreen: boolean;
@@ -38,7 +38,7 @@ export default function Experience({ fullScreen }: Props)
 
 	useFrame((state) => {
 		const newZoom = fullScreen ? 20 : 10;
-		state.camera.zoom = lerp(state.camera.zoom, newZoom, 0.1)
+		state.camera.zoom = lerp(state.camera.zoom, newZoom, 0.02)
 		state.camera.updateProjectionMatrix();
 	});
 
