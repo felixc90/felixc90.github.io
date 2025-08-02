@@ -4,52 +4,39 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 */
 
 import * as THREE from 'three'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
-import { INITIAL_LR_POSITION, NUM_PAGES, SEGMENT_LENGTH } from '../../constants';
-import useModelStore from '../../store/useModelStore';
-import { useControls } from 'leva';
+
 
 
 export function Model() {
   const { scene } = useGLTF('models/light-rail.glb');
 	const lightRail = useRef<THREE.Object3D>(null);
-	const { setLightRail } = useModelStore();
-
-	// const scroll = useScroll();
-
-	useEffect(() => {
-		if (lightRail && lightRail.current) {
-			setLightRail(lightRail as React.RefObject<THREE.Object3D<THREE.Object3DEventMap>>);
-		}
-	} ,[lightRail, setLightRail]);
-	
-	useEffect(() => {
-		if (lightRail.current) {
-			lightRail.current.position.set(
-				INITIAL_LR_POSITION.x,
-				INITIAL_LR_POSITION.y,
-				INITIAL_LR_POSITION.z,
-			);
-		}
-	}, [lightRail])
 
 	useFrame(() => {
 		if (lightRail.current) {
+			let increment = 0.5;
+			if (Math.abs(lightRail.current.position.z) < 0.2) {
+				increment = 0.0015;
+			}
 			lightRail.current.position.lerp(new THREE.Vector3(
 				lightRail.current.position.x,
 				lightRail.current.position.y, 
-				0
+				lightRail.current.position.z + increment
 			), 0.5);
 		}
+		if (lightRail.current && lightRail.current.position.z > 50) {
+			lightRail.current.position.z = -50;
+		}
 	});
-
+	
 	return (
 		<primitive
 			ref={lightRail}
 			object={ scene }
 			scale={ 0.05 }
+			position={new THREE.Vector3(18,0,0)}
     />
 	)
 }

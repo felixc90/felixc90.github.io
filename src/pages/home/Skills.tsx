@@ -23,11 +23,8 @@ const Skills = () => {
 		return <group ref={ref}>{children}</group>;
 	}
 
-	const bio = "Throughout my software engineering journey, I've come to love working on complex problems that impact real people and crafting elegant solutions to such challenges. " +
-	"I'm especially drawn to software design and data engineering, where I've found the work both challenging and rewarding. "+
+	const bio = "Throughout my software engineering journey, I've worked with variety of tools." +
 	"Here's a list of technologies I've used, from the ones I know best to the ones I'm still growing with:"
-
-
 
 	return (
 		<div className="h-4/5 flex">
@@ -36,7 +33,7 @@ const Skills = () => {
 					<Button variant="filled" disabled>
 						TECHNICAL SKILLS
 					</Button>
-					<div className="h-full w-full text-lg">
+					<div className="h-full w-full text-xl">
 						<div className="my-2">
 						{ bio }
 						</div>

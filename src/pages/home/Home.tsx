@@ -3,6 +3,7 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Work from './Work';
 import Title from "@/components/typography/Title";
+import Introduction from "./Introduction";
 
 const Home = () => {
 
@@ -38,10 +39,13 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-			<div className="h-screen w-full mt-48">
+			<div className="h-screen w-full my-32">
+				<Introduction />
+			</div>
+			<div className="h-screen w-full my-16">
 				<Skills />
 			</div>
-			<div>
+			<div className="w-full my-16">
 				<Work />
 			</div>
 			<div className="w-full my-16">
