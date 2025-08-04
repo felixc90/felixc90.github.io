@@ -1,11 +1,10 @@
-import Title from "@/components/typography/Title";
 import Button from "@/components/ui/Button";
 import Square from "@/components/ui/Square";
 
 const Contact = () => {
 
 	return (
-		<div className="bg-light h-[calc(100vh+6rem)] px-16 py-8 text-dark">
+		<div className="bg-light min-h-[calc(100vh+6rem)] px-16 py-8 text-dark">
 			<div className="flex-col flex justify-around mt-14">
 				<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
 					<div className="flex gap-4">

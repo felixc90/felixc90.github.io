@@ -39,7 +39,7 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-			<div className="h-screen w-full my-32">
+			<div className="min-h-screen h-fit w-full my-32">
 				<Introduction />
 			</div>
 			<div className="md:h-screen w-full pt-16">

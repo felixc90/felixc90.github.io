@@ -14,7 +14,7 @@ export default function Navbar() {
 				<Button onClick={() => navigate("/")} variant="filled">
 					FELIX CAO
 				</Button>
-				<div className="flex text-sm gap-12">
+				<div className="flex text-sm gap-12 mix-blend-color">
 					{navigation.map((item) => (
 						<a
 							key={item.name}

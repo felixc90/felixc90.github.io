@@ -7,16 +7,17 @@ interface CardProps {
 		description: string;
 		link: string;
 		technologies: string[];
+		alt: string;
 	}
 }
 
 const Card = ({ data }: CardProps) => {
-	const {name, description, link, image, technologies} = data;
+	const {name, description, link, image, alt, technologies} = data;
 
 	return (
 		<div className="h-96 bg-darker rounded-lg p-3 flex flex-col">
 			<div className="rounded-lg w-full h-42 overflow-clip">
-				<img src={image} />
+				<img src={image} alt={alt} />
 			</div>
 			<div className="ml-2 text-lighter font-[300] flex flex-col justify-between h-full">
 				<div>

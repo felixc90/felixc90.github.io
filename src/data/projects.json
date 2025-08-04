@@ -5,28 +5,32 @@
 			"description": "Strava Discord Bot",
 			"link": "Associate Software Engineer",
 			"technologies": ["JavaScript", "Discord.js", "MongoDB"],
-			"image": "/images/test.png"
+			"image": "/images/test.png",
+			"alt": "Alt"
 		},
 		{
 			"name": "Buckets",
 			"description": "Strava Discord Bot",
 			"link": "Strava Discord Bot",
 			"technologies": ["Java", "Spring Boot", "React Native", "PostGreSQL"],
-			"image": "/images/test.png"
+			"image": "/images/test.png",
+			"alt": "Alt"
 		},
 		{
 			"name": "Portfolio",
 			"description": "Strava Discord Bot",
 			"link": "Associate Software Engineer",
 			"technologies": ["React.js", "Three.js", "Tailwind"],
-			"image": "/images/test.png"
+			"image": "/images/test.png",
+			"alt": "Alt"
 		},
 		{
 			"name": "WorkWaves",
 			"description": "Strava Discord Bot",
 			"link": "Associate Software Engineer",
 			"technologies": ["Node.js", "Express.js", "React", "PostGreSQL"],
-			"image": "/images/test.png"
+			"image": "/images/test.png",
+			"alt": "Alt"
 		}
 	]
 }

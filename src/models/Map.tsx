@@ -51,6 +51,9 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 				<mesh geometry={ nodes.grass.geometry } position={ nodes.grass.position} rotation={ nodes.grass.rotation} ref={grassRef}>
 						<meshBasicMaterial map={ terrainTexture } />
 				</mesh>
+				<mesh geometry={ nodes.globe.geometry } position={ nodes.globe.position} rotation={ nodes.globe.rotation} >
+						<meshStandardMaterial color={"#333333"} />
+				</mesh>
 			</group>
 	)
 }
