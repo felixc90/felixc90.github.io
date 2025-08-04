@@ -142,7 +142,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 												<br /> :
 												line == "Academic Transcript" ?
 												<div className="flex flex-col hover:cursor-pointer hover:underline pointer-events-auto" onClick={()=> window.open("/documents/transcript.pdf")}>
-													{ line }
+													Get { line }
 												</div> :
 												<div className="flex flex-col pointer-events-auto">
 													{ line }
