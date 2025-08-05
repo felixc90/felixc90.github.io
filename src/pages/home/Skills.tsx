@@ -1,27 +1,38 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, Lightformer } from '@react-three/drei'
+import { Environment, Html, Lightformer } from '@react-three/drei'
 import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
 import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue, Git, SQL, Java, Python, MongoDB, Docker } from '@/models'
 import * as THREE from 'three';
 import data from "@/data/skills.json";
 import Button from "@/components/ui/Button";
 import Square from "@/components/ui/Square";
+import { Pause, Play } from "lucide-react";
 
 const Skills = () => {
 	
 	const { skills } = data;
 	const [activeLogo, setActiveLogo] = useState<number>(0);
+	const [ paused, setPaused ] = useState(false);
+	const [angle, setAngle] = useState(0);
 
 	const Rotating = ({ speed, children, axis }: { speed: number, children: React.ReactNode, axis: "x" | "y" | "z" }) => {
 		const ref = useRef<THREE.Group>(null);
-		useFrame((state) => {
-			if (ref.current) {
-				ref.current.rotation[axis] = state.clock.elapsedTime * speed;
+		useFrame((_,delta) => {
+			if (ref.current && !paused) {
+				const newAngle = angle + delta * speed;
+				setAngle(newAngle);
 			}
 		});
+		useEffect(() => {
+			if (ref.current) {
+				ref.current.rotation[axis] = angle;
+			}
+		}, [axis])
 		return <group ref={ref}>{children}</group>;
 	}
+
+	
 
 	const bio = "Throughout my software engineering journey, I've worked with variety of tools. " +
 	"Here's a list of technologies I've used, from the ones I know best to the ones I'm still growing with:"
@@ -70,10 +81,18 @@ const Skills = () => {
 						</div>
 				</div>
 			</div>
-
 			<Canvas  shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }} 
 				className="w-[calc(100%-8rem)]"
 			 	style={{ border: "solid 1px", borderRadius: "1rem", borderColor: "white" }}>
+				<Html as={'div'} fullscreen>
+					<div className="w-full flex h-full p-3">
+						<div className="w-full flex flex-col-reverse h-full">
+							<div className="text-lighter/50 hover:cursor-pointer" onClick={() => setPaused(!paused)}>
+								{ paused ? <Play /> : <Pause />}
+							</div>
+						</div>
+					</div>
+				</Html>
 				<color attach="background" args={['#111111']} />
 				<ambientLight intensity={1} />
 				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={3} castShadow />
