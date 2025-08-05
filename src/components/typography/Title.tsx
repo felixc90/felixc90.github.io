@@ -4,15 +4,13 @@ const Title = ({ children }: { children: React.ReactNode }) => {
 	const style: CSSProperties = {
 		fontFamily: "Mondwest",
 		fontWeight: "800",
-		fontSize: "10rem",
 		marginTop: "4rem",
-		lineHeight: "9rem",
 		marginLeft: "auto",
 		marginRight: "auto",
 	}
 
 	return (
-		<div style={style}>
+		<div style={style} className="text-8xl/28 md:text-9xl lg:text-[10rem]">
 			{ children }
 		</div>
 	)

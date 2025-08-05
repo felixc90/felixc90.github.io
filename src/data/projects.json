@@ -3,34 +3,35 @@
 		{
 			"name": "Achilles",
 			"description": "Strava Discord Bot",
-			"link": "Associate Software Engineer",
+			"link": "https://github.com/felixc90/Strava-Discord-Bot",
 			"technologies": ["JavaScript", "Discord.js", "MongoDB"],
-			"image": "/images/test.png",
-			"alt": "Alt"
-		},
-		{
-			"name": "Buckets",
-			"description": "Strava Discord Bot",
-			"link": "Strava Discord Bot",
-			"technologies": ["Java", "Spring Boot", "React Native", "PostGreSQL"],
-			"image": "/images/test.png",
+			"image": "/images/achilles.png",
 			"alt": "Alt"
 		},
 		{
 			"name": "Portfolio",
 			"description": "Strava Discord Bot",
-			"link": "Associate Software Engineer",
+			"link": "https://github.com/felixc90/portfolio-website",
 			"technologies": ["React.js", "Three.js", "Tailwind"],
-			"image": "/images/test.png",
+			"image": "/images/portfolio.png",
+			"alt": "Image of 3D Model of UNSW from Portfolio website"
+		},
+		{
+			"name": "Buckets",
+			"description": "Strava Discord Bot",
+			"link": "https://devpost.com/software/buckets",
+			"technologies": ["Java", "Spring Boot", "React Native", "PostGreSQL"],
+			"image": "/images/buckets.jpg",
 			"alt": "Alt"
 		},
+
 		{
 			"name": "WorkWaves",
 			"description": "Strava Discord Bot",
-			"link": "Associate Software Engineer",
+			"link": "https://docs.google.com/document/d/1m9QaW7mSP9jG-Zk3LgHHsKBdsYDZca6zZxXBy49jUII/edit?usp=sharing",
 			"technologies": ["Node.js", "Express.js", "React", "PostGreSQL"],
-			"image": "/images/test.png",
-			"alt": "Alt"
+			"image": "/images/workwaves.png",
+			"alt": "Image of WorkWaves landing page"
 		}
 	]
 }

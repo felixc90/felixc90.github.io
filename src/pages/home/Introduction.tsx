@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import Experience from "./university/Experience";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from 'three';
 import { X } from "lucide-react";
 import { INITIAL_CAMERA_POSITION } from "@/constants";
@@ -10,7 +10,7 @@ const Introduction = () => {
 
 	const miniStyle = { width: "26rem", height: "16rem", border: "solid 1px", borderRadius: "1rem", borderColor: "var(--lighter)", margin: "0 auto", transition: "all 0.3s ease-in-out"};
 
-	const fullStyle = { width: "100vw", height: "100vh", position: "fixed", padding:"0", margin: "0", top: "0", left: "0", zIndex: "20", transition: "all 0.3s ease-in-out", };
+	const fullStyle = { width: "100vw", position: "fixed", padding:"0", margin: "0", top: "0", left: "0", zIndex: "20", transition: "all 0.3s ease-in-out", };
 
 	const getAge = () => {
     const birthDate = new Date(2003, 2, 17);
@@ -26,8 +26,21 @@ const Introduction = () => {
 		return years;
 	}
 
+	useEffect(() => {
+  if (fullScreen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+
+  // Clean up on unmount
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, [fullScreen]);
+
 	const bio = `
-Hi, I'm Felix — a ${getAge()}-year-old Australian software developer with a focus on back-end engineering. 
+Hi, I'm Felix — a ${getAge()}-year-old Australian software developer with a focus on backend engineering. 
 Through my experience with university and personal projects, and my time at WiseTech Global, I've developed a passion for crafting elegant solutions to complex, real world problems — particularly in system design and data engineering. 
 Recently, I've also been exploring WebGL and Three.js which I've used to create the Education section of my portfolio (click below).
 	`;
@@ -99,6 +112,34 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 		},
 	]
 
+	const Description = () => {
+		return items[active].description.map((line) => {
+				return (
+					line == "" ?
+					<br /> :
+					line == "Academic Transcript" ?
+					<div className="flex flex-col hover:cursor-pointer hover:underline pointer-events-auto" onClick={()=> window.open("/documents/transcript.pdf")}>
+						Get { line }
+					</div> :
+					<div className="flex flex-col pointer-events-auto">
+						{ line }
+					</div>
+				)
+			})
+	}
+
+		const Overflow = () => {
+		return items[active].overflow.map((line) => {
+			return (
+				<div className="flex flex-col pointer-events-auto">
+					{ line }
+				</div>
+			)
+		})
+	}
+
+	
+
 	return (
 		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-16 px-16 pt-24 pb-12">
 			<div className="max-w-[40rem] text-lg mx-auto text-center mt-8 mb-12">{ bio }</div>
@@ -132,20 +173,11 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 									{ items.map((item, i) => <div className={`hover:cursor-pointer mb-1 hover:underline text-xs pointer-events-auto ${i == active && "underline"}`} onClick={() => setActive(i)}>{ item.name }</div> )}
 								</div>
 								<div className="flex">
-									<div className="max-w-[24rem] text-xs mr-4 tracking-tight">
-										{ items[active].description.map((line) => {
-											return (
-												line == "" ?
-												<br /> :
-												line == "Academic Transcript" ?
-												<div className="flex flex-col hover:cursor-pointer hover:underline pointer-events-auto" onClick={()=> window.open("/documents/transcript.pdf")}>
-													Get { line }
-												</div> :
-												<div className="flex flex-col pointer-events-auto">
-													{ line }
-												</div>
-											)
-										})}
+									<div className="max-w-[24rem] text-xs mr-4 tracking-tight hidden sm:inline">
+										<Description />
+									</div>
+									<div className="inline text-sm sm:hidden max-w-34">
+										UNIVERSITY OF NEW SOUTH WALES, SYDNEY
 									</div>
 									<div>
 										< X onClick={() => setFullScreen(false)} className="hover:cursor-pointer pointer-events-auto "/>
@@ -154,17 +186,18 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 							</div>
 							<div className="flex justify-between">
 								<div className="text-sm flex flex-col-reverse pointer-events-auto">
-									UNIVERSITY OF NEW SOUTH WALES, SYDNEY
-								</div>
-								<div className="max-w-[24rem] text-xs mr-4 tracking-tight">
-										{ items[active].overflow.map((line) => {
-											return (
-												<div className="flex flex-col pointer-events-auto">
-													{ line }
-												</div>
-											)
-										})}
+									<div className="max-w-[24rem] text-xs mr-4 tracking-tight inline sm:hidden">
+										<Description />
+										<br/>
+										<Overflow />
 									</div>
+									<div className="text-sm hidden sm:inline">
+										UNIVERSITY OF NEW SOUTH WALES, SYDNEY
+									</div>
+								</div>
+								<div className="max-w-[24rem] text-xs mr-4 tracking-tight hidden sm:inline">
+									<Overflow />
+								</div>
 							</div>
 						</div>
 					</div>

@@ -19,7 +19,7 @@ const Footer = () => {
 	return (
 		<footer className="bg-darker pt-16 px-16 pb-8 text-[var(--light)] border-t-1 border-t-light">
 			<div className="flex mb-16">
-				<div style={{ lineHeight: "2rem"}} className="text-6xl w-1/2 neuebit">Get in Touch</div>
+				<div style={{ lineHeight: "3rem"}} className="text-6xl w-1/2 neuebit ">Get in Touch</div>
 				<div className="flex w-1/4 flex-col gap-2 neue-montreal-mono font-[400] text-sm">
 					<Anchor onClick={() => navigate("/")}>HOME</Anchor>
 					<Anchor onClick={() => navigate("/about")}>ABOUT</Anchor>

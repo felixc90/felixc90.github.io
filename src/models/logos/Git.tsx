@@ -8,7 +8,7 @@ export function Model() {
 	
 	return (
 		<group ref={ref} rotation={[0, -2 * Math.PI / 4, 0]} >
-			<mesh scale={[0.6,0.8,0.8]} geometry={nodes['Cube'].geometry}>
+			<mesh scale={[0.5,0.8,0.8]} geometry={nodes['Cube'].geometry}>
 				<meshStandardMaterial metalness={0.2} roughness={.1} color={'#f05133'}/>
 			</mesh>
 		</group>
