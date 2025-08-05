@@ -3,6 +3,7 @@ import Experience from "./university/Experience";
 import { useState } from "react";
 import * as THREE from 'three';
 import { X } from "lucide-react";
+import { INITIAL_CAMERA_POSITION } from "@/constants";
 
 const Introduction = () => {
 	const [fullScreen, setFullScreen] = useState<boolean>(false)
@@ -79,7 +80,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 			name: "Extracurricular: CompClub",
 			description: [
 				"CompClub Mentor (2021 - 2022)",
-				"- Mentored groups of high school students in learning introductory programming topics such as game design, web dev and python.",
+				"- Mentored groups of high school students in learning introductory programming topics such as game design, web dev and python",
 				"- Organised and presented a workshop teaching basic cybersecurity along with designing and running a CTF for the students"
 			],
 			overflow: []
@@ -99,11 +100,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 	]
 
 	return (
-		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-16 px-16 pt-24 ">
-			<div className="flex neue-montreal-mono justify-between text-xs mb-12">
-				<div>CODED WITH THREE.JS</div>
-				<div>MODELLED IN BLENDER</div>
-			</div>
+		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-16 px-16 pt-24 pb-12">
 			<div className="max-w-[40rem] text-lg mx-auto text-center mt-8 mb-12">{ bio }</div>
 			<div>
 				<Canvas
@@ -113,7 +110,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 							near: 0.1,
 							far: 100,
 							zoom: 10,
-							position: new THREE.Vector3(30, 15, 30),
+							position: INITIAL_CAMERA_POSITION,
 					} }
 					className={fullScreen ? "grabbable" : "hover:cursor-pointer"}
 					style={fullScreen ? fullStyle : miniStyle}
@@ -172,6 +169,10 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 						</div>
 					</div>
 				}
+			</div>
+			<div className="flex neue-montreal-mono justify-between text-xs mt-12">
+				<div>CODED WITH THREE.JS</div>
+				<div>MODELLED IN BLENDER</div>
 			</div>
 		</div>
 	)

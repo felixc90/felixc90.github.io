@@ -18,7 +18,7 @@ const Work = () => {
 			<Heading>Work.</Heading>
 			<Accordion type="multiple" className="ml-4">
 				{ items.map((item, i) => (
-					<AccordionItem value={i.toString()}>
+					<AccordionItem value={i.toString()} key={i}>
 						<AccordionTrigger className="hover:cursor-pointer">
 							<div className="my-2">
 								<div className="text-2xl font-[400]">{item.name}</div>

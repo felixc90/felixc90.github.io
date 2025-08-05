@@ -7,7 +7,11 @@
 				"#F0DB4F",
 				"#323330"
 			],
-			"description": ""
+			"description": [
+				"JavaScript and TypeScript are my most proficient languages. ",
+				"I have frequently built my personal projects with a Node.js/Express.js backend and React.js frontend. ",
+				"I also have experience building interactive web applications with vanilla JavaScript."
+			]	
 		},
 		{
 			"name": "TypeScript",
@@ -16,7 +20,10 @@
 				"#3178C6",
 				"#ffffff"
 			],
-			"description": ""
+			"description": [
+				"JavaScript and TypeScript are my most proficient languages. ",
+				"I have frequently built my personal projects with a Node.js/Express.js backend and React.js frontend. "
+			]
 		},
 		{
 			"name": "HTML",
@@ -25,7 +32,10 @@
 				"#f16529",
 				"#ffffff"
 			],
-			"description": ""
+			"description": [
+				"In building web applications, I have worked with HTML extensively. ",
+				"More recently, I use JSX and TSX to structure the layout of my pages"
+			]
 		},
 		{
 			"name": "CSS",
@@ -34,7 +44,11 @@
 				"#663399",
 				"#ffffff"
 			],
-			"description": ""
+			"description": [
+				"In building web applications, I have worked with CSS extensively. ",
+				"I have experience writing vanilla CSS but also experience using CSS-in-JS libraries such as styled-components and utility classes from Tailwind. ",
+				"I have also used UI libraries such as Material UI, Mantine, Radix and Shadcn."
+			]
 		},
 		{
 			"name": "React",
@@ -42,7 +56,11 @@
 			"colors": [
 				"#61dafb"
 			],
-			"description": ""
+			"description": [
+				"I have built most of my web applications with React.js. ",
+				"This includes having worked extensively with React hooks such as useState and useEffect. I am still developing my skills regarding state management. ", 
+				"I have used a range of CSS frameworks and UI libraries as outlined in the 'CSS' tab. "
+			]
 		},
 		{
 			"name": "Vue",
@@ -51,7 +69,11 @@
 				"#42b883",
 				"#35495e"
 			],
-			"description": ""
+			"description": [
+				"I worked with Vue.js 3 during my time at WiseTech Global. ",
+				"My tasks included creating a modal to allow users to edit task estimates for a productivity board and connecting it to the backend. ",
+				"I was also responsible for fixing various styling issues such as malfunctioning data table."
+			]
 		},
 		{
 			"name": "C",
@@ -61,7 +83,11 @@
 				"#3949ab",
 				"283593"
 			],
-			"description": ""
+			"description": [
+				"My first programming language learnt at university. ",
+				"I have experience coding basic programs using C with consideration for memory management. ",
+				"This is also the language used to teach data structures and algorithms. "
+			]
 		},
 		{
 			"name": "C#",
@@ -71,55 +97,54 @@
 				"#390091",
 				"#A179DC"
 			],
-			"description": ""
-		},
-		{
-			"name": "Java",
-			"glb": "java.glb",
-			"colors": [
-				""
-			],
-			"description": ""
-		},
-		{
-			"name": "Python",
-			"glb": "python.glb",
-			"colors": [
-				""
-			],
-			"description": ""
-		},
-		{
-			"name": "Docker",
-			"glb": "docker.glb",
-			"colors": [
-				""
-			],
-			"description": ""
-		},
-		{
-			"name": "Linux",
-			"glb": "linux.glb",
-			"colors": [
-				""
-			],
-			"description": ""
+			"description": [
+				"I worked with C# extensively to implement business logic during my time at WiseTech Global. ",
+				"This includes experience creating services using the controller-service-repository design pattern, ",
+				"creating GUIs using WinForms, implementing filters as well as designing new classes."
+			]
 		},
 		{
 			"name": "Git",
 			"glb": "git.glb",
 			"colors": [
-				""
+				"#f05133"
 			],
-			"description": ""
+			"description": ["I have used Git everywhere e.g. GitHub, Azure DevOps and GitLab."]
 		},
 		{
-			"name": "Node",
-			"glb": "node.glb",
+			"name": "SQL",
+			"glb": "sql.glb",
 			"colors": [
-				""
+				"#df6c20"
 			],
-			"description": ""
+			"description": [
+				"I have strong skills in SQL having worked with various DMBSs such as PostGreSQL and Microsoft SQL Server. ",
+				"This includes experience helping maintain CDC and ETL pipelines during my time in the Business Intelligence team at WiseTech Global."
+			]
+		},
+		{
+			"name": "Java",
+			"glb": "java.glb",
+			"colors": [
+				 "#ffffff","#F8981D", "#5382A1"
+			],
+			"description": [
+				"I learnt Object-Oriented Programming at university with Java. ",
+				"I am trying to develop my skills with the 'Buckets' personal project where I am in the process of developing a web application ",
+				"using Spring Boot, Maven and Hibernate."
+			]
+		},
+		{
+			"name": "Python",
+			"glb": "python.glb",
+			"colors": [
+				"#387EB8",
+				"#FFE052"
+			],
+			"description": [
+				"I have foundational knowledge of Python, having used Flask to create Python web services. ",
+				"In addition, I used Python to implement algorithms for the machine learning course I took at University of Toronto. "
+			]
 		},
 		{
 			"name": "MongoDB",
@@ -127,13 +152,20 @@
 			"colors": [
 				""
 			],
-			"description": ""
+			"description": [
+				"I have a working knowledge in developing schemas and working with MongoDb databases. ",
+				"I used MongoDb to develop my 'Strava Discord Bot' project."
+			]
 		},
 		{
-			"name": "SQL",
-			"glb": "sql.glb",
+			"name": "Docker",
+			"glb": "docker.glb",
 			"colors": [
-				""
+				"#1d63ed"
+			],
+			"description": [
+				"I have worked with Docker - having developed programs in containers as well as actually performing the containerisation of a project. ",
+				"This is a space I am keen to learn know more about."
 			]
 		}
 	]

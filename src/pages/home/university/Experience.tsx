@@ -7,7 +7,7 @@ import { useControls } from "leva";
 import { EffectComposer, Noise, Pixelation, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import { lerp } from "three/src/math/MathUtils.js";
-import { INITIAL_CAMERA_POSITION } from "constants";
+import { INITIAL_CAMERA_POSITION } from "@/constants";
 
 // interface CursorType {
 // 	x: number,
@@ -46,8 +46,8 @@ export default function Experience({ fullScreen }: Props)
 
 	useFrame((state) => {
 		if (!fullScreen) {
-			state.camera.zoom = lerp(state.camera.zoom, 10, 0.02)
-			state.camera.position.lerp(new THREE.Vector3(30, 15, 30), 0.2)
+			state.camera.zoom = lerp(state.camera.zoom, 10, 0.05)
+			state.camera.position.lerp(INITIAL_CAMERA_POSITION, 0.2)
 			state.camera.lookAt(new THREE.Vector3(0,0,0))
 			state.camera.updateProjectionMatrix();
 		} else if (!zoomed) {
@@ -62,7 +62,7 @@ export default function Experience({ fullScreen }: Props)
 
 	return (
 		<>
-			{fullScreen && <OrbitControls target={[0, 0, 0]} maxPolarAngle={Math.PI/2}  minAzimuthAngle={0} maxAzimuthAngle={Math.PI} minZoom={12} maxZoom={60} /> }
+			{fullScreen && <OrbitControls target={[0, 0, 0]} maxPolarAngle={Math.PI/2}  minAzimuthAngle={0} maxAzimuthAngle={Math.PI} minZoom={12} maxZoom={80} /> }
 			<EffectComposer>
 				<ToneMapping mode={ ToneMappingMode.ACES_FILMIC } />
 				<Noise opacity={0.2} />

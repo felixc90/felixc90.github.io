@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Lightformer } from '@react-three/drei'
 import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
-import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue } from '@/models'
+import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue, Git, SQL, Java, Python, MongoDB, Docker } from '@/models'
 import * as THREE from 'three';
 import data from "@/data/skills.json";
 import Button from "@/components/ui/Button";
@@ -39,24 +39,31 @@ const Skills = () => {
 						</div>
 						<div className="flex gap-1.5 flex-wrap">
 							{skills.map((skill, i) => (
-								<Button variant={i == activeLogo ? "filled" : "outline"} onClick={() => setActiveLogo(i)}>
+								<Button key={i} variant={i == activeLogo ? "filled" : "outline"} onClick={() => setActiveLogo(i)}>
 									{skill.name}
 								</Button>
 							))}
+						</div>
+						<div className="text-[16px] neue-montreal mt-8 font-[500]">
+							{skills[activeLogo].description?.join('')}
 						</div>
 					</div>
 				</div>
 				<div className="flex justify-between neue-montreal-mono text-xs my-8">
 						<div>
-							<div className="mb-3">COLOR</div>
-							{ skills[activeLogo].colors.map((color, i) => {
+							{ skills[activeLogo].colors[0] != "" && <div className="mb-3">COLOR</div> }
+							{ skills[activeLogo].colors[0] != "" ? skills[activeLogo].colors.map((color, i) => {
 								return (
 									<div className="flex mt-1" key={i}>
 										<Square size={3} color={color} />
 										<div className="ml-1">{ color.toUpperCase() }</div>
 									</div>
 								)
-							})}
+							}) : 
+							<div className="flex mt-1">
+								<div className="ml-1">LOGO WORK IN PROGRESS</div>
+							</div>
+							}
 						</div>
 						<div className="h-full flex flex-col-reverse">
 							public/models/{skills[activeLogo].glb}
@@ -78,6 +85,12 @@ const Skills = () => {
 					{ skills[activeLogo].name.toLowerCase() === "html" && <HTML /> }
 					{ skills[activeLogo].name.toLowerCase() === "css" && <CSS /> }
 					{ skills[activeLogo].name.toLowerCase() === "vue" && <Vue /> }
+					{ skills[activeLogo].name.toLowerCase() === "git" && <Git /> }
+					{ skills[activeLogo].name.toLowerCase() === "sql" && <SQL /> }
+					{ skills[activeLogo].name.toLowerCase() === "java" && <Java /> }
+					{ skills[activeLogo].name.toLowerCase() === "python" && <Python /> }
+					{ skills[activeLogo].name.toLowerCase() === "mongodb" && <MongoDB /> }
+					{ skills[activeLogo].name.toLowerCase() === "docker" && <Docker /> }
 				</Rotating>
 				<Rotating axis="z" speed={1/2}>
 					{ skills[activeLogo].name.toLowerCase() === "react" && <React /> }

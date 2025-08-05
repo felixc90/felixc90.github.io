@@ -13,8 +13,8 @@ const Projects = () => {
 			<Carousel className="mt-4 w-[90%] mx-auto">
 				<CarouselPrevious />
 				<CarouselContent className="-ml-8">
-					{ items.map(item => (
-						<CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-8">
+					{ items.map((item, i) => (
+						<CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3 pl-8">
 							<Card data={item}/>
 						</CarouselItem>
 					)) }
