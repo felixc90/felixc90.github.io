@@ -150,7 +150,7 @@
 			"name": "MongoDB",
 			"glb": "mongodb.glb",
 			"colors": [
-				""
+				"#b8c4c2", "#10aa50", "#12924f","#21313c"
 			],
 			"description": [
 				"I have a working knowledge in developing schemas and working with MongoDb databases. ",
