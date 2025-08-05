@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Html, Lightformer } from '@react-three/drei'
 import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
@@ -13,26 +13,17 @@ const Skills = () => {
 	
 	const { skills } = data;
 	const [activeLogo, setActiveLogo] = useState<number>(0);
-	const [ paused, setPaused ] = useState(false);
-	const [angle, setAngle] = useState(0);
 
 	const Rotating = ({ speed, children, axis }: { speed: number, children: React.ReactNode, axis: "x" | "y" | "z" }) => {
 		const ref = useRef<THREE.Group>(null);
-		useFrame((_,delta) => {
-			if (ref.current && !paused) {
-				const newAngle = angle + delta * speed;
-				setAngle(newAngle);
+		useFrame((state) => {
+			if (ref.current) {
+				ref.current.rotation[axis] = state.clock.elapsedTime * speed;
 			}
 		});
-		useEffect(() => {
-			if (ref.current) {
-				ref.current.rotation[axis] = angle;
-			}
-		}, [axis])
 		return <group ref={ref}>{children}</group>;
 	}
 
-	
 
 	const bio = "Throughout my software engineering journey, I've worked with variety of tools. " +
 	"Here's a list of technologies I've used, from the ones I know best to the ones I'm still growing with:"
@@ -85,13 +76,13 @@ const Skills = () => {
 				className="w-[calc(100%-8rem)]"
 			 	style={{ border: "solid 1px", borderRadius: "1rem", borderColor: "white" }}>
 				<Html as={'div'} fullscreen>
-					<div className="w-full flex h-full p-3">
+					{/* <div className="w-full flex h-full p-3">
 						<div className="w-full flex flex-col-reverse h-full">
 							<div className="text-lighter/50 hover:cursor-pointer" onClick={() => setPaused(!paused)}>
 								{ paused ? <Play /> : <Pause />}
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</Html>
 				<color attach="background" args={['#111111']} />
 				<ambientLight intensity={1} />
@@ -109,6 +100,8 @@ const Skills = () => {
 					{ skills[activeLogo].name.toLowerCase() === "java" && <Java /> }
 					{ skills[activeLogo].name.toLowerCase() === "python" && <Python /> }
 					{ skills[activeLogo].name.toLowerCase() === "mongodb" && <MongoDB /> }
+				</Rotating>
+				<Rotating axis="y" speed={1/3}>
 					{ skills[activeLogo].name.toLowerCase() === "docker" && <Docker /> }
 				</Rotating>
 				<Rotating axis="z" speed={1/2}>
