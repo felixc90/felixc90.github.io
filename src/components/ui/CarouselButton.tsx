@@ -16,7 +16,7 @@ const CarouselButton = ({ children, onClick, className, disabled }: CarouselButt
 					${className ?? ""}
 					w-fit py-1 px-2  rounded-4xl
 					${ disabled ? 
-					 	"bg-dark/60 text-light/50 border-0" : 
+					 	"bg-[#C8C9C7] text-[#8E8F8B] border-1 border-[#C8C9C7]" : 
 						"bg-light text-dark cursor-pointer hover:rounded-2xl ease-linear duration-100 hover:bg-dark hover:text-light border-dark border-1" }
 					`}>
 					{ children }

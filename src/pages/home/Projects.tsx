@@ -7,14 +7,15 @@ const Projects = () => {
 	const items = data.projects;
 
 	return (
-		<div className="mb-">
-			<Heading>Projects.</Heading>
-			<br />
-			<Carousel className="mt-4 w-[90%] mx-auto">
+		<div>
+			<div className="-mb-16">
+				<Heading>Projects.</Heading>
+			</div>
+			<Carousel className="w-[90%] mx-auto">
 				<CarouselPrevious />
-				<CarouselContent className="-ml-8 h-[30rem] mr-3">
+				<CarouselContent className="-ml-8 h-[32rem]">
 					{ items.map((item, i) => (
-						<CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3 pl-12 h-4/5">
+						<CarouselItem key={i} className="max-w-[360px] sm:max-w-none sm:basis-1/2 lg:basis-1/3 pl-8 h-3/5">
 							<Card data={item}/>
 						</CarouselItem>
 					)) }
