@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router"
-import Button from "../ui/Button"
+import Button from "../ui/Button";
 
 const navigation = [
   { name: 'About', href: '/about', current: false },
+	// { name: 'Blog', href: '/blog', current: false },
 	{ name: 'Contact', href: '/contact', current: false },
 ]
 
@@ -14,14 +15,15 @@ export default function Navbar() {
 				<Button onClick={() => navigate("/")} variant="filled">
 					FELIX CAO
 				</Button>
-				<div className="flex text-sm gap-12 mix-blend-color">
+				<div className="flex text-sm gap-8">
 					{navigation.map((item) => (
-						<a
+						<Button
+							variant="outline"
 							key={item.name}
-							href={item.href}
+							onClick={() => navigate(item.href)}
 						>
 							{item.name.toUpperCase()}
-						</a>
+						</Button>
 					))}
 				</div>
 			</div>

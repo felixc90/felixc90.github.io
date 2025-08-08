@@ -6,7 +6,6 @@ interface AnchorProps {
 }
 
 const Anchor = ({ children, onClick }: AnchorProps) => {
-
 	return (
 		<div className="w-fit hover:underline hover:cursor-pointer" onClick={onClick}>
 			{ children }

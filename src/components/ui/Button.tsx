@@ -7,23 +7,24 @@ interface ButtonProps {
 	className?: string,
 	readonly?: boolean
 	disabled?: boolean,
-	size?: "icon"
+	size?: "icon",
+	color?: string,
 }
 
 const Button = ({ children, variant, onClick, disabled, className, size, readonly }: ButtonProps) => {
 
-		const variantStyles = {
-			"filled": `bg-dark text-light`,
-			"outline": `bg-light text-dark hover:bg-dark hover:text-light`,
-		}
-
 		return (
-			<div 
+			<div
 				onClick={onClick}
-				className={`${className} neue-montreal-mono font-[400] text-xs w-fit py-1 px-2 border-1 border-dark 
+				className={`neue-montreal-mono font-[400] text-xs w-fit py-1 px-2 border-1 border-dark
+					
+					${className !== undefined && className} 
 					${size == "icon" ? "rounded-4xl" : "rounded-sm"} 
-					${variantStyles[variant]} 
-					${(!readonly && !disabled) && "cursor-pointer"}`}>
+					${variant == "filled" && `bg-dark text-light`} 
+					${variant == "filled" && `bg-dark text-light`} 
+					${variant == "outline" && `bg-light text-dark hover:bg-dark hover:text-light`} 
+					${(!readonly && !disabled) && "cursor-pointer hover:rounded-2xl ease-linear duration-100 elastic-button"}
+					`}>
 					{ children }
 			</div>
 		)

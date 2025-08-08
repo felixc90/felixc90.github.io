@@ -3,26 +3,17 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Html, Lightformer } from '@react-three/drei'
 import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
 import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue, Git, SQL, Java, Python, MongoDB, Docker } from '@/models'
-import * as THREE from 'three';
 import data from "@/data/skills.json";
 import Button from "@/components/ui/Button";
 import Square from "@/components/ui/Square";
-import { Pause, Play } from "lucide-react";
+import ScrambleText from "@/components/ui/ScrambleText";
+import MySplitText from "@/components/ui/MySplitText";
+import Rotating from "@/components/ui/Rotating";
 
 const Skills = () => {
 	
 	const { skills } = data;
 	const [activeLogo, setActiveLogo] = useState<number>(0);
-
-	const Rotating = ({ speed, children, axis }: { speed: number, children: React.ReactNode, axis: "x" | "y" | "z" }) => {
-		const ref = useRef<THREE.Group>(null);
-		useFrame((state) => {
-			if (ref.current) {
-				ref.current.rotation[axis] = state.clock.elapsedTime * speed;
-			}
-		});
-		return <group ref={ref}>{children}</group>;
-	}
 
 
 	const bio = "Throughout my software engineering journey, I've worked with variety of tools. " +
@@ -36,9 +27,9 @@ const Skills = () => {
 						TECHNICAL SKILLS
 					</Button>
 					<div className="h-full w-full lg:text-xl md:text-sm">
-						<div className="my-2">
+						<MySplitText className="my-2">
 						{ bio }
-						</div>
+						</MySplitText>
 						<div className="flex gap-1.5 flex-wrap">
 							{skills.map((skill, i) => (
 								<Button key={i} variant={i == activeLogo ? "filled" : "outline"} onClick={() => setActiveLogo(i)}>
@@ -67,9 +58,9 @@ const Skills = () => {
 							</div>
 							}
 						</div>
-						<div className="h-full flex flex-col-reverse">
-							public/models/{skills[activeLogo].glb}
-						</div>
+						<ScrambleText chars="lowerCase" className="h-full flex flex-col-reverse"  >
+							{ "public/models/" + skills[activeLogo].glb }
+						</ScrambleText>
 				</div>
 			</div>
 			<Canvas  shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }} 

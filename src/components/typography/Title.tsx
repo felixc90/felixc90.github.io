@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 
 const Title = ({ children }: { children: React.ReactNode }) => {
+
 	const style: CSSProperties = {
 		fontFamily: "Mondwest",
 		fontWeight: "800",

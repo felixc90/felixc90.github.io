@@ -1,9 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import Experience from "./university/Experience";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import { X } from "lucide-react";
 import { INITIAL_CAMERA_POSITION } from "@/constants";
+import ScrambleText from "@/components/ui/ScrambleText";
+import MySplitText from "@/components/ui/MySplitText";
+import Square from "@/components/ui/Square";
 
 const Introduction = () => {
 	const [fullScreen, setFullScreen] = useState<boolean>(false)
@@ -25,7 +28,6 @@ const Introduction = () => {
 
 		return years;
 	}
-
 	useEffect(() => {
   if (fullScreen) {
     document.body.style.overflow = 'hidden';
@@ -39,9 +41,12 @@ const Introduction = () => {
 		};
 	}, [fullScreen]);
 
-	const bio = `
+	const bioMain = `
 Hi, I'm Felix — a ${getAge()}-year-old Australian software developer with a focus on backend engineering. 
 Through my experience with university and personal projects, and my time at WiseTech Global, I've developed a passion for crafting elegant solutions to complex, real world problems — particularly in system design and data engineering. 
+	`;
+
+	const bioExtended = `
 Recently, I've also been exploring WebGL and Three.js which I've used to create the Education section of my portfolio (click below).
 	`;
 
@@ -142,8 +147,17 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 
 	return (
 		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-16 px-16 pt-24 pb-12">
-			<div className="max-w-[40rem] text-lg mx-auto text-center mt-8 mb-12">{ bio }</div>
-			<div>
+			<div className="flex justify-around"><Square color="var(--lighter)"/></div>
+			<MySplitText className="max-w-[40rem] mx-auto text-lg text-center mt-8 mb-0">
+				{ bioMain }
+			</MySplitText>
+			<MySplitText className="max-w-[40rem] text-lg mx-auto text-center mb-12 text-light/55" delay={.8}>
+				{ bioExtended }
+			</MySplitText>
+			<div className="flex justify-around">
+				<div className="neue-montreal-mono text-xs pr-4 m-auto">
+					<ScrambleText chars="upperCase">CODED WITH THREE.JS</ScrambleText>
+				</div>
 				<Canvas
 					shadows
 					orthographic
@@ -161,6 +175,9 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 					<ambientLight />
 					<Experience fullScreen={fullScreen} />
 				</Canvas>
+				<div className="neue-montreal-mono text-xs pl-4 m-auto">
+					<ScrambleText chars="upperCase">MODELLED IN BLENDER</ScrambleText>
+				</div>
 				{ fullScreen && 
 					<div 
 						className={`px-16 py-12 pointer-events-none`}
@@ -191,9 +208,9 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 										<br/>
 										<Overflow />
 									</div>
-									<div className="text-sm hidden sm:inline">
+									<ScrambleText chars="upperCase" duration={3} className="text-sm hidden sm:inline">
 										UNIVERSITY OF NEW SOUTH WALES, SYDNEY
-									</div>
+									</ScrambleText>
 								</div>
 								<div className="max-w-[24rem] text-xs mr-4 tracking-tight hidden sm:inline">
 									<Overflow />
@@ -202,10 +219,6 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 						</div>
 					</div>
 				}
-			</div>
-			<div className="flex neue-montreal-mono justify-between text-xs mt-12">
-				<div>CODED WITH THREE.JS</div>
-				<div>MODELLED IN BLENDER</div>
 			</div>
 		</div>
 	)

@@ -52,12 +52,16 @@ const Footer = () => {
 			</div>
 			<div className="flex justify-between w-full neue-montreal-mono text-sm font-[400] mb-4">
 				<div>©2025 FELIX CAO</div>
-				<div>{time.toLocaleTimeString().substring(0,5)} SYD</div>
+				<div>
+					{time.toLocaleTimeString().substring(0,2)}
+					<span className="animate-blink">:</span>
+					{time.toLocaleTimeString().substring(3,5)} SYD
+				</div>
 				<div>DEVELOPING APPS</div>
 			</div>
 			<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
 					<Square color="var(--light)" />
-				<div>Y2K DESIGN</div>
+				<div>BRUTALISM</div>
 				<div className="flex gap-4">
 					<Square color="var(--light)" />
 					<Square color="var(--light)" />

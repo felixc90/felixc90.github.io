@@ -1,5 +1,4 @@
-import Heading from "@/components/typography/Heading";
-import Title from "@/components/typography/Title";
+import ScrambleText from "@/components/ui/ScrambleText";
 import Square from "@/components/ui/Square";
 
 const About = () => {
@@ -12,11 +11,11 @@ const About = () => {
 						<Square />
 						<Square />
 					</div>
-					<div>{"  DESIGN   "}</div>
+					<ScrambleText chars="upperCase">YUM CHA</ScrambleText>
 					<Square />
 					<Square />
 					<Square />
-					<div>DEVELOPMENT</div>
+					<ScrambleText chars="upperCase">RUNNING</ScrambleText>
 					<div className="flex gap-4">
 						<Square />
 						<Square />

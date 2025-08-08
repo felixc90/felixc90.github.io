@@ -8,6 +8,7 @@
 	--color-darker: var(--darker);
   --color-light: var(--light);
 	--color-lighter: var(--lighter);
+	--color-highlight: var(--highlight);
 }
 
 :root {
@@ -32,6 +33,8 @@ img {
   object-fit: cover;
 }
 
+/* Fonts */
+
 .neue-montreal {
 	font-family: 'Neue Montreal';
 }
@@ -48,18 +51,57 @@ img {
 	font-family: 'NeueBit';
 }
 
+/* Grabbable Cursor */
+
 .grabbable {
-    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: move;
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
 }
 
- /* (Optional) Apply a "closed-hand" cursor during drag operation. */
 .grabbable:active {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+}
+
+/* Flip Card */
+.flip_card { perspective: 800px;}
+.flip_card__content {transform-style: preserve-3d;}
+.flip_card:hover .flip_card__content {transform: rotateY(.5turn);}
+
+.flip_card__front,
+.flip_card__back { backface-visibility: hidden;}
+.flip_card__back { transform: rotateY(.5turn);}
+
+/* Animations */
+
+.animate-blink {
+  animation: blink 4s steps(1, end) infinite;
+  will-change: opacity;
+}
+
+@keyframes blink {
+  /* visible */
+  0%, 20%, 40%, 60%, 80%, 100% { opacity: 1; }
+  /* hidden (instant) */
+  10%, 30%, 50%, 70%, 90% { opacity: 0; }
+}
+
+.elastic-button:hover {
+  animation-name: elastic;
+  animation-duration: 0.75s;
+}
+
+@keyframes elastic {
+  0%   { transform: scale(1, 1); }
+  10%  { transform: scale(1.02, 1.02); }  /* less overshoot */
+  30%  { transform: scale(0.97, 0.97); }  /* less undershoot */
+  50%  { transform: scale(1.01, 1.01); }
+  57%  { transform: scale(0.985, 0.985); }
+  74%  { transform: scale(1.005, 1.005); }
+  100% { transform: scale(1, 1); }
 }
 
 @theme inline {

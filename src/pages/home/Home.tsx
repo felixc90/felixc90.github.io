@@ -4,7 +4,7 @@ import Projects from './Projects';
 import Work from './Work';
 import Title from "@/components/typography/Title";
 import Introduction from "./Introduction";
-
+import ScrambleText from "@/components/ui/ScrambleText";
 const Home = () => {
 
 	return (
@@ -18,11 +18,11 @@ const Home = () => {
 								<Square />
 								<Square />
 							</div>
-							<div>DESIGN</div>
+							<ScrambleText chars="upperCase">DESIGN</ScrambleText>
 							<Square />
 							<Square />
 							<Square />
-							<div>DEVELOPMENT</div>
+							<ScrambleText chars="upperCase">DEVELOPMENT</ScrambleText>
 							<div className="flex gap-4">
 								<Square />
 								<Square />
