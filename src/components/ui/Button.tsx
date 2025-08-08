@@ -21,7 +21,6 @@ const Button = ({ children, variant, onClick, disabled, className, size, readonl
 					${className !== undefined && className} 
 					${size == "icon" ? "rounded-4xl" : "rounded-sm"} 
 					${variant == "filled" && `bg-dark text-light`} 
-					${variant == "filled" && `bg-dark text-light`} 
 					${variant == "outline" && `bg-light text-dark hover:bg-dark hover:text-light`} 
 					${(!readonly && !disabled) && "cursor-pointer hover:rounded-2xl ease-linear duration-100 elastic-button"}
 					`}>

@@ -39,7 +39,7 @@ const Card = ({ data }: CardProps) => {
 						</div>
 					</div>
 				</div>
-				<div className="flip_card__back absolute top-0 bottom-0 right-0 left-0 p-3 bg-darker flex flex-col rounded-lg justify-between">
+				<div className="flip_card__back absolute top-0 bottom-0 right-0 left-0 p-5 bg-darker flex flex-col rounded-lg justify-between">
 					<ul className="tracking-wide text-[13px] text-lighter font-[300] list-inside list-[square]">
 
 						{ description.map(text => {

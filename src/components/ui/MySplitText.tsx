@@ -48,6 +48,12 @@ const MySplitText = ({ children, className, delay = 0 }: SplitTextProps) => {
         ease: "circ.out",
         y: 80,
         stagger: 0.01,
+				onComplete: () => {
+					if (splitRef.current) {
+						splitRef.current.revert();
+						splitRef.current = null;
+					}
+				}
       });
     };
 

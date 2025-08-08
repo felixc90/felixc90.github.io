@@ -1,17 +1,11 @@
 import Button from "@/components/ui/Button";
 import MySplitText from "@/components/ui/MySplitText";
-import Rotating from "@/components/ui/Rotating";
 import ScrambleText from "@/components/ui/ScrambleText";
 import Square from "@/components/ui/Square";
-import { Center, OrbitControls, useGLTF, Wireframe } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { EffectComposer, Outline } from "@react-three/postprocessing";
-import { ArrowUpRight } from "lucide-react";
-import { useRef } from "react";
-import * as THREE from 'three';
+import { ArrowDownRight } from "lucide-react";
 
 const Contact = () => {
-
+	
 	return (
 		<div className="bg-light min-h-screen sm:min-h-[calc(100vh+6rem)] px-16 py-8 text-dark">
 			<div className="flex-col flex justify-around mt-14">
@@ -38,20 +32,17 @@ const Contact = () => {
 							<div className="w-1/2 pr-4 sm:pr-8 md:pr-12 lg:pr-16 flex md:flex-row-reverse">Have</div>
 							<div className="w-1/2 lg:text-[7rem] flex-row">Questions?</div>
 						</div>
-						<div className="opacity-95 md:hidden">
-							<ArrowUpRight color="var(--dark)" size={"5rem"} viewBox="0 6 20 16"/>
-						</div>
 					</div>
 					<div className="flex w-full flex-col md:flex-row">
 						<div className="w-0 md:w-1/2 flex md:flex-col flex-col-reverse">
 							<div className="flex flex-row-reverse mx-12" >
 								<div className="flex-col opacity-95 hidden md:flex">
-									<ArrowUpRight color="var(--dark)" size={"10rem"} viewBox="0 6 20 16"/>
+									<ArrowDownRight color="var(--dark)" size={"12rem"} viewBox="-2 8 20 16"/>
 								</div>
 							</div>
 						</div>
 						<div className=" w-full md:w-1/2">
-							<MySplitText className="md:text-1xl lg:text-2xl  w-4/5 mb-12">
+							<MySplitText className="md:text-1xl lg:text-2xl w-4/5 mb-12">
 								Got a question to ask, or just want to say hi? I'm always open to new opportunities and collaborations — feel free to reach out.
 							</MySplitText>
 							<div>
@@ -59,7 +50,7 @@ const Contact = () => {
 									<Button variant="filled" readonly>EMAIL</Button>
 									<Button variant="filled" readonly></Button>
 								</div>
-								<div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4 font-[450] underline hover:cursor-pointer" onClick={()=> window.open("mailto:felixcao37@gmail.com")}>
+								<div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4 mb-6 font-[450] underline hover:cursor-pointer" onClick={()=> window.open("mailto:felixcao37@gmail.com")}>
 									felixcao37@gmail.com
 								</div>
 							</div>
@@ -67,7 +58,7 @@ const Contact = () => {
 					</div>
 				</div>
 			</div>
-			
+			<hr className="border-1 border-dashed border-dark/70 my-16"/>
 		</div>
 	)
 }
