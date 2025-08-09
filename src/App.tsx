@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route, HashRouter } from 'react-router';
 function App() {
   return (
 		<>
-		<HashRouter>
+		<BrowserRouter basename='/portfolio-website'>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
 			</Routes>
 			
 		<Footer />
-		</HashRouter>
+		</BrowserRouter>
 		</>
   )
 }
