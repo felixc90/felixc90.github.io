@@ -7,6 +7,7 @@ import { INITIAL_CAMERA_POSITION } from "@/constants";
 import ScrambleText from "@/components/ui/ScrambleText";
 import MySplitText from "@/components/ui/MySplitText";
 import Square from "@/components/ui/Square";
+import { Environment } from "@react-three/drei";
 
 const Introduction = () => {
 	const [fullScreen, setFullScreen] = useState<boolean>(false)
@@ -172,7 +173,8 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 					onClick={() => { requestAnimationFrame(() => setFullScreen(true));}}
 				>
 					<color attach="background" args={['#111111']} />
-					<ambientLight />
+					<ambientLight intensity={4}/>
+					<directionalLight position={[48, 32, 0]} lookAt={[16,0,0]} intensity={10} castShadow  />
 					<Experience fullScreen={fullScreen} />
 				</Canvas>
 				<div className="neue-montreal-mono text-xs pl-4 m-auto">

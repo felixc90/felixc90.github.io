@@ -5,14 +5,14 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 
 import * as THREE from 'three'
 import React, { useEffect, useRef, useState } from 'react'
-import { useGLTF, useScroll } from '@react-three/drei'
+import { Lightformer, useGLTF, useScroll, useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 
-
-
 export function Model() {
-  const { scene } = useGLTF('models/light-rail.glb');
+  const { nodes } = useGLTF('models/light-rail.glb');
 	const lightRail = useRef<THREE.Object3D>(null);
+	const tramTexture = useTexture('./textures/light-rail.png')
+		tramTexture.flipY = false;
 
 	useFrame(() => {
 		if (lightRail.current) {
@@ -32,12 +32,17 @@ export function Model() {
 	});
 	
 	return (
-		<primitive
-			ref={lightRail}
-			object={ scene }
-			scale={ 0.05 }
-			position={new THREE.Vector3(18,0,0)}
-    />
+		<group ref={lightRail}>
+			<mesh geometry={ nodes['Tram'].geometry } position={ new THREE.Vector3(18,0,0)} rotation={[ 0,Math.PI/2,  0]}>
+					<meshStandardMaterial
+						map={tramTexture}
+						metalness={0.2}
+						roughness={0.1}
+						emissive="red"
+						emissiveIntensity={0.01}
+					/>
+			</mesh>
+		</group>
 	)
 }
 
