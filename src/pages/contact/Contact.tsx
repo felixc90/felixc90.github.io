@@ -1,6 +1,7 @@
 import GitHubIcon from "@/assets/svgs/Github";
 import LinkedInIcon from "@/assets/svgs/LinkedIn";
 import ResumeIcon from "@/assets/svgs/Resume";
+import Title from "@/components/typography/Title";
 import Button from "@/components/ui/Button";
 import IconButton from "@/components/ui/IconButton";
 import MySplitText from "@/components/ui/MySplitText";
@@ -31,13 +32,11 @@ const Contact = () => {
 				</div>
 				<div className="flex-col flex sm:justify-around w-full mt-12 flex-wrap">
 					<div className="flex md:flex-none justify-between">
-						<div className="flex font-[800] mondwest text-5xl sm:text-7xl md:text-[5.4rem] lg:text-[7rem] w-full flex-col md:flex-row mb-10">
+						<div className="flex w-full flex-col md:flex-row mb-10">
 							<div className="w-1/2 pr-4 sm:pr-8 md:pr-12 lg:pr-16 flex md:flex-row-reverse">
-							<div className="flex">
-								{"Have".split('').map(c => <span className="bounce-title">{c}</span>)}
+							<Title className="text-5xl sm:text-7xl md:text-[5.4rem] lg:text-[7rem]">Have</Title>
 							</div>
-							</div>
-							<div className="w-1/2 lg:text-[7rem] flex-row flex">{"Questions?".split('').map(c => <span className="bounce-title">{c}</span>)}</div>
+							<Title className="text-5xl sm:text-7xl md:text-[5.4rem] lg:text-[7rem]">Questions</Title>
 						</div>
 					</div>
 					<div className="flex w-full flex-col md:flex-row">

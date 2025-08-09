@@ -27,6 +27,7 @@ const Introduction = () => {
 
 		return years;
 	}
+	
 	useEffect(() => {
   if (fullScreen) {
     document.body.style.overflow = 'hidden';

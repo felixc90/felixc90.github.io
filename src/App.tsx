@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 import {
 	Home,
 	About,
@@ -11,6 +12,7 @@ function App() {
   return (
 		<>
 		<BrowserRouter>
+			<ScrollToTop />
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />

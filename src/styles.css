@@ -109,6 +109,11 @@ img {
   animation-duration: 0.75s;
 }
 
+.bounce-onload .bounce-title {
+  animation-name: bounce;
+  animation-duration: 0.75s;
+}
+
 @keyframes bounce {
   0%   { transform: translateY(0); }
   10%  { transform: translateY(-2.5px); }  /* up a bit */
@@ -119,9 +124,16 @@ img {
   100% { transform: translateY(0); }
 }
 
+
 .bounce-icon {
 	cursor: default;
 }
+
+.bounce-onload.bounce-icon {
+  animation-name: bounce-little;
+  animation-duration: 0.75s;
+}
+
 
 .bounce-icon:hover {
   animation-name: bounce-little;
@@ -146,6 +158,11 @@ img {
 
 .shift-right:hover {
 	transform: translateX(6px);
+	cursor: default;
+}
+
+.shift-right.shift-right-onload {
+  transform: translateX(6px);
 	cursor: default;
 }
 

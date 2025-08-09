@@ -41,24 +41,24 @@ const About = () => {
 						<div className="md:w-1/2 text-sm sm:text-xs lg:text-sm  font-[450] tracking-tighter neue-montreal-mono">
 							<div className="mb-4">PROFILE</div>
 							<div className="mb-4">
-								<ScrambleText chars="upperCase" duration={3}>NAME</ScrambleText>	
+								<ScrambleText chars="upperCase">NAME</ScrambleText>	
 								<div className="ml-4">Felix Cao</div>
 							</div>
 							<div className="mb-4">
-								<ScrambleText chars="upperCase" duration={3}>LOCATION</ScrambleText>	
+								<ScrambleText chars="upperCase">LOCATION</ScrambleText>	
 								<div className="ml-4">Sydney, Australia</div>
 							</div>
 							<div className="mb-4">
-								<ScrambleText chars="upperCase" duration={3}>EDUCATION</ScrambleText>	
+								<ScrambleText chars="upperCase">EDUCATION</ScrambleText>	
 								<div className="ml-4">University of New South Wales</div>
 								<div className="ml-4">Bachelor of Science (Statistics) / Science (Computer Science)</div>
 							</div>
 							<div className="mb-4">
-								<ScrambleText chars="upperCase" duration={3}>FOCUS</ScrambleText>
+								<ScrambleText chars="upperCase">FOCUS</ScrambleText>
 								<div className="ml-4">Backend engineering; Data engineering</div>
 							</div>
 							<div className="mb-4">
-								<ScrambleText chars="upperCase" duration={3}>DESCRIPTION</ScrambleText>
+								<ScrambleText chars="upperCase">DESCRIPTION</ScrambleText>
 								<div className="ml-4 max-w-[30rem]">
 									I love building things that help make peoples' lives easier and make impact on the world. I am focused on architectural and data-related ideas but more recently, 
 									I've also been tuning my frontend skills working on this website, learning GSAP and Three.js to render animations along the way. 

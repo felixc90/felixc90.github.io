@@ -6,6 +6,8 @@ import Title from "@/components/typography/Title";
 import Introduction from "./Introduction";
 import ScrambleText from "@/components/ui/ScrambleText";
 import Barcode from "@/assets/Barcode";
+import BounceIcon from "@/components/ui/BounceIcon";
+import ShiftRight from "@/components/ui/ShiftRight";
 const Home = () => {
 
 	return (
@@ -33,10 +35,10 @@ const Home = () => {
 						<div className="flex flex-col">
 							<div className="flex w-full mt-14 sm:flex-row flex-col">
 								<div className="w-1/2 flex flex-row sm:flex-row-reverse pr-8 pointer-events-auto">
-									<Title>Software</Title>
+									<Title className="text-7xl/20 md:text-8xl lg:text-[8.5rem]">Software</Title>
 								</div>
 								<div className="w-1/2 flex">
-									<Title>Engineer</Title>
+									<Title className="text-7xl/20 md:text-8xl lg:text-[8.5rem]">Engineer</Title>
 								</div>
 							</div>
 							<div className="flex w-full sm:flex-row flex-col">
@@ -51,7 +53,9 @@ const Home = () => {
 											<ScrambleText chars="upperCase">AU</ScrambleText>
 										</div>
 										<div className="neuebit text-6xl md:text-8xl flex gap-2">
-											<div className="shift-right">→</div><div className="shift-right">→</div><div className="shift-right">→</div>
+											<ShiftRight delay={2400}>→</ShiftRight>
+											<ShiftRight delay={2450}>→</ShiftRight>
+											<ShiftRight delay={2500}>→</ShiftRight>
 										</div>
 
 									</div>
@@ -72,7 +76,9 @@ const Home = () => {
 								</div>
 								<div className="flex flex-col-reverse">
 									<div className="neuebit flex gap-2 text-5xl/6 sm:text-7xl/8 h-fit ">
-										<div className="bounce-icon">♥</div><div className="bounce-icon">☕</div><div className="bounce-icon">⛅</div>
+										<BounceIcon delay={1450}>♥</BounceIcon>
+										<BounceIcon delay={1550}>☕</BounceIcon>
+										<BounceIcon delay={1650}>⛅</BounceIcon>
 									</div>
 								</div>
 							</div>

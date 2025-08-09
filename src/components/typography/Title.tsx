@@ -1,12 +1,34 @@
+import { useEffect, useState } from "react";
 
-const Title = ({ children }: { children: string }) => {
+const Title = ({ children, className }: { children: string, className?: string }) => {
+  const [playEntryAnimation, setPlayEntryAnimation] = useState(true);
 
-	return (
-		<div className="mondwest font-extrabold text-7xl/20 md:text-8xl lg:text-[8.5rem] flex">
-			{ children.split('').map((c, i) => (<span key={i} className="bounce-title">{c}</span>)) }
-		</div>
-	)
-}
+  useEffect(() => {
+    const totalDuration = 750 + (children.length - 1) * 100;
+    const timer = setTimeout(() => setPlayEntryAnimation(false), totalDuration);
+    return () => clearTimeout(timer);
+  }, [children.length]);
 
+  return (
+    <div
+      className={[
+				"mondwest font-extrabold flex",
+				className ?? " ",
+				(playEntryAnimation ? "bounce-onload" : "")
+			].join(' ')
+      }
+    >
+      {children.split("").map((c, i) => (
+        <span
+          key={i}
+          className="bounce-title"
+          style={playEntryAnimation ? { animationDelay: `${i * 100}ms` } : {}}
+        >
+          {c}
+        </span>
+      ))}
+    </div>
+  );
+};
 
 export default Title;
