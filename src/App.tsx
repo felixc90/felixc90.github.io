@@ -6,12 +6,12 @@ import {
 	About,
 	Contact
 } from './pages';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { HashRouter, Routes, Route } from 'react-router';
 
 function App() {
   return (
 		<>
-		<BrowserRouter>
+		<HashRouter>
 			<ScrollToTop />
 			<Navbar />
 			<Routes>
@@ -21,7 +21,7 @@ function App() {
 			</Routes>
 			
 		<Footer />
-		</BrowserRouter>
+		</HashRouter>
 		</>
   )
 }
