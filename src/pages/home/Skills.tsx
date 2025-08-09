@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { Canvas, useFrame } from '@react-three/fiber'
+import { useState } from "react";
+import { Canvas } from '@react-three/fiber'
 import { Environment, Html, Lightformer } from '@react-three/drei'
 import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
 import { C, CSharp, HTML, JavaScript, TypeScript, CSS, React, Vue, Git, SQL, Java, Python, MongoDB, Docker } from '@/models'

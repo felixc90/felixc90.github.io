@@ -4,8 +4,8 @@ Command: npx gltfjsx@6.5.3 ./public/models/university.glb -o ./src/models/Univer
 */
 
 import * as THREE from 'three'
-import React, { useEffect, useRef, useState } from 'react'
-import { Lightformer, useGLTF, useScroll, useTexture } from '@react-three/drei'
+import { useRef } from 'react'
+import { useGLTF, useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 
 export function Model() {

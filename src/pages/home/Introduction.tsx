@@ -1,13 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import Experience from "./university/Experience";
-import { useEffect, useRef, useState } from "react";
-import * as THREE from 'three';
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { INITIAL_CAMERA_POSITION } from "@/constants";
 import ScrambleText from "@/components/ui/ScrambleText";
 import MySplitText from "@/components/ui/MySplitText";
 import Square from "@/components/ui/Square";
-import { Environment } from "@react-three/drei";
 
 const Introduction = () => {
 	const [fullScreen, setFullScreen] = useState<boolean>(false)

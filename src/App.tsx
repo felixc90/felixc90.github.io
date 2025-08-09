@@ -5,12 +5,12 @@ import {
 	About,
 	Contact
 } from './pages';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router';
 
 function App() {
   return (
 		<>
-		<BrowserRouter>
+		<HashRouter>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
 			</Routes>
 			
 		<Footer />
-		</BrowserRouter>
+		</HashRouter>
 		</>
   )
 }

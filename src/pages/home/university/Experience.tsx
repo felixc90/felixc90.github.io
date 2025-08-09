@@ -1,18 +1,12 @@
-import { Center, OrbitControls, useScroll } from "@react-three/drei";
+import { Center, OrbitControls } from "@react-three/drei";
 import { LightRail, Map } from "@/models";
 import { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three';
-import { useControls } from "leva";
-import { EffectComposer, Noise, Pixelation, ToneMapping } from "@react-three/postprocessing";
+import { EffectComposer, Noise, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import { lerp } from "three/src/math/MathUtils.js";
 import { INITIAL_CAMERA_POSITION } from "@/constants";
-
-// interface CursorType {
-// 	x: number,
-// 	y: number
-// };
 
 interface Props {
 	fullScreen: boolean;
@@ -23,21 +17,6 @@ export default function Experience({ fullScreen }: Props)
 
 	const [ zoomed, setZoomed ] = useState(false);
 
-	// const [ , setCursor ] = useState<CursorType>({
-	// 	x: 0,
-	// 	y: 0
-	// })
-
-	// useEffect(() => {
-	// 	window.addEventListener('mousemove', (event) =>
-	// 	{
-	// 		const newCursor = {
-	// 			x: event.clientX / window.innerWidth - 0.5,
-	// 			y: event.clientY / window.innerHeight - 0.5,
-	// 		}
-	// 		setCursor(newCursor);
-	// 	})
-	// }, [])
 	useEffect(() => {
 		if (!fullScreen) {
 			setZoomed(false);
