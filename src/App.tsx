@@ -5,12 +5,12 @@ import {
 	About,
 	Contact
 } from './pages';
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router';
+import { BrowserRouter, Routes, Route } from 'react-router';
 
 function App() {
   return (
 		<>
-		<BrowserRouter basename='/portfolio-website'>
+		<BrowserRouter>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
