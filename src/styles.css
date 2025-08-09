@@ -119,9 +119,14 @@ img {
   100% { transform: translateY(0); }
 }
 
+.bounce-icon {
+	cursor: default;
+}
+
 .bounce-icon:hover {
   animation-name: bounce-little;
   animation-duration: 0.75s;
+	cursor: default;
 }
 
 @keyframes bounce-little {
@@ -136,10 +141,12 @@ img {
 
 .shift-right {
   transition: transform 0.5s ease;
+	cursor: default;
 }
 
 .shift-right:hover {
-  transform: translateX(6px);
+	transform: translateX(6px);
+	cursor: default;
 }
 
 @theme inline {

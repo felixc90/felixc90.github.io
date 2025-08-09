@@ -147,10 +147,10 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 	return (
 		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-16 px-16 pt-24 pb-12">
 			<div className="flex justify-around"><Square color="var(--lighter)"/></div>
-			<MySplitText className="max-w-[40rem] mx-auto text-lg text-center mt-8 mb-0">
+			<MySplitText duration={2} className="max-w-[40rem] mx-auto text-lg text-center mt-8 mb-0">
 				{ bioMain }
 			</MySplitText>
-			<MySplitText className="max-w-[40rem] text-lg mx-auto text-center mb-12 text-light/55" delay={.8}>
+			<MySplitText duration={1.5} className="max-w-[40rem] text-lg mx-auto text-center mb-12 text-light/55" delay={.8}>
 				{ bioExtended }
 			</MySplitText>
 			<div className="flex justify-around">

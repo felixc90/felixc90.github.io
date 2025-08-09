@@ -33,7 +33,7 @@ const Card = ({ data }: CardProps) => {
 							</div>
 						</div>
 						<div>
-							<ScrambleText className="text-[11px]/tight neue-montreal-mono h-fit flex flex-col-reverse">
+							<ScrambleText duration={1.2} className="text-[11px]/tight neue-montreal-mono h-fit flex flex-col-reverse">
 								{ "Made with " + technologies.join(", ") }
 							</ScrambleText>
 						</div>
