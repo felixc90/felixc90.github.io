@@ -33,7 +33,7 @@ export function Model() {
 	
 	return (
 		<group ref={lightRail}>
-			<mesh geometry={ nodes['Tram'].geometry } position={ new THREE.Vector3(18,0,0)} rotation={[ 0,Math.PI/2,  0]}>
+			<mesh geometry={ nodes['Tram'].geometry } position={ new THREE.Vector3(18,0,0)} rotation={[ 0, Math.PI/2,  0]}>
 					<meshStandardMaterial
 						map={tramTexture}
 						metalness={0.2}
