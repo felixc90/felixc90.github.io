@@ -155,7 +155,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 				{ bioExtended }
 			</MySplitText>
 			<div className="flex justify-around">
-				<div className="neue-montreal-mono text-xs pr-4 m-auto">
+				<div className="hidden md:block neue-montreal-mono text-xs pr-4 m-auto">
 					<ScrambleText chars="upperCase">CODED WITH THREE.JS</ScrambleText>
 				</div>
 				<Canvas
@@ -176,7 +176,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 					<directionalLight position={[48, 32, 0]} lookAt={[16,0,0]} intensity={10} castShadow  />
 					<Experience fullScreen={fullScreen} />
 				</Canvas>
-				<div className="neue-montreal-mono text-xs pl-4 m-auto">
+				<div className="hidden md:block neue-montreal-mono text-xs pl-4 m-auto">
 					<ScrambleText chars="upperCase">MODELLED IN BLENDER</ScrambleText>
 				</div>
 				{ fullScreen && 
