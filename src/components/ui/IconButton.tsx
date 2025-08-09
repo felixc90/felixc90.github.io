@@ -1,22 +1,29 @@
 import { MouseEventHandler } from "react";
 
 interface IconButtonProps {
-	children?: React.ReactNode,
+	icon?: React.ReactNode,
 	onClick?: MouseEventHandler<HTMLDivElement>,
 	className?: string,
 }
 
-const IconButton = ({ children, onClick, className }: IconButtonProps) => {
+const IconButton = ({ icon, onClick, className }: IconButtonProps) => {
 
 		return (
 			<div
 				onClick={onClick}
-				className={`neue-montreal-mono font-[400] text-xs w-fit py-1 px-2 border-1 border-dark rounded-sm
-					cursor-pointer hover:rounded-2xl ease-linear duration-100 elastic-button
+				className={`
+					w-12 h-12
+					cursor-pointer 
+					flex flex-col justify-around my-auto
+					border-[1.5px] border-dark rounded-3xl
 					bg-light text-dark hover:bg-dark hover:text-light
+					ease-linear duration-100 elastic-button
 					${className !== undefined && className}
-					`}>
-					{ children }
+					`}
+			>
+				<div className="mx-auto">
+					{ icon }
+				</div>			
 			</div>
 		)
 	}

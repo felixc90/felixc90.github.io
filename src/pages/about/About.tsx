@@ -11,7 +11,7 @@ const About = () => {
 						<Square />
 						<Square />
 					</div>
-					<ScrambleText chars="upperCase">YUM CHA</ScrambleText>
+					<ScrambleText chars="upperCase">BUILDING</ScrambleText>
 					<Square />
 					<Square />
 					<Square />
@@ -27,7 +27,7 @@ const About = () => {
 					</div>
 					<div className="md:flex">
 						<div className="w-1/2 flex justify-around mb-12">
-							<div className="md:w-7/12 min-w-60">
+							<div className="md:w-1/2 min-w-60">
 								<div className="w-fit border-2 border-dark px-4 py-4">
 									<img src={'/images/profile.png'}/>
 								</div>
@@ -38,28 +38,32 @@ const About = () => {
 								</div>
 							</div>
 						</div>
-						<div className="w-1/2 text-sm font-[450] mt-4 tracking-tighter neue-montreal-mono">
-							<div className="mb-4">DEVELOPER PROFILE 2025</div>
+						<div className="md:w-1/2 text-sm sm:text-xs lg:text-sm  font-[450] tracking-tighter neue-montreal-mono">
+							<div className="mb-4">PROFILE</div>
 							<div className="mb-4">
-								<div>NAME</div>	
-								<div className=" ml-4">Felix Cao</div>
+								<ScrambleText chars="upperCase" duration={3}>NAME</ScrambleText>	
+								<div className="ml-4">Felix Cao</div>
 							</div>
 							<div className="mb-4">
-								<div>LOCATION</div>	
-								<div className=" ml-4">Sydney, Australia</div>
+								<ScrambleText chars="upperCase" duration={3}>LOCATION</ScrambleText>	
+								<div className="ml-4">Sydney, Australia</div>
 							</div>
 							<div className="mb-4">
-								<div>EDUCATION</div>	
+								<ScrambleText chars="upperCase" duration={3}>EDUCATION</ScrambleText>	
 								<div className="ml-4">University of New South Wales</div>
 								<div className="ml-4">Bachelor of Science (Statistics) / Science (Computer Science)</div>
 							</div>
 							<div className="mb-4">
-								<div>FOCUS</div>
-								<div className=" ml-4">Backend engineering; Data engineering</div>
+								<ScrambleText chars="upperCase" duration={3}>FOCUS</ScrambleText>
+								<div className="ml-4">Backend engineering; Data engineering</div>
 							</div>
 							<div className="mb-4">
-								<div>DESCRIPTION</div>
-								<div className=" ml-4">LOREP IPSUM</div>
+								<ScrambleText chars="upperCase" duration={3}>DESCRIPTION</ScrambleText>
+								<div className="ml-4 max-w-[30rem]">
+									I love building things that help make peoples' lives easier and make impact on the world. I am focused on architectural and data-related ideas but more recently, 
+									I've also been tuning my frontend skills working on this website, learning GSAP and Three.js to render animations along the way. 
+									In my spare time, I like to run track and create animations in Blender.
+								</div>
 							</div>
 						</div>
 					</div>

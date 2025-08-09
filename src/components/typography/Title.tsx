@@ -1,18 +1,9 @@
-import { CSSProperties } from "react";
 
-const Title = ({ children }: { children: React.ReactNode }) => {
-
-	const style: CSSProperties = {
-		fontFamily: "Mondwest",
-		fontWeight: "800",
-		marginTop: "4rem",
-		marginLeft: "auto",
-		marginRight: "auto",
-	}
+const Title = ({ children }: { children: string }) => {
 
 	return (
-		<div style={style} className="text-8xl/28 md:text-9xl lg:text-[10rem]">
-			{ children }
+		<div className="mondwest font-extrabold text-7xl/20 md:text-8xl lg:text-[8.5rem] flex">
+			{ children.split('').map(c => (<span className="bounce-title">{c}</span>)) }
 		</div>
 	)
 }

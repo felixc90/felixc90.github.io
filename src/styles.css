@@ -51,6 +51,10 @@ img {
 	font-family: 'NeueBit';
 }
 
+.editorial-new {
+	font-family: 'Editorial New';
+}
+
 /* Grabbable Cursor */
 
 .grabbable {
@@ -102,6 +106,44 @@ img {
   57%  { transform: scale(0.985, 0.985); }
   74%  { transform: scale(1.005, 1.005); }
   100% { transform: scale(1, 1); }
+}
+
+.bounce-title:hover {
+  animation-name: bounce;
+  animation-duration: 0.75s;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  10%  { transform: translateY(-2.5px); }  /* up a bit */
+  30%  { transform: translateY(2px); } /* slight down */
+  50%  { transform: translateY(-1.5px); }
+  57%  { transform: translateY(1px); }
+  74%  { transform: translateY(-0.6px); }
+  100% { transform: translateY(0); }
+}
+
+.bounce-icon:hover {
+  animation-name: bounce-little;
+  animation-duration: 0.75s;
+}
+
+@keyframes bounce-little {
+  0%   { transform: translateY(0); }
+  10%  { transform: translateY(-2px); }  /* up a bit */
+  30%  { transform: translateY(1.5px); } /* slight down */
+  50%  { transform: translateY(-1px); }
+  57%  { transform: translateY(0.8px); }
+  74%  { transform: translateY(-0.5px); }
+  100% { transform: translateY(0); }
+}
+
+.shift-right {
+  transition: transform 0.5s ease;
+}
+
+.shift-right:hover {
+  transform: translateX(6px);
 }
 
 @theme inline {

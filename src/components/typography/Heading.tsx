@@ -1,17 +1,7 @@
-import { CSSProperties } from "react";
-
-const Heading = ({ children }: { children: React.ReactNode }) => {
-	const style: CSSProperties = {
-		fontFamily: "Mondwest",
-		fontWeight: "800",
-		fontSize: "5rem",
-		marginBottom: "1.5rem",
-		lineHeight: "5rem",
-	}
-
+const Heading = ({ children }: { children: string }) => {
 	return (
-		<div style={style}>
-			{ children }
+		<div className="mondwest font-extrabold text-[5rem]/20 mb-6 flex">
+			{ children.split('').map(c => (<span className="bounce-title">{c}</span>)) }
 		</div>
 	)
 }
