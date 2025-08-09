@@ -5,10 +5,6 @@ import Work from './Work';
 import Title from "@/components/typography/Title";
 import Introduction from "./Introduction";
 import ScrambleText from "@/components/ui/ScrambleText";
-// import LinkedInIcon from "@/assets/svgs/LinkedIn";
-// import IconButton from "@/components/ui/IconButton";
-// import GitHubIcon from "@/assets/svgs/Github";
-// import ResumeIcon from "@/assets/svgs/Resume";
 import Barcode from "@/assets/Barcode";
 const Home = () => {
 
@@ -80,11 +76,6 @@ const Home = () => {
 									</div>
 								</div>
 							</div>
-							{/* <div className="flex gap-3 text-dark">
-								<IconButton icon={<ResumeIcon/>} onClick={()=> window.open("/documents/resume.pdf")} />
-								<IconButton icon={<GitHubIcon />} onClick={()=> window.open("https://github.com/felixc90", "_blank")} />
-								<IconButton icon={<LinkedInIcon />} onClick={()=> window.open("https://www.linkedin.com/in/felix-cao/", "_blank")} />
-							</div> */}
 							<div className="flex flex-col neue-montreal-mono">
 								<div className="flex justify-around mb-1">SN1703200330072025</div>
 								<div className="h-8 sm:h-12">

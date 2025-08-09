@@ -1,4 +1,8 @@
+import GitHubIcon from "@/assets/svgs/Github";
+import LinkedInIcon from "@/assets/svgs/LinkedIn";
+import ResumeIcon from "@/assets/svgs/Resume";
 import Button from "@/components/ui/Button";
+import IconButton from "@/components/ui/IconButton";
 import MySplitText from "@/components/ui/MySplitText";
 import ScrambleText from "@/components/ui/ScrambleText";
 import Square from "@/components/ui/Square";
@@ -53,8 +57,13 @@ const Contact = () => {
 									<Button variant="filled" readonly>EMAIL</Button>
 									<Button variant="filled" readonly></Button>
 								</div>
-								<div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4 mb-6 font-[450] underline hover:cursor-pointer" onClick={()=> window.open("mailto:felixcao37@gmail.com")}>
+								<div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4 mb-10 font-[450] underline hover:cursor-pointer" onClick={()=> window.open("mailto:felixcao37@gmail.com")}>
 									felixcao37@gmail.com
+								</div>
+								<div className="flex gap-3 text-dark">
+									<IconButton icon={<ResumeIcon/>} onClick={()=> window.open("/documents/resume.pdf")} />
+									<IconButton icon={<GitHubIcon />} onClick={()=> window.open("https://github.com/felixc90", "_blank")} />
+									<IconButton icon={<LinkedInIcon />} onClick={()=> window.open("https://www.linkedin.com/in/felix-cao/", "_blank")} />
 								</div>
 							</div>
 						</div>

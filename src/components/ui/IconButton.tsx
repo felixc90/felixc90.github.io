@@ -15,7 +15,7 @@ const IconButton = ({ icon, onClick, className }: IconButtonProps) => {
 					w-12 h-12
 					cursor-pointer 
 					flex flex-col justify-around my-auto
-					border-[1.5px] border-dark rounded-3xl
+					border-2 border-dark rounded-3xl
 					bg-light text-dark hover:bg-dark hover:text-light
 					ease-linear duration-100 elastic-button
 					${className !== undefined && className}
