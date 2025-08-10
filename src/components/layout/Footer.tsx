@@ -52,7 +52,7 @@ const Footer = () => {
 			</div>
 			<div className="flex justify-between w-full mb-4">
 				<div>©2025 FELIX CAO</div>
-				<div>
+				<div className="hidden sm:block">
 					{time.toLocaleTimeString().substring(0,2)}
 					<span className="animate-blink">:</span>
 					{time.toLocaleTimeString().substring(3,5)} SYD
