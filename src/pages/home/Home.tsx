@@ -7,19 +7,20 @@ import Introduction from "./Introduction";
 import ScrambleText from "@/components/ui/ScrambleText";
 import Barcode from "@/assets/Barcode";
 import BounceIcon from "@/components/ui/BounceIcon";
-import ShiftRight from "@/components/ui/ShiftRight";
+import Shift from "@/components/ui/Shift";
+
 const Home = () => {
 
 	return (
-		<div className="px-16 py-8">
+		<div className="px-8 sm:px-16 py-8">
 			<div className="h-[calc(100vh-4rem)] w-full ">
 				<div className="flex flex-col justify-between h-full">
 					<div className="flex-col flex justify-around mt-14">
 						<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
 							<div className="flex gap-4">
+								<Square className="hidden sm:block" />
 								<Square />
-								<Square />
-								<Square />
+								<Square className="hidden sm:block" />
 							</div>
 							<ScrambleText chars="upperCase">DESIGN</ScrambleText>
 							<Square />
@@ -27,9 +28,9 @@ const Home = () => {
 							<Square />
 							<ScrambleText chars="upperCase">DEVELOPMENT</ScrambleText>
 							<div className="flex gap-4">
+								<Square className="hidden sm:block" />
 								<Square />
-								<Square />
-								<Square />
+								<Square className="hidden sm:block" />
 							</div>
 						</div>
 						<div className="flex flex-col">
@@ -53,9 +54,9 @@ const Home = () => {
 											<ScrambleText chars="upperCase">AU</ScrambleText>
 										</div>
 										<div className="neuebit text-6xl md:text-8xl flex gap-2">
-											<ShiftRight delay={2400}>→</ShiftRight>
-											<ShiftRight delay={2450}>→</ShiftRight>
-											<ShiftRight delay={2500}>→</ShiftRight>
+											<Shift dir={"right"} delay={2400}>→</Shift>
+											<Shift dir={"right"} delay={2450}>→</Shift>
+											<Shift dir={"right"} delay={2500}>→</Shift>
 										</div>
 
 									</div>
@@ -66,8 +67,8 @@ const Home = () => {
 					</div>
 					<div className="flex flex-col gap-4">
 						<div className="flex justify-between neue-montreal-mono font-[450] text-[10px]/[8px] sm:text-sm">
-							<div className="flex gap-8">
-								<div className="flex flex-col-reverse gap-3">
+							<div className="flex gap-2 sm:gap-6">
+								<div className="flex flex-col-reverse gap-1 sm:gap-3">
 									<div>©2025 PORTFOLIO</div>
 									<div className="w-full h-4 border-1 border-dark flex">
 										<div className="w-1/2 h-full flex flex-col"><div className="h-1/2 bg-dark"></div><div className="h-1/2"></div></div>
@@ -75,7 +76,7 @@ const Home = () => {
 									</div>
 								</div>
 								<div className="flex flex-col-reverse">
-									<div className="neuebit flex gap-2 text-5xl/6 sm:text-7xl/8 h-fit ">
+									<div className="neuebit flex gap-[6px] text-5xl/6 sm:text-7xl/8 h-fit ">
 										<BounceIcon delay={1450}>♥</BounceIcon>
 										<BounceIcon delay={1550}>☕</BounceIcon>
 										<BounceIcon delay={1650}>⛅</BounceIcon>
@@ -83,7 +84,7 @@ const Home = () => {
 								</div>
 							</div>
 							<div className="flex flex-col neue-montreal-mono">
-								<div className="flex justify-around mb-1">SN1703200330072025</div>
+								<div className="flex justify-around mb-1">SN0622303202843</div>
 								<div className="h-8 sm:h-12">
 									<Barcode />
 								</div>

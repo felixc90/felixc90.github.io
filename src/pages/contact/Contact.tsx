@@ -11,23 +11,23 @@ import Square from "@/components/ui/Square";
 const Contact = () => {
 	
 	return (
-		<div className="bg-light min-h-screen sm:min-h-[calc(100vh)] px-16 py-8 text-dark">
+		<div className="bg-light min-h-screen sm:min-h-[calc(100vh)] px-8 sm:px-16 py-8 text-dark">
 			<div className="flex-col flex justify-around mt-14">
 				<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
 					<div className="flex gap-4">
+						<Square className="hidden sm:block" />
 						<Square />
-						<Square />
-						<Square />
+						<Square className="hidden sm:block" />
 					</div>
 					<ScrambleText duration={1.5} chars="upperCase">POSTMAN</ScrambleText>
-					<Square />
-					<Square />
-					<Square />
+						<Square />
+						<Square />
+						<Square />
 					<ScrambleText duration={1.5} chars="upperCase">TCP/UDP</ScrambleText>
 					<div className="flex gap-4">
+						<Square className="hidden sm:block" />
 						<Square />
-						<Square />
-						<Square />
+						<Square className="hidden sm:block" />
 					</div>
 				</div>
 				<div className="flex-col flex sm:justify-around w-full mt-12 flex-wrap">

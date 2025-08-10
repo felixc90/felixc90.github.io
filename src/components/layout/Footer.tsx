@@ -17,15 +17,15 @@ const Footer = () => {
 	const navigate = useNavigate();
 
 	return (
-		<footer className="bg-darker pt-16 px-16 pb-8 text-[var(--light)] border-t-1 border-t-light">
+		<footer className="bg-darker pt-16 px-16 pb-8 text-[var(--light)] border-t-1 border-t-light neue-montreal-mono font-[400] text-[10px] sm:text-sm">
 			<div className="flex mb-16">
-				<div style={{ lineHeight: "3rem"}} className="text-6xl w-1/2 neuebit ">Get in Touch</div>
-				<div className="flex w-1/4 flex-col gap-2 neue-montreal-mono font-[400] text-sm">
+				<div style={{ lineHeight: "3rem"}} className="text-4xl sm:text-6xl w-1/2 neuebit mr-8">Get in Touch</div>
+				<div className="flex w-1/4 flex-col gap-2 ">
 					<Anchor onClick={() => navigate("/")}>HOME</Anchor>
 					<Anchor onClick={() => navigate("/about")}>ABOUT</Anchor>
 					<Anchor onClick={() => navigate("/contact")}>CONTACT</Anchor>
 				</div>
-				<div className="flex w-1/4 flex-col gap-2 neue-montreal-mono font-[400] text-sm">
+				<div className="flex w-1/4 flex-col gap-2 mr-4">
 					<Anchor onClick={()=> window.open("/documents/resume.pdf")}>
 						RESUME
 					</Anchor>
@@ -50,7 +50,7 @@ const Footer = () => {
 					</Anchor>
 				</div>
 			</div>
-			<div className="flex justify-between w-full neue-montreal-mono text-sm font-[400] mb-4">
+			<div className="flex justify-between w-full mb-4">
 				<div>©2025 FELIX CAO</div>
 				<div>
 					{time.toLocaleTimeString().substring(0,2)}
@@ -59,13 +59,13 @@ const Footer = () => {
 				</div>
 				<div>DEVELOPING APPS</div>
 			</div>
-			<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
+			<div className="flex justify-between w-full neue-montreal-mono text-[10px] sm:text-xs font-[450]">
 					<Square color="var(--light)" />
 				<div>BRUTALISM</div>
 				<div className="flex gap-4">
+					<Square color="var(--light)" className="hidden sm:block" />
 					<Square color="var(--light)" />
-					<Square color="var(--light)" />
-					<Square color="var(--light)" />
+					<Square color="var(--light)" className="hidden sm:block" />
 				</div>
 				<div>WITH REACT</div>
 				<Square color="var(--light)" />

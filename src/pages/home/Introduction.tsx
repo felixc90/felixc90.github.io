@@ -118,9 +118,10 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 	]
 
 	const Description = () => {
-		return items[active].description.map((line) => {
+		return items[active].description.map((line, i) => {
 				return (
-					line == "" ?
+				<div key={i}>
+					{line == "" ?
 					<br /> :
 					line == "Academic Transcript" ?
 					<div className="flex flex-col hover:cursor-pointer hover:underline pointer-events-auto" onClick={()=> window.open("/documents/transcript.pdf")}>
@@ -128,7 +129,8 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 					</div> :
 					<div className="flex flex-col pointer-events-auto">
 						{ line }
-					</div>
+					</div>}
+				</div>
 				)
 			})
 	}
@@ -146,7 +148,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 	
 
 	return (
-		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-16 px-16 pt-24 pb-12">
+		<div className="bg-darker text-light min-h-[calc(100vh+4rem)] -mx-8 px-8 sm:-mx-16 sm:px-16 pt-24 pb-12">
 			<div className="flex justify-around"><Square color="var(--lighter)"/></div>
 			<MySplitText duration={2} className="max-w-[40rem] mx-auto text-lg text-center mt-8 mb-0">
 				{ bioMain }

@@ -30,7 +30,7 @@ export default function Experience({ fullScreen }: Props)
 			state.camera.lookAt(new THREE.Vector3(0,0,0))
 			state.camera.updateProjectionMatrix();
 		} else if (!zoomed) {
-			state.camera.zoom = lerp(state.camera.zoom, 20, 0.02)
+			state.camera.zoom = lerp(state.camera.zoom, window.innerWidth >= 640 ? 20 : 8, 0.02)
 			state.camera.updateProjectionMatrix();
 			if (state.camera.zoom > 19) {
 				setZoomed(true);
@@ -41,7 +41,7 @@ export default function Experience({ fullScreen }: Props)
 
 	return (
 		<>
-			{fullScreen && <OrbitControls target={[0, 0, 0]} maxPolarAngle={Math.PI/2}  minAzimuthAngle={0} maxAzimuthAngle={Math.PI} minZoom={12} maxZoom={80} /> }
+			{fullScreen && <OrbitControls target={[0, 0, 0]} maxPolarAngle={Math.PI/2}  minAzimuthAngle={0} maxAzimuthAngle={Math.PI} minZoom={8} maxZoom={80} /> }
 			<EffectComposer>
 				<ToneMapping mode={ ToneMappingMode.ACES_FILMIC } />
 				<Noise opacity={0.2} />

@@ -3,13 +3,13 @@ import Square from "@/components/ui/Square";
 
 const About = () => {
 	return (
-		<div className="bg-light min-h-[calc(100vh+2rem)] px-16 py-8 pb-32 text-dark">
+		<div className="bg-light min-h-[calc(100vh+2rem)] px-8 sm:px-16 py-8 pb-32 text-dark">
 			<div className="flex-col flex justify-around mt-14">
 				<div className="flex justify-between w-full neue-montreal-mono text-xs font-[450] mb-8">
 					<div className="flex gap-4">
+						<Square className="hidden sm:block" />
 						<Square />
-						<Square />
-						<Square />
+						<Square className="hidden sm:block" />
 					</div>
 					<ScrambleText chars="upperCase">BUILDING</ScrambleText>
 					<Square />
@@ -17,9 +17,9 @@ const About = () => {
 					<Square />
 					<ScrambleText chars="upperCase">RUNNING</ScrambleText>
 					<div className="flex gap-4">
+						<Square className="hidden sm:block" />
 						<Square />
-						<Square />
-						<Square />
+						<Square className="hidden sm:block" />
 					</div>
 				</div>
 				<div className="justify-around w-full">

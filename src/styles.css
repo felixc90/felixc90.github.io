@@ -9,6 +9,7 @@
   --color-light: var(--light);
 	--color-lighter: var(--lighter);
 	--color-highlight: var(--highlight);
+	--breakpoint-xs: 30rem;
 }
 
 :root {
@@ -152,19 +153,75 @@ img {
 }
 
 .shift-right {
-  transition: transform 0.5s ease;
-	cursor: default;
+  cursor: default;
+	transition: transform 0.3s ease;
 }
 
 .shift-right:hover {
-	transform: translateX(6px);
-	cursor: default;
+  transform: translateX(6px);
 }
 
 .shift-right.shift-right-onload {
-  transform: translateX(6px);
-	cursor: default;
+  animation: shiftRightIn 0.75s forwards ease;
 }
+
+.shift-right.shift-right-exit {
+  animation: shiftRightOut 0.75s forwards ease;
+}
+
+@keyframes shiftRightIn {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes shiftRightOut {
+  from {
+    transform: translateX(6px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.shift-left {
+  cursor: default;
+	transition: transform 0.3s ease;
+}
+
+.shift-left:hover {
+  transform: translateX(-4px);
+}
+
+.shift-left.shift-left-onload {
+  animation: shiftLeftIn 0.5s forwards ease;
+}
+
+.shift-left.shift-left-exit {
+  animation: shiftLeftOut 0.5s forwards ease;
+}
+
+@keyframes shiftLeftIn {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-6px);
+  }
+}
+
+@keyframes shiftLeftOut {
+  from {
+    transform: translateX(-6px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);

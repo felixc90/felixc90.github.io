@@ -1,6 +1,6 @@
 import Heading from "@/components/typography/Heading"
 import Card from "@/components/ui/Card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, ScrollBar } from "@/components/ui/Carousel"
 import data from '@/data/projects.json';
 
 const Projects = () => {
@@ -11,16 +11,16 @@ const Projects = () => {
 			<div className="-mb-8">
 				<Heading>Projects.</Heading>
 			</div>
-			<Carousel className="w-[90%] mx-auto">
+			<Carousel className="w-4/5 sm:w-9/10 mx-auto">
 				<CarouselPrevious />
-				<CarouselContent className="-ml-8 h-[36rem]">
+				<CarouselContent className="-ml-12 h-[36rem]">
 					{ items.map((item, i) => (
-						<CarouselItem key={i} className="max-w-[360px] sm:max-w-none sm:basis-1/2 lg:basis-1/3 pl-8 h-fit">
+						<CarouselItem key={i} className="basis-full sm:basis-1/2 lg:basis-1/3 pl-12 h-fit">
 							<Card data={item}/>
 						</CarouselItem>
 					)) }
 				</CarouselContent>
-				<CarouselNext />
+					<CarouselNext />
 			</Carousel>
 		</div>
 	)
