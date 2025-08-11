@@ -19,6 +19,14 @@ const Skills = () => {
 	const bio = "Throughout my software engineering journey, I've worked with variety of tools. " +
 	"Here's a list of technologies I've used, from the ones I know best to the ones I'm still growing with:"
 
+	function parseBold(text: string) {
+		const parts = text.split(/bold\{(.*?)\}/g);
+		return parts.map((part, i) =>
+			i % 2 === 1 ? <b key={i}>{part}</b> : part
+		);
+	}
+
+
 	return (
 		<div className="h-4/5 flex w-full flex-col md:flex-row">
 			<div className="w-full md:w-[calc(100%-8rem)] md:max-w-[50%] md:pr-12 flex-col flex justify-between" >
@@ -38,7 +46,9 @@ const Skills = () => {
 							))}
 						</div>
 						<div className="text-[16px] neue-montreal mt-8 font-[500]">
-							{skills[activeLogo].description?.join('')}
+							{skills[activeLogo].description.map((line, idx) => (
+								<span key={idx}>{parseBold(line)}</span>
+							))}
 						</div>
 					</div>
 				</div>

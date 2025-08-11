@@ -9,8 +9,8 @@
 			],
 			"description": [
 				"JavaScript and TypeScript are my most proficient languages. ",
-				"I have frequently built my personal projects with a Node.js/Express.js backend and React.js frontend. ",
-				"I also have experience building interactive web applications with vanilla JavaScript."
+				"I have frequently built my personal projects with bold{Node.js} and either bold{Express.js/tRPC} for the backend and bold{React.js} for the frontend. ",
+				"I also have experience building interactive web applications with bold{vanilla JavaScript}."
 			]	
 		},
 		{
@@ -22,7 +22,7 @@
 			],
 			"description": [
 				"JavaScript and TypeScript are my most proficient languages. ",
-				"I have frequently built my personal projects with a Node.js/Express.js backend and React.js frontend. "
+				"I have frequently built my personal projects with bold{Node.js} and either bold{Express.js/tRPC} for the backend and bold{React.js} for the frontend. "
 			]
 		},
 		{
@@ -34,7 +34,7 @@
 			],
 			"description": [
 				"In building web applications, I have worked with HTML extensively. ",
-				"More recently, I use JSX and TSX to structure the layout of my pages"
+				"More recently, I use bold{JSX} and bold{TSX} to structure the layout of my pages"
 			]
 		},
 		{
@@ -46,8 +46,8 @@
 			],
 			"description": [
 				"In building web applications, I have worked with CSS extensively. ",
-				"I have experience writing vanilla CSS but also experience using CSS-in-JS libraries such as styled-components and utility classes from Tailwind. ",
-				"I have also used UI libraries such as Material UI, Mantine, Radix and Shadcn."
+				"I have experience writing vanilla CSS but also experience using CSS-in-JS libraries such as bold{styled-components} and utility classes from bold{Tailwind}. ",
+				"I have also used UI libraries such as bold{Material UI}, bold{Mantine}, bold{Radix} and bold{Shadcn}."
 			]
 		},
 		{
@@ -58,7 +58,7 @@
 			],
 			"description": [
 				"I have built most of my web applications with React.js. ",
-				"This includes having worked extensively with React hooks such as useState and useEffect. I am still developing my skills regarding state management. ", 
+				"This includes having worked extensively with bold{React hooks} such as useState and useEffect. I am still developing my skills regarding bold{state management}. ", 
 				"I have used a range of CSS frameworks and UI libraries as outlined in the 'CSS' tab. "
 			]
 		},
@@ -86,7 +86,7 @@
 			"description": [
 				"My first programming language learnt at university. ",
 				"I have experience coding basic programs using C with consideration for memory management. ",
-				"This is also the language used to teach data structures and algorithms. "
+				"This is also the language used to bold{teach data structures and algorithms}. "
 			]
 		},
 		{
@@ -99,8 +99,8 @@
 			],
 			"description": [
 				"I worked with C# extensively to implement business logic during my time at WiseTech Global. ",
-				"This includes experience creating services using the controller-service-repository design pattern, ",
-				"creating GUIs using WinForms, implementing filters as well as designing new classes."
+				"This includes experience creating services using the bold{controller-service-repository} design pattern, ",
+				"creating GUIs using bold{WinForms}, implementing bold{filters} as well as designing new classes."
 			]
 		},
 		{
@@ -109,7 +109,7 @@
 			"colors": [
 				"#f05133"
 			],
-			"description": ["I have used Git everywhere e.g. GitHub, Azure DevOps and GitLab."]
+			"description": ["I have used Git everywhere e.g. bold{GitHub}, bold{Azure DevOps} and bold{GitLab}."]
 		},
 		{
 			"name": "SQL",
@@ -118,8 +118,8 @@
 				"#df6c20"
 			],
 			"description": [
-				"I have strong skills in SQL having worked with various DMBSs such as PostGreSQL and Microsoft SQL Server. ",
-				"This includes experience helping maintain CDC and ETL pipelines during my time in the Business Intelligence team at WiseTech Global."
+				"I have strong skills in SQL having worked with various DMBSs such as bold{PostGreSQL} and bold{Microsoft SQL Server}. ",
+				"This includes experience helping maintain bold{CDC} and bold{ETL} pipelines during my time in the Business Intelligence team at WiseTech Global."
 			]
 		},
 		{
@@ -131,7 +131,7 @@
 			"description": [
 				"I learnt Object-Oriented Programming at university with Java. ",
 				"I am trying to develop my skills with the 'Buckets' personal project where I am in the process of developing a web application ",
-				"using Spring Boot, Maven and Hibernate."
+				"using bold{Spring Boot}, bold{Maven} and bold{Hibernate}."
 			]
 		},
 		{
@@ -142,7 +142,7 @@
 				"#FFE052"
 			],
 			"description": [
-				"I have foundational knowledge of Python, having used Flask to create Python web services. ",
+				"I have foundational knowledge of Python, having used bold{Flask} to create Python web services. ",
 				"In addition, I used Python to implement algorithms for the machine learning course I took at University of Toronto. "
 			]
 		},
