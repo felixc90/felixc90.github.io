@@ -183,7 +183,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
 				</div>
 				{ fullScreen && 
 					<div 
-						className={`px-16 py-12 pointer-events-none`}
+						className={`px-8 sm:px-16 py-12 pointer-events-none`}
 						style={{ color:"var(--lighter)", zIndex:"21", height:"100vh", width:"100vw", position: "fixed", top: "0", left: "0"}} 
 					>
 						<div className="flex flex-col neue-montreal-mono justify-between h-full">
