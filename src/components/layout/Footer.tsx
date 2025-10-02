@@ -35,7 +35,7 @@ const Footer = () => {
 					<Anchor onClick={()=> window.open("https://www.linkedin.com/in/felix-cao/", "_blank")}>
 						<div className="flex">
 							<div className="mr-1">LINKEDIN</div> 
-							<div className="mt-1">
+							<div>
 								<ExternalLink size={12}/>
 							</div>
 						</div>
@@ -43,7 +43,7 @@ const Footer = () => {
 					<Anchor onClick={()=> window.open("https://github.com/felixc90", "_blank")}>
 						<div className="flex">
 							<div className="mr-1">GITHUB</div> 
-							<div className="mt-1">
+							<div>
 								<ExternalLink size={12}/>
 							</div>
 						</div>
