@@ -1,172 +1,136 @@
 {
-	"skills": [
-		{
-			"name": "JavaScript",
-			"glb": "javascript.glb",
-			"colors": [
-				"#F0DB4F",
-				"#323330"
-			],
-			"description": [
-				"JavaScript and TypeScript are my most proficient languages. ",
-				"I have frequently built my personal projects with bold{Node.js} and either bold{Express.js/tRPC} for the backend and bold{React.js} for the frontend. ",
-				"I also have experience building interactive web applications with bold{vanilla JavaScript}."
-			]	
-		},
-		{
-			"name": "TypeScript",
-			"glb": "javascript.glb",
-			"colors": [
-				"#3178C6",
-				"#ffffff"
-			],
-			"description": [
-				"JavaScript and TypeScript are my most proficient languages. ",
-				"I have frequently built my personal projects with bold{Node.js} and either bold{Express.js/tRPC} for the backend and bold{React.js} for the frontend. "
-			]
-		},
-		{
-			"name": "HTML",
-			"glb": "javascript.glb",
-			"colors": [
-				"#f16529",
-				"#ffffff"
-			],
-			"description": [
-				"In building web applications, I have worked with HTML extensively. ",
-				"More recently, I use bold{JSX} and bold{TSX} to structure the layout of my pages"
-			]
-		},
-		{
-			"name": "CSS",
-			"glb": "javascript.glb",
-			"colors": [
-				"#663399",
-				"#ffffff"
-			],
-			"description": [
-				"In building web applications, I have worked with CSS extensively. ",
-				"I have experience writing vanilla CSS but also experience using CSS-in-JS libraries such as bold{styled-components} and utility classes from bold{Tailwind}. ",
-				"I have also used UI libraries such as bold{Material UI}, bold{Mantine}, bold{Radix} and bold{Shadcn}."
-			]
-		},
-		{
-			"name": "React",
-			"glb": "react.glb",
-			"colors": [
-				"#61dafb"
-			],
-			"description": [
-				"I have built most of my web applications with React.js. ",
-				"This includes having worked extensively with bold{React hooks} such as useState and useEffect. I am still developing my skills regarding bold{state management}. ", 
-				"I have used a range of CSS frameworks and UI libraries as outlined in the 'CSS' tab. "
-			]
-		},
-		{
-			"name": "Vue",
-			"glb": "vue.glb",
-			"colors": [
-				"#42b883",
-				"#35495e"
-			],
-			"description": [
-				"I worked with Vue.js 3 during my time at WiseTech Global. ",
-				"My tasks included creating a modal to allow users to edit task estimates for a productivity board and connecting it to the backend. ",
-				"I was also responsible for fixing various styling issues such as malfunctioning data table."
-			]
-		},
-		{
-			"name": "C",
-			"glb": "c.glb",
-			"colors": [
-				"#5c6bc0",
-				"#3949ab",
-				"#283593"
-			],
-			"description": [
-				"My first programming language learnt at university. ",
-				"I have experience coding basic programs using C with consideration for memory management. ",
-				"This is also the language used to bold{teach data structures and algorithms}. "
-			]
-		},
-		{
-			"name": "C#",
-			"glb": "c.glb",
-			"colors": [
-				"#280068",
-				"#390091",
-				"#A179DC"
-			],
-			"description": [
-				"I worked with C# extensively to implement business logic during my time at WiseTech Global. ",
-				"This includes experience creating services using the bold{controller-service-repository} design pattern, ",
-				"creating GUIs using bold{WinForms}, implementing bold{filters} as well as designing new classes."
-			]
-		},
-		{
-			"name": "Git",
-			"glb": "git.glb",
-			"colors": [
-				"#f05133"
-			],
-			"description": ["I have used Git everywhere e.g. bold{GitHub}, bold{Azure DevOps} and bold{GitLab}."]
-		},
-		{
-			"name": "SQL",
-			"glb": "sql.glb",
-			"colors": [
-				"#df6c20"
-			],
-			"description": [
-				"I have strong skills in SQL having worked with various DMBSs such as bold{PostGreSQL} and bold{Microsoft SQL Server}. ",
-				"This includes experience helping maintain bold{CDC} and bold{ETL} pipelines during my time in the Business Intelligence team at WiseTech Global."
-			]
-		},
-		{
-			"name": "Java",
-			"glb": "java.glb",
-			"colors": [
-				 "#ffffff","#F8981D", "#5382A1"
-			],
-			"description": [
-				"I learnt Object-Oriented Programming at university with Java. ",
-				"I am trying to develop my skills with the 'Buckets' personal project where I am in the process of developing a web application ",
-				"using bold{Spring Boot}, bold{Maven} and bold{Hibernate}."
-			]
-		},
-		{
-			"name": "Python",
-			"glb": "python.glb",
-			"colors": [
-				"#387EB8",
-				"#FFE052"
-			],
-			"description": [
-				"I have foundational knowledge of Python, having used bold{Flask} to create Python web services. ",
-				"In addition, I used Python to implement algorithms for the machine learning course I took at University of Toronto. "
-			]
-		},
-		{
-			"name": "MongoDB",
-			"glb": "mongodb.glb",
-			"colors": [
-				"#b8c4c2", "#10aa50", "#12924f","#21313c"
-			],
-			"description": [
-				"I have a working knowledge in developing schemas and working with MongoDb databases. ",
-				"I used MongoDb to develop my 'Strava Discord Bot' project."
-			]
-		},
-		{
-			"name": "Docker",
-			"glb": "docker.glb",
-			"colors": [
-				"#1d63ed"
-			],
-			"description": [
-				"I have worked with Docker - having developed programs in containers as well as actually performing the containerisation of a project. ",
-				"This is a space I am keen to learn know more about."
-			]
-		}
-	]
+  "skills": [
+    {
+      "name": "JavaScript",
+      "glb": "javascript.glb",
+      "colors": ["#F0DB4F", "#323330"],
+      "description": [
+        "JavaScript and TypeScript are my most proficient languages. ",
+        "I have frequently built my personal projects with bold{Node.js} and either bold{Express.js/tRPC} for the backend and bold{React.js} for the frontend. ",
+        "I also have experience building interactive web applications with bold{vanilla JavaScript}."
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "glb": "javascript.glb",
+      "colors": ["#3178C6", "#ffffff"],
+      "description": [
+        "JavaScript and TypeScript are my most proficient languages. ",
+        "I have frequently built my personal projects with bold{Node.js} and either bold{Express.js/tRPC} for the backend and bold{React.js} for the frontend. "
+      ]
+    },
+    {
+      "name": "HTML",
+      "glb": "javascript.glb",
+      "colors": ["#f16529", "#ffffff"],
+      "description": [
+        "In building web applications, I have worked with HTML extensively. ",
+        "More recently, I use bold{JSX} and bold{TSX} to structure the layout of my pages"
+      ]
+    },
+    {
+      "name": "CSS",
+      "glb": "javascript.glb",
+      "colors": ["#663399", "#ffffff"],
+      "description": [
+        "In building web applications, I have worked with CSS extensively. ",
+        "I have experience writing vanilla CSS but also experience using CSS-in-JS libraries such as bold{styled-components} and utility classes from bold{Tailwind}. ",
+        "I have also used UI libraries such as bold{Material UI}, bold{Mantine}, bold{Radix} and bold{Shadcn}."
+      ]
+    },
+    {
+      "name": "React",
+      "glb": "react.glb",
+      "colors": ["#61dafb"],
+      "description": [
+        "I have built most of my web applications with React.js. ",
+        "This includes having worked extensively with bold{React hooks} such as useState and useEffect. I am still developing my skills regarding bold{state management}. ",
+        "I have used a range of CSS frameworks and UI libraries as outlined in the 'CSS' tab. "
+      ]
+    },
+    {
+      "name": "Vue",
+      "glb": "vue.glb",
+      "colors": ["#42b883", "#35495e"],
+      "description": [
+        "I worked with Vue.js 3 during my time at WiseTech Global. ",
+        "My tasks included creating a modal to allow users to edit task estimates for a productivity board and connecting it to the backend. ",
+        "I was also responsible for fixing various styling issues such as malfunctioning data table."
+      ]
+    },
+    {
+      "name": "C",
+      "glb": "c.glb",
+      "colors": ["#5c6bc0", "#3949ab", "#283593"],
+      "description": [
+        "My first programming language learnt at university. ",
+        "I have experience coding basic programs using C with consideration for memory management. ",
+        "This is also the language used to bold{teach data structures and algorithms}. "
+      ]
+    },
+    {
+      "name": "C#",
+      "glb": "c.glb",
+      "colors": ["#280068", "#390091", "#A179DC"],
+      "description": [
+        "I worked with C# extensively to implement business logic during my time at WiseTech Global. ",
+        "This includes experience creating services using the bold{controller-service-repository} design pattern, ",
+        "creating GUIs using bold{WinForms}, implementing bold{filters} as well as designing new classes."
+      ]
+    },
+    {
+      "name": "Git",
+      "glb": "git.glb",
+      "colors": ["#f05133"],
+      "description": [
+        "I have used Git everywhere e.g. bold{GitLab}, bold{GitHub}, bold{Azure DevOps} and bold{Bitbucket}."
+      ]
+    },
+    {
+      "name": "SQL",
+      "glb": "sql.glb",
+      "colors": ["#df6c20"],
+      "description": [
+        "I have strong skills in SQL having worked with various DMBSs such as bold{PostGreSQL} and bold{Microsoft SQL Server}. ",
+        "This includes experience helping maintain bold{CDC} and bold{ETL} pipelines during my time in the Business Intelligence team at WiseTech Global."
+      ]
+    },
+    {
+      "name": "Java",
+      "glb": "java.glb",
+      "colors": ["#ffffff", "#F8981D", "#5382A1"],
+      "description": [
+        "I learnt Object-Oriented Programming at university with Java. ",
+        "I am trying to develop my skills with the 'Buckets' personal project where I am in the process of developing a web application ",
+        "using bold{Spring Boot}, bold{Maven} and bold{Hibernate}."
+      ]
+    },
+    {
+      "name": "Python",
+      "glb": "python.glb",
+      "colors": ["#387EB8", "#FFE052"],
+      "description": [
+        "I have foundational knowledge of Python, having used bold{Flask} to create Python web services. ",
+        "In addition, I used Python to implement algorithms for the machine learning course I took at University of Toronto. "
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "glb": "mongodb.glb",
+      "colors": ["#b8c4c2", "#10aa50", "#12924f", "#21313c"],
+      "description": [
+        "I have a working knowledge in developing schemas and working with MongoDb databases. ",
+        "I used MongoDb to develop my 'Strava Discord Bot' project."
+      ]
+    },
+    {
+      "name": "Docker",
+      "glb": "docker.glb",
+      "colors": ["#1d63ed"],
+      "description": [
+        "I have worked with Docker - having developed programs in containers as well as actually performing the containerisation of a project. ",
+        "This is a space I am keen to learn know more about."
+      ]
+    }
+  ]
 }
