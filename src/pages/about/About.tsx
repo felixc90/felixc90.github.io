@@ -1,7 +1,35 @@
 import ScrambleText from "@/components/ui/ScrambleText";
 import Square from "@/components/ui/Square";
+import UnpixelateImage from "@/components/ui/UnpixelateImage";
+import { useEffect, useRef, useState } from "react";
 
 const About = () => {
+  const imageData = {
+    src: "/images/profile.png",
+    alt: "Felix Cao",
+    width: 824,
+    height: 1100,
+  };
+
+  const imageContainer = useRef<HTMLDivElement>(null);
+  const [containerHeight, setContainerHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (imageContainer.current) {
+        const containerWidth = imageContainer.current.offsetWidth;
+        const aspectRatio = imageData.height / imageData.width;
+        setContainerHeight(containerWidth * aspectRatio);
+      }
+    };
+
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    if (imageContainer.current) observer.observe(imageContainer.current);
+    return () => observer.disconnect();
+  }, [imageData.height, imageData.width]);
+
   return (
     <div className="bg-light min-h-[calc(100vh+2rem)] px-8 sm:px-16 py-8 pb-32 text-dark">
       <div className="flex-col flex justify-around mt-14">
@@ -22,22 +50,32 @@ const About = () => {
             <Square className="hidden sm:block" />
           </div>
         </div>
-        <div className="justify-around w-full">
-          <div className="mt-8 mb-8"></div>
-          <div className="md:flex">
-            <div className="w-1/2 flex justify-around mb-12">
-              <div className="md:w-1/2 min-w-60">
-                <div className="w-fit border-2 border-dark px-4 py-4">
-                  <img src={"/images/profile.png"} />
+        <div className="w-full">
+          <div className="md:flex mt-8">
+            <div className="w-fit md:w-1/2 flex justify-around mb-12 md:mr-6">
+              <div className="w-1/2 min-w-70">
+                <div className="border-2 border-dark">
+                  <div
+                    className="m-4"
+                    ref={imageContainer}
+                    style={containerHeight ? { height: containerHeight } : {}}
+                  >
+                    <UnpixelateImage
+                      src={imageData.src}
+                      alt={imageData.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-
                 <div className="neue-montreal-mono text-xs mt-1 flex justify-between tracking-wider">
-                  <div>1536 × 2048</div>
-                  <div className="tracking-wide">images/profile.jpg</div>
+                  <div>
+                    {imageData.width} × {imageData.height}
+                  </div>
+                  <div className="tracking-wide">{imageData.src}</div>
                 </div>
               </div>
             </div>
-            <div className="md:w-1/2 text-sm sm:text-xs lg:text-sm  font-[450] tracking-tighter neue-montreal-mono">
+            <div className="md:w-1/2 text-sm sm:text-xs lg:text-sm font-[450] tracking-tighter neue-montreal-mono mt-2">
               <div className="mb-4">PROFILE</div>
               <div className="mb-4">
                 <ScrambleText chars="upperCase">NAME</ScrambleText>
@@ -57,7 +95,7 @@ const About = () => {
               <div className="mb-4">
                 <ScrambleText chars="upperCase">FOCUS</ScrambleText>
                 <div className="ml-4">
-                  Full-stack engineering; Computer Graphics
+                  Full-stack engineering; Computer graphics
                 </div>
               </div>
               <div className="mb-4">
