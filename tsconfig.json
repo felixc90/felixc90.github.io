@@ -4,10 +4,8 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-	"compilerOptions": {
-		"types": [
-			"vite-plugin-glsl/ext"
-		],
+  "compilerOptions": {
+    "types": ["vite-plugin-glsl/ext"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

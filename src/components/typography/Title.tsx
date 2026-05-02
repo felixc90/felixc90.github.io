@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-const Title = ({ children, className }: { children: string, className?: string }) => {
+const Title = ({
+  children,
+  className,
+}: {
+  children: string;
+  className?: string;
+}) => {
   const [playEntryAnimation, setPlayEntryAnimation] = useState(true);
 
   useEffect(() => {
@@ -12,11 +18,10 @@ const Title = ({ children, className }: { children: string, className?: string }
   return (
     <div
       className={[
-				"mondwest font-extrabold flex",
-				className ?? " ",
-				(playEntryAnimation ? "bounce-onload" : "")
-			].join(' ')
-      }
+        "mondwest font-extrabold flex",
+        className ?? " ",
+        playEntryAnimation ? "bounce-onload" : "",
+      ].join(" ")}
     >
       {children.split("").map((c, i) => (
         <span

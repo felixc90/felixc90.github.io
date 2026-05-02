@@ -8,8 +8,16 @@ interface ShiftProps {
   className?: string;
 }
 
-const Shift = ({ children, delay = 0, dir, trigger, className }: ShiftProps) => {
-  const [animationPhase, setAnimationPhase] = useState<"idle" | "in" | "out">("idle");
+const Shift = ({
+  children,
+  delay = 0,
+  dir,
+  trigger,
+  className,
+}: ShiftProps) => {
+  const [animationPhase, setAnimationPhase] = useState<"idle" | "in" | "out">(
+    "idle",
+  );
 
   useEffect(() => {
     const animationDuration = 750;
@@ -17,8 +25,14 @@ const Shift = ({ children, delay = 0, dir, trigger, className }: ShiftProps) => 
     setAnimationPhase("idle");
 
     const delayTimer = setTimeout(() => setAnimationPhase("in"), delay + 20);
-    const outTimer = setTimeout(() => setAnimationPhase("out"), delay + animationDuration + 20);
-    const resetTimer = setTimeout(() => setAnimationPhase("idle"), delay + animationDuration * 2 + 40);
+    const outTimer = setTimeout(
+      () => setAnimationPhase("out"),
+      delay + animationDuration + 20,
+    );
+    const resetTimer = setTimeout(
+      () => setAnimationPhase("idle"),
+      delay + animationDuration * 2 + 40,
+    );
 
     return () => {
       clearTimeout(delayTimer);

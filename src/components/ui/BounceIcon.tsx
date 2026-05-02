@@ -12,7 +12,10 @@ const BounceIcon = ({ children, delay = 0 }: BounceIconProps) => {
     const animationDuration = 750;
 
     const delayTimer = setTimeout(() => setPlayEntryAnimation(true), delay);
-    const animationTimer = setTimeout(() => setPlayEntryAnimation(false), delay + animationDuration);
+    const animationTimer = setTimeout(
+      () => setPlayEntryAnimation(false),
+      delay + animationDuration,
+    );
 
     return () => {
       clearTimeout(delayTimer);
@@ -21,7 +24,9 @@ const BounceIcon = ({ children, delay = 0 }: BounceIconProps) => {
   }, [delay]);
 
   return (
-    <div className={"bounce-icon " + (playEntryAnimation ? "bounce-onload" : "")}>
+    <div
+      className={"bounce-icon " + (playEntryAnimation ? "bounce-onload" : "")}
+    >
       {children}
     </div>
   );

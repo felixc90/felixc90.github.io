@@ -1,31 +1,51 @@
 import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
-import * as THREE from 'three';
+import * as THREE from "three";
 
 export function Model() {
-	const ref = useRef<THREE.Group>(null)
-	const { nodes } = useGLTF('/models/c.glb');
-	
-	return (
-		<group ref={ref} rotation={[0, -3 * Math.PI / 4, 0]} scale={[1.4,1.2,1.2]}>
-			<group >
-				<mesh scale={1} geometry={nodes['Cylinder001'].geometry}>
-					<meshStandardMaterial metalness={0.2} roughness={.1} color={'#5c6bc0'}/>
-				</mesh>
-				<mesh scale={1} geometry={nodes['Cylinder002'].geometry}>
-					<meshStandardMaterial metalness={0.2} roughness={.1} color={'#3949ab'}/>
-				</mesh>
-				<mesh scale={1} geometry={nodes['Cylinder'].geometry}>
-					<meshStandardMaterial metalness={0.2} roughness={.1} color={'#283593'}/>
-				</mesh>
-				<group position={[-.39, 0, 0]}>
-					<mesh scale={1} geometry={nodes['Text-C'].geometry}>
-						<meshStandardMaterial metalness={0.2} roughness={.1} color={'#fffff'}/>
-					</mesh>
-				</group>
-			</group>
-		</group>
-	)
+  const ref = useRef<THREE.Group>(null);
+  const { nodes } = useGLTF("/models/c.glb");
+
+  return (
+    <group
+      ref={ref}
+      rotation={[0, (-3 * Math.PI) / 4, 0]}
+      scale={[1.4, 1.2, 1.2]}
+    >
+      <group>
+        <mesh scale={1} geometry={nodes["Cylinder001"].geometry}>
+          <meshStandardMaterial
+            metalness={0.2}
+            roughness={0.1}
+            color={"#5c6bc0"}
+          />
+        </mesh>
+        <mesh scale={1} geometry={nodes["Cylinder002"].geometry}>
+          <meshStandardMaterial
+            metalness={0.2}
+            roughness={0.1}
+            color={"#3949ab"}
+          />
+        </mesh>
+        <mesh scale={1} geometry={nodes["Cylinder"].geometry}>
+          <meshStandardMaterial
+            metalness={0.2}
+            roughness={0.1}
+            color={"#283593"}
+          />
+        </mesh>
+        <group position={[-0.39, 0, 0]}>
+          <mesh scale={1} geometry={nodes["Text-C"].geometry}>
+            <meshStandardMaterial
+              metalness={0.2}
+              roughness={0.1}
+              color={"#fffff"}
+            />
+          </mesh>
+        </group>
+      </group>
+    </group>
+  );
 }
 
-useGLTF.preload('models/c.glb')
+useGLTF.preload("models/c.glb");

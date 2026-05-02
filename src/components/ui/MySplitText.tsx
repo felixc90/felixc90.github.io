@@ -6,19 +6,28 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-interface SplitTextProps { 
-	children: string; 
-	className?: string; 
-	delay?: number;
-	type?: "words" | "lines" | "chars";
-	stagger?: number;
-	onClick?: MouseEventHandler<HTMLDivElement>,
-	x?: number;
-	y?: number;
-	duration?: number;
+interface SplitTextProps {
+  children: string;
+  className?: string;
+  delay?: number;
+  type?: "words" | "lines" | "chars";
+  stagger?: number;
+  onClick?: MouseEventHandler<HTMLDivElement>;
+  x?: number;
+  y?: number;
+  duration?: number;
 }
 
-const MySplitText = ({ children, className, delay = 0, type = "words", stagger = 0.01, y = 80, x = 0, duration = 1 }: SplitTextProps) => {
+const MySplitText = ({
+  children,
+  className,
+  delay = 0,
+  type = "words",
+  stagger = 0.01,
+  y = 80,
+  x = 0,
+  duration = 1,
+}: SplitTextProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const splitRef = useRef<SplitText | null>(null);
   const animRef = useRef<GSAPAnimation | null>(null);
@@ -53,14 +62,14 @@ const MySplitText = ({ children, className, delay = 0, type = "words", stagger =
         duration: duration,
         ease: "circ.out",
         y: y,
-				x: x,
+        x: x,
         stagger: stagger,
-				onComplete: () => {
-					if (splitRef.current) {
-						splitRef.current.revert();
-						splitRef.current = null;
-					}
-				}
+        onComplete: () => {
+          if (splitRef.current) {
+            splitRef.current.revert();
+            splitRef.current = null;
+          }
+        },
       });
     };
 
