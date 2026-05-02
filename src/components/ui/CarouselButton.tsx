@@ -21,7 +21,7 @@ const CarouselButton = ({
 					w-fit py-1 px-2  rounded-4xl
 					${
             disabled
-              ? "bg-[#C8C9C7] text-[#8E8F8B] border-1 border-[#C8C9C7]"
+              ? "bg-dark opacity-40 text-light border-dark border-1"
               : "bg-light text-dark cursor-pointer hover:rounded-2xl ease-linear duration-100 hover:bg-dark hover:text-light border-dark border-1"
           }
 					`}

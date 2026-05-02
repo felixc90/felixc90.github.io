@@ -15,7 +15,7 @@ const Home = () => {
       <div className="h-[calc(100vh-4rem)] w-full ">
         <div className="flex flex-col justify-between h-full">
           <div className="flex-col flex justify-around mt-14">
-            <div className="flex justify-between w-full neue-montreal-mono text-xs font-[450]">
+            <div className="flex justify-between w-full font-mono text-xs font-[450]">
               <div className="flex gap-4">
                 <Square className="hidden sm:block" />
                 <Square />
@@ -60,7 +60,7 @@ const Home = () => {
               <div className="flex w-full sm:flex-row flex-col">
                 <div className="w-0 sm:w-1/2"></div>
                 <div className="w-2/3 sm:w-1/2 flex justify-between">
-                  <div className="neue-montreal-mono text-xs md:text-sm font-[450] mt-12 flex-col flex w-fit">
+                  <div className="font-mono text-xs md:text-sm font-[450] mt-12 flex-col flex w-fit">
                     <ScrambleText chars="upperCase">
                       DESIGNING AND BUILDING THINGS
                     </ScrambleText>
@@ -73,7 +73,7 @@ const Home = () => {
                       </ScrambleText>
                       <ScrambleText chars="upperCase">AU</ScrambleText>
                     </div>
-                    <div className="neuebit text-6xl md:text-8xl flex gap-2">
+                    <div className="font-accent text-6xl md:text-8xl flex gap-2">
                       <Shift dir={"right"} delay={2400}>
                         →
                       </Shift>
@@ -90,7 +90,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="flex justify-between neue-montreal-mono font-[450] text-[10px]/[8px] sm:text-sm">
+            <div className="flex justify-between font-mono font-[450] text-[10px]/[8px] sm:text-sm">
               <div className="flex gap-2 sm:gap-6">
                 <div className="flex flex-col-reverse gap-1 sm:gap-3">
                   <div>©2025 PORTFOLIO</div>
@@ -106,16 +106,16 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="flex flex-col-reverse">
-                  <div className="neuebit flex gap-[6px] text-5xl/6 sm:text-7xl/8 h-fit ">
+                  <div className="font-accent flex gap-[6px] text-5xl/6 sm:text-7xl/8 h-fit ">
                     <BounceIcon delay={1450}>♥</BounceIcon>
                     <BounceIcon delay={1550}>☕</BounceIcon>
                     <BounceIcon delay={1650}>⛅</BounceIcon>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col neue-montreal-mono">
+              <div className="flex flex-col font-mono">
                 <div className="flex justify-around mb-1">SN0622303202843</div>
-                <div className="h-8 sm:h-12">
+                <div className="h-8 sm:h-12 text-dark">
                   <Barcode />
                 </div>
               </div>

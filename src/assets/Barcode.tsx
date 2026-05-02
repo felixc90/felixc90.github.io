@@ -11,7 +11,7 @@ const Barcode = () => {
       version="1.1"
     >
       <rect x="0" y="0" width="234" height="65" fill="none" />
-      <g fill="#0000000">
+      <g fill="currentColor">
         <rect x="0" y="0" width="2" height="65" />
         <rect x="4" y="0" width="2" height="65" />
         <rect x="8" y="0" width="6" height="65" />

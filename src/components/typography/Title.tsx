@@ -18,7 +18,7 @@ const Title = ({
   return (
     <div
       className={[
-        "mondwest font-extrabold flex",
+        "font-display font-extrabold flex",
         className ?? " ",
         playEntryAnimation ? "bounce-onload" : "",
       ].join(" ")}

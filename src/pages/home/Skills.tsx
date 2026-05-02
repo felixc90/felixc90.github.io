@@ -59,14 +59,14 @@ const Skills = () => {
                 </Button>
               ))}
             </div>
-            <div className="text-[16px] neue-montreal mt-8 font-[500]">
+            <div className="text-[16px] font-sans mt-8 font-[500]">
               {skills[activeLogo].description.map((line, idx) => (
                 <span key={idx}>{parseBold(line)}</span>
               ))}
             </div>
           </div>
         </div>
-        <div className="flex justify-between neue-montreal-mono text-xs my-8">
+        <div className="flex justify-between font-mono text-xs my-8">
           <div>
             {skills[activeLogo].colors[0] != "" && (
               <div className="mb-3">COLOR</div>
@@ -99,22 +99,10 @@ const Skills = () => {
         dpr={[1, 1.5]}
         gl={{ antialias: false }}
         camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}
-        className="w-[calc(100%-8rem)]"
-        style={{
-          border: "solid 1px",
-          borderRadius: "1rem",
-          borderColor: "white",
-        }}
+        className="w-[calc(100%-8rem)] border-solid border-1 border-lighter radius-w rounded-2xl"
+        style={{ pointerEvents: "none" }}
       >
-        <Html as={"div"} fullscreen>
-          {/* <div className="w-full flex h-full p-3">
-						<div className="w-full flex flex-col-reverse h-full">
-							<div className="text-lighter/50 hover:cursor-pointer" onClick={() => setPaused(!paused)}>
-								{ paused ? <Play /> : <Pause />}
-							</div>
-						</div>
-					</div> */}
-        </Html>
+        <Html as={"div"} fullscreen></Html>
         <color attach="background" args={["#111111"]} />
         <ambientLight intensity={1} />
         <spotLight

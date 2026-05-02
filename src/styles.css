@@ -8,7 +8,12 @@
   --color-darker: var(--darker);
   --color-light: var(--light);
   --color-lighter: var(--lighter);
-  --color-highlight: var(--highlight);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+  --font-accent: var(--font-accent);
+
   --breakpoint-xs: 30rem;
 }
 
@@ -17,6 +22,11 @@
   --lighter: #fdfbf4;
   --dark: #282924;
   --darker: #0d0e0b;
+
+  --font-sans: "Neue Montreal", sans-serif;
+  --font-mono: "Neue Montreal Mono", monospace;
+  --font-display: "Mondwest", sans-serif;
+  --font-accent: "NeueBit", sans-serif;
 }
 
 body {

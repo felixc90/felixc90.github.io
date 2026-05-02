@@ -83,13 +83,13 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
       </MySplitText>
       <MySplitText
         duration={1.5}
-        className="max-w-[40rem] text-lg mx-auto text-center mb-12 text-light/55"
+        className="max-w-[40rem] text-lg mx-auto text-center mb-12 text-light opacity-70"
         delay={0.8}
       >
         {bioExtended}
       </MySplitText>
       <div className="flex justify-around">
-        <div className="hidden md:block neue-montreal-mono text-xs pr-4 m-auto">
+        <div className="hidden md:block font-mono text-xs pr-4 m-auto">
           <ScrambleText chars="upperCase">CODED WITH THREE.JS</ScrambleText>
         </div>
         <Canvas
@@ -117,7 +117,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
           />
           <Experience fullscreen={fullscreen} />
         </Canvas>
-        <div className="hidden md:block neue-montreal-mono text-xs pl-4 m-auto">
+        <div className="hidden md:block font-mono text-xs pl-4 m-auto">
           <ScrambleText chars="upperCase">MODELLED IN BLENDER</ScrambleText>
         </div>
         {fullscreen && <Education setFullscreen={setFullscreen} />}

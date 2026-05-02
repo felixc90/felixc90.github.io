@@ -29,7 +29,7 @@ const Work = () => {
             <AccordionTrigger className="hover:cursor-pointer">
               <div className="my-2">
                 <div className="text-2xl font-[400]">{item.name}</div>
-                <div className="text-md font-[400] neue-montreal-mono tracking-tighter hover:no-underline">
+                <div className="text-md font-[400] font-mono tracking-tighter hover:no-underline">
                   {item.role} • {item.date}
                 </div>
               </div>

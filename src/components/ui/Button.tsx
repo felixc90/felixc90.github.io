@@ -20,7 +20,7 @@ const Button = ({
   return (
     <div
       onClick={onClick}
-      className={`neue-montreal-mono font-[400] text-xs w-fit py-1 px-2 border-1 border-dark rounded-sm
+      className={`font-mono font-[400] text-xs w-fit py-1 px-2 border-1 border-dark rounded-sm
 					
 					${className !== undefined && className} 
 					${variant == "filled" && `bg-dark text-light`} 

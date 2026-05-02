@@ -97,7 +97,7 @@ const Education = ({ setFullscreen }: EducationProps) => {
     <div
       className={`px-8 sm:px-16 py-12 pointer-events-none`}
       style={{
-        color: "var(--lighter)",
+        color: "var(--light)",
         zIndex: "21",
         height: "100vh",
         width: "100vw",
@@ -106,7 +106,7 @@ const Education = ({ setFullscreen }: EducationProps) => {
         left: "0",
       }}
     >
-      <div className="flex flex-col neue-montreal-mono justify-between h-full">
+      <div className="flex flex-col font-mono justify-between h-full">
         <div className="flex justify-between">
           <div className="">
             <div className="mb-4 text-sm">ITEMS</div>

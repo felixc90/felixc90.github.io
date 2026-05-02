@@ -10,7 +10,7 @@ const WTG = () => {
         <div className="text-lg">
           Productivity Acceleration & Visualization Engine (PAVE)
         </div>
-        <div className="neue-montreal-mono text-[13px] tracking-tighter">
+        <div className="font-mono text-[13px] tracking-tighter">
           1st Rotation | Worked with Vue.js, C#, .NET
         </div>
         <ul className="ml-4 sm:text-sm md:text-[16px] list-outside list-[square] max-w-[44rem]">
@@ -24,7 +24,7 @@ const WTG = () => {
       </div>
       <div className="my-8">
         <div className="text-lg">Allocations Management</div>
-        <div className="neue-montreal-mono text-[13px] tracking-tighter">
+        <div className="font-mono text-[13px] tracking-tighter">
           2nd Rotation | Worked with Vue.js, C#, .NET
         </div>
         <ul className="ml-4 sm:text-sm md:text-[16px] list-outside list-[square] max-w-[44rem]">
@@ -45,7 +45,7 @@ const WTG = () => {
       </Button>
       <div className="mt-4 mb-8">
         <div className="text-lg ">Business Intelligence</div>
-        <div className="neue-montreal-mono text-[13px] tracking-tighter">
+        <div className="font-mono text-[13px] tracking-tighter">
           3rd Rotation | Worked with C#, .NET, Microsoft SQL Server
         </div>
         <ul className="ml-4 sm:text-sm md:text-[16px] list-outside list-[square] max-w-[44rem]">

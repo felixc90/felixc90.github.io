@@ -3,7 +3,7 @@ const CSE = () => {
     <div>
       <div className="mb-8">
         <div className="text-lg">Tutor + Lab Assistant</div>
-        <div className="neue-montreal-mono text-[13px] tracking-tighter">
+        <div className="font-mono text-[13px] tracking-tighter">
           Teaching COMP2521: Data Structures & Algorithms in C
         </div>
         <ul className="ml-4 my-4 sm:text-sm md:text-[16px] list-outside list-[square] max-w-[44rem]">

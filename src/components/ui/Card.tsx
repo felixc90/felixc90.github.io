@@ -35,7 +35,7 @@ const Card = ({ data }: CardProps) => {
             <div>
               <ScrambleText
                 duration={1.2}
-                className="text-[11px]/tight neue-montreal-mono h-fit flex flex-col-reverse"
+                className="text-[11px]/tight font-mono h-fit flex flex-col-reverse"
               >
                 {"Made with " + technologies.join(", ")}
               </ScrambleText>

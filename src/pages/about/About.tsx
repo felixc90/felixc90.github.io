@@ -33,7 +33,7 @@ const About = () => {
   return (
     <div className="bg-light min-h-[calc(100vh+2rem)] px-8 sm:px-16 py-8 pb-32 text-dark">
       <div className="flex-col flex justify-around mt-14">
-        <div className="flex justify-between w-full neue-montreal-mono text-xs font-[450] mb-8">
+        <div className="flex justify-between w-full font-mono text-xs font-[450] mb-8">
           <div className="flex gap-4">
             <Square className="hidden sm:block" />
             <Square />
@@ -79,7 +79,7 @@ const About = () => {
                     />
                   </div>
                 </div>
-                <div className="neue-montreal-mono text-xs mt-1 flex justify-between tracking-wider">
+                <div className="font-mono text-xs mt-1 flex justify-between tracking-wider">
                   <div>
                     {imageData.width} × {imageData.height}
                   </div>
@@ -87,7 +87,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="md:w-1/2 text-sm sm:text-xs lg:text-sm font-[450] tracking-tighter neue-montreal-mono mt-2">
+            <div className="md:w-1/2 text-sm sm:text-xs lg:text-sm font-[450] tracking-tighter font-mono mt-2">
               <div className="mb-4">PROFILE</div>
               <div className="mb-4">
                 <ScrambleText chars="upperCase">NAME</ScrambleText>
