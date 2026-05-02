@@ -39,11 +39,23 @@ const About = () => {
             <Square />
             <Square className="hidden sm:block" />
           </div>
-          <ScrambleText chars="upperCase">BUILDING</ScrambleText>
+          <ScrambleText
+            duration={1.5}
+            chars="upperCase"
+            className="min-w-[12ch] text-center"
+          >
+            BUILDING
+          </ScrambleText>
           <Square />
           <Square />
           <Square />
-          <ScrambleText chars="upperCase">RUNNING</ScrambleText>
+          <ScrambleText
+            duration={1.5}
+            chars="upperCase"
+            className="min-w-[12ch] text-center"
+          >
+            RUNNING
+          </ScrambleText>
           <div className="flex gap-4">
             <Square className="hidden sm:block" />
             <Square />

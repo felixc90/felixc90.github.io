@@ -12,21 +12,21 @@ import { ToneMappingMode } from "postprocessing";
 import { lerp } from "three/src/math/MathUtils.js";
 import { INITIAL_CAMERA_POSITION } from "@/constants";
 
-interface Props {
-  fullScreen: boolean;
+interface ExperienceProps {
+  fullscreen: boolean;
 }
 
-export default function Experience({ fullScreen }: Props) {
+export default function Experience({ fullscreen }: ExperienceProps) {
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
-    if (!fullScreen) {
+    if (!fullscreen) {
       setZoomed(false);
     }
-  }, [fullScreen]);
+  }, [fullscreen]);
 
   useFrame((state) => {
-    if (!fullScreen) {
+    if (!fullscreen) {
       state.camera.zoom = lerp(state.camera.zoom, 10, 0.05);
       state.camera.position.lerp(INITIAL_CAMERA_POSITION, 0.2);
       state.camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -47,7 +47,7 @@ export default function Experience({ fullScreen }: Props) {
   // TODO(felix): Fix fullscreen animation and light rail model
   return (
     <>
-      {fullScreen && (
+      {fullscreen && (
         <OrbitControls
           target={[0, 0, 0]}
           maxPolarAngle={Math.PI / 2}

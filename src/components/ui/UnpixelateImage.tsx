@@ -11,7 +11,7 @@ interface UnpixelateImageProps {
 const UnpixelateImage = ({
   src,
   className = "",
-  duration = 3000,
+  duration = 2500,
 }: UnpixelateImageProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

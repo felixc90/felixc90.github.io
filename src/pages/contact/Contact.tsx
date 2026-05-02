@@ -18,7 +18,11 @@ const Contact = () => {
             <Square />
             <Square className="hidden sm:block" />
           </div>
-          <ScrambleText duration={1.5} chars="upperCase">
+          <ScrambleText
+            duration={1.5}
+            chars="upperCase"
+            className="min-w-[12ch] text-center"
+          >
             REBASING
           </ScrambleText>
           <Square />
@@ -27,9 +31,9 @@ const Contact = () => {
           <ScrambleText
             duration={1.5}
             chars="upperCase"
-            className="whitespace-pre"
+            className="min-w-[12ch] text-center"
           >
-            {"MERGING "}
+            MERGING
           </ScrambleText>
           <div className="flex gap-4">
             <Square className="hidden sm:block" />
