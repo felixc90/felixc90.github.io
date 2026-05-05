@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Anchor from "../typography/Anchor";
 import { useThemeStore } from "@/store/themeStore";
 import { useNav } from "@/hooks/useNav";
+import ThemeDialog from "./ThemeDialog";
 
 const Footer = () => {
   const [time, setTime] = useState<Date>(new Date(0, 0, 0));
@@ -64,14 +65,7 @@ const Footer = () => {
             </Anchor>
           </div>
           <div>
-            <div
-              className="hover:underline hover:cursor-pointer"
-              onClick={() => {
-                setTheme("golett");
-              }}
-            >
-              PICK THEME
-            </div>
+            <ThemeDialog />
             <div className="flex gap-1 mt-1 flex-row-reverse">
               <Square color={theme.background} />
               <Square color={theme.accent} />
