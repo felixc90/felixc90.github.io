@@ -58,7 +58,9 @@ const Contact = () => {
             <div className="w-0 md:w-1/2 flex md:flex-col flex-col-reverse">
               <div className="flex flex-row-reverse mx-12">
                 <div className="flex-col opacity-95 hidden md:flex">
-                  <div className="font-accent text-[16rem]/30 pt-2">↘</div>
+                  <div className="font-accent text-[16rem]/30 pt-2 bounce-title">
+                    ↘
+                  </div>
                 </div>
               </div>
             </div>
@@ -76,7 +78,9 @@ const Contact = () => {
                   <Button variant="filled" readonly></Button>
                 </div>
                 <div
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4 mb-10 font-[450] underline hover:cursor-pointer"
+                  className="
+									hover:bg-dark hover:text-light hover:cursor-pointer w-fit py-2 px-1
+									text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4 mb-6 font-[450] underline"
                   onClick={() => window.open("mailto:felixcao37@gmail.com")}
                 >
                   felixcao37@gmail.com

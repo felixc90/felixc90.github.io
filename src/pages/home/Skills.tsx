@@ -24,11 +24,13 @@ import Square from "@/components/ui/Square";
 import ScrambleText from "@/components/ui/ScrambleText";
 import MySplitText from "@/components/ui/MySplitText";
 import Rotating from "@/components/ui/Rotating";
+import { useThemeStore } from "@/store/themeStore";
 
 const Skills = () => {
   // TODO(felix): Add more skills and make the descriptions more concise
   const { skills } = data;
   const [activeLogo, setActiveLogo] = useState<number>(0);
+  const { theme } = useThemeStore();
 
   const bio =
     "Throughout my software engineering journey, I've worked with variety of tools. " +
@@ -103,7 +105,7 @@ const Skills = () => {
         style={{ pointerEvents: "none" }}
       >
         <Html as={"div"} fullscreen></Html>
-        <color attach="background" args={["#111111"]} />
+        <color attach="background" args={[theme.secondary]} />
         <ambientLight intensity={1} />
         <spotLight
           position={[10, 10, 10]}

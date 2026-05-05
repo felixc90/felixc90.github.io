@@ -6,9 +6,11 @@ import ScrambleText from "@/components/ui/ScrambleText";
 import MySplitText from "@/components/ui/MySplitText";
 import Square from "@/components/ui/Square";
 import Education from "./university/Education";
+import { useThemeStore } from "@/store/themeStore";
 
 const Introduction = () => {
   const [fullscreen, setFullscreen] = useState<boolean>(false);
+  const { theme } = useThemeStore();
 
   const miniStyle: CSSProperties = {
     width: "26rem",
@@ -107,7 +109,7 @@ Recently, I've also been exploring WebGL and Three.js which I've used to create 
             requestAnimationFrame(() => setFullscreen(true));
           }}
         >
-          <color attach="background" args={["#111111"]} />
+          <color attach="background" args={[theme.secondary]} />
           <ambientLight intensity={4} />
           <directionalLight
             position={[48, 32, 0]}

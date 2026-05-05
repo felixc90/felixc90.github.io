@@ -68,6 +68,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       >
         <meshBasicMaterial map={terrainTexture} />
       </mesh>
+      {/* TODO(felix): fix grass position y-value */}
       <mesh
         geometry={nodes.grass.geometry}
         position={nodes.grass.position}

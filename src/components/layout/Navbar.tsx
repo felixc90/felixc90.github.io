@@ -1,13 +1,7 @@
-import { useNavigate } from "react-router";
 import Button from "../ui/Button";
 import { useEffect, useState } from "react";
 import Shift from "../ui/Shift";
-
-interface NavType {
-  name: string;
-  href: string;
-  current: boolean;
-}
+import { useNav } from "@/hooks/useNav";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -16,13 +10,8 @@ const navigation = [
 ];
 
 export default function Navbar() {
-  const navigate = useNavigate();
+  const { handleNav } = useNav();
   const [active, setActive] = useState(false);
-
-  const handleClick = (item?: NavType) => {
-    setActive(false);
-    navigate(item?.href ?? "/");
-  };
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -53,13 +42,18 @@ export default function Navbar() {
     }
   }, [active, width]);
 
+  const handleClick = (path: string) => {
+    setActive(false);
+    handleNav(path);
+  };
+
   return (
     <>
       <div>
         <nav className="fixed w-full font-mono font-[450] px-8 sm:px-16 pt-8 z-11">
           <div className="flex justify-between">
             <div>
-              <Button onClick={() => handleClick()} variant="filled">
+              <Button onClick={() => handleClick("/")} variant="filled">
                 FELIX CAO
               </Button>
             </div>
@@ -70,7 +64,7 @@ export default function Navbar() {
                   <Button
                     variant="outline"
                     key={item.name}
-                    onClick={() => handleClick(item)}
+                    onClick={() => handleClick(item.href)}
                   >
                     <div className="flex justify-around">
                       {item.name.toUpperCase()}
@@ -106,7 +100,7 @@ export default function Navbar() {
                     <Button
                       variant="outline"
                       key={item.name}
-                      onClick={() => handleClick(item)}
+                      onClick={() => handleClick(item.href)}
                     >
                       <div className="flex justify-around">
                         {item.name.toUpperCase()}
