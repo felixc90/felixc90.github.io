@@ -118,6 +118,7 @@ export default function Navbar() {
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           }`}
+          onClick={() => setActive(false)}
         />
       </div>
     </>

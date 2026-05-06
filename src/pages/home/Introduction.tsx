@@ -24,6 +24,7 @@ const Introduction = () => {
 
   const fullStyle: CSSProperties = {
     width: "100vw",
+    height: "100svh",
     position: "fixed",
     padding: "0",
     margin: "0",

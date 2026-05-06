@@ -2,13 +2,11 @@ import { ExternalLink } from "lucide-react";
 import Square from "../ui/Square";
 import { useEffect, useState } from "react";
 import Anchor from "../typography/Anchor";
-import { useThemeStore } from "@/store/themeStore";
 import { useNav } from "@/hooks/useNav";
 import ThemeDialog from "./ThemeDialog";
 
 const Footer = () => {
   const [time, setTime] = useState<Date>(new Date(0, 0, 0));
-  const { theme, setTheme } = useThemeStore();
   const { handleNav } = useNav();
 
   useEffect(() => {
@@ -20,13 +18,10 @@ const Footer = () => {
   return (
     <footer className="bg-darker pt-16 px-8 sm:px-16 pb-8 text-[var(--light)] border-t-1 border-t-light font-mono font-[400] text-[10px] sm:text-sm">
       <div className="flex mb-16">
-        <div
-          style={{ lineHeight: "3rem" }}
-          className="text-4xl sm:text-6xl w-1/2 font-accent mr-8"
-        >
+        <div className="text-4xl/[2.25rem] sm:text-6xl w-1/2 font-accent mr-8 gap-x-4 gap-y-8">
           Get in Touch
         </div>
-        <div className="w-1/2 justify-between flex gap-4">
+        <div className="w-1/2 justify-between flex flex-wrap gap-4">
           <div className="flex flex-col gap-2">
             <Anchor onClick={() => handleNav("/")}>HOME</Anchor>
             <Anchor onClick={() => handleNav("/about")}>ABOUT</Anchor>
@@ -64,14 +59,8 @@ const Footer = () => {
               </div>
             </Anchor>
           </div>
-          <div>
+          <div className="w-full sm:w-auto">
             <ThemeDialog />
-            <div className="flex gap-1 mt-1 flex-row-reverse">
-              <Square color={theme.background} />
-              <Square color={theme.accent} />
-              <Square color={theme.primary} />
-              {/* <Square color={theme.secondary} /> */}
-            </div>
           </div>
         </div>
       </div>
